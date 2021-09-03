@@ -1,3 +1,7 @@
+<<<<<<< HEAD
 Hello, world!
 Hi
 Diego here
+=======
+Hi again, let's merge this to main
+>>>>>>> Feature_1
