@@ -28,7 +28,7 @@ public class UserController {
   public String newUser(@RequestParam(name = "id") int id, @RequestParam String name) {
     if (users.get(id) == null) {
       users.put(id, name);
-      return "success";
+      return "successfully created new user " + name;
     }
     return "user already exists";
   }
