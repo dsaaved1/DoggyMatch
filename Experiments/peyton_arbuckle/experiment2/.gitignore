@@ -34,3 +34,4 @@ build/
 
 # Added by me
 application.properties
+.DS_STORE/
