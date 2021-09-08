@@ -15,6 +15,30 @@ public class User {
 
   private String email;
 
+  private String password;
+
+  private String salt;
+
+  public String getSalt() {
+    return this.salt;
+  }
+
+  public void setSalt(String salt) {
+    this.salt = salt;
+  }
+
+  public Integer getId() {
+    return this.id;
+  }
+
+  public String getPassword() {
+    return this.password;
+  }
+
+  public void setPassword(String password) {
+    this.password = password;
+  }
+
   public void setId(Integer id) {
     this.id = id;
   }
