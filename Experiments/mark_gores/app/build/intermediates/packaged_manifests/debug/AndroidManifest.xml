@@ -19,6 +19,7 @@
         android:testOnly="true"
         android:theme="@style/Theme.Example" >
         <activity android:name="com.example.example.Profile" />
+        <activity android:name="com.example.example.Register" />
         <activity
             android:name="com.example.example.MainActivity"
             android:exported="true" >

@@ -1,7 +1,11 @@
-com/example/example/Profile.java
- com.example.example.Profile
 com/example/example/BuildConfig.java
  com.example.example.BuildConfig
+com/example/example/Profile.java
+ com.example.example.Profile
+com/example/example/Register.java
+ com.example.example.Register
+ com.example.example.Register$1
 com/example/example/MainActivity.java
  com.example.example.MainActivity
  com.example.example.MainActivity$1
+ com.example.example.MainActivity$2
