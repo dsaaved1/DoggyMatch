@@ -1,6 +1,5 @@
 package com._rk_1.experiment2.Util;
 
-import java.math.BigInteger;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.security.spec.InvalidKeySpecException;
@@ -10,11 +9,6 @@ import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
 
 public class Util {
-  public static String toHex(byte[] bytes) {
-    BigInteger bi = new BigInteger(1, bytes);
-    return String.format("%0" + (bytes.length << 1) + "X", bi);
-  }
-
   public static byte[] getSalt() {
     SecureRandom random = new SecureRandom();
     byte[] salt = new byte[16];
