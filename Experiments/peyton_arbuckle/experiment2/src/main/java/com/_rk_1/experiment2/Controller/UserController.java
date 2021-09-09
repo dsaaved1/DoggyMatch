@@ -1,5 +1,7 @@
 package com._rk_1.experiment2.Controller;
 
+import java.util.Base64;
+
 import com._rk_1.experiment2.Entity.User;
 import com._rk_1.experiment2.Repository.UserRepository;
 import com._rk_1.experiment2.Util.Util;
@@ -16,26 +18,53 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RequestMapping(path = "/user")
 public class UserController {
 
+  @Autowired
   private UserRepository userRepository;
 
   @PostMapping("/register")
   public @ResponseBody String register(@RequestParam String name, @RequestParam String email,
       @RequestParam String password) {
 
-    // System.out.println(userRepository.findByEmail(email));
+    User tmp = userRepository.findByEmail(email);
+
+    if (tmp != null) {
+      return "user already exists";
+    }
+
+    byte[] salt = Util.getSalt();
+    byte[] hash = Util.PBKDF2(password, salt);
+
+    String encodedSalt = Base64.getEncoder().encodeToString(salt);
+    String encodedHash = Base64.getEncoder().encodeToString(hash);
+
     User n = new User();
     n.setName(name);
     n.setEmail(email);
-
-    byte[] salt = Util.getSalt();
-    n.setSalt(Util.toHex(salt));
-
-    byte[] hash = Util.PBKDF2(password, salt);
-
-    n.setPassword(Util.toHex(hash));
+    n.setSalt(encodedSalt);
+    n.setPassword(encodedHash);
     userRepository.save(n);
 
     return n.getPassword();
+  }
+
+  @PostMapping("/login")
+  public @ResponseBody String login(@RequestParam String email, @RequestParam String password) {
+    User currentUser = userRepository.findByEmail(email);
+
+    if (currentUser == null) {
+      return "user does not exist";
+    }
+
+    byte[] salt = Base64.getDecoder().decode(currentUser.getSalt());
+    byte[] hash = Util.PBKDF2(password, salt);
+
+    String userPassword = currentUser.getPassword();
+    String encodedHash = Base64.getEncoder().encodeToString(hash);
+
+    if (!encodedHash.equals(userPassword)) {
+      return "incorrect username or password";
+    }
+    return "logged in, welcome";
   }
 
   @GetMapping("/all")
