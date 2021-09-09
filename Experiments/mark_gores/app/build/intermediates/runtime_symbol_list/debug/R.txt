@@ -1922,6 +1922,7 @@ int id bounceBoth 0x7f08005f
 int id bounceEnd 0x7f080060
 int id bounceStart 0x7f080061
 int id button 0x7f080062
+int id button1 0x7f0801d6
 int id buttonPanel 0x7f080063
 int id cache_measures 0x7f080064
 int id cancel_button 0x7f080065
@@ -1996,6 +1997,11 @@ int id east 0x7f0800a9
 int id editText1 0x7f0800aa
 int id editText2 0x7f0800ab
 int id edit_query 0x7f0800ac
+int id edittext1 0x7f0801d7
+int id edittext2 0x7f0801d8
+int id edittext3 0x7f0801d9
+int id edittext4 0x7f0801da
+int id edittext5 0x7f0801db
 int id elastic 0x7f0800ad
 int id end 0x7f0800ae
 int id endToStart 0x7f0800af
@@ -2276,6 +2282,7 @@ int id uniform 0x7f0801c1
 int id unlabeled 0x7f0801c2
 int id up 0x7f0801c3
 int id useLogo 0x7f0801c4
+int id usern 0x7f0801dc
 int id vertical_only 0x7f0801c5
 int id view_offset_helper 0x7f0801c6
 int id view_transition 0x7f0801c7
@@ -2427,6 +2434,7 @@ int layout notification_template_icon_group 0x7f0b005b
 int layout notification_template_part_chronometer 0x7f0b005c
 int layout notification_template_part_time 0x7f0b005d
 int layout prof_activity 0x7f0b005e
+int layout reg_activity 0x7f0b0072
 int layout select_dialog_item_material 0x7f0b005f
 int layout select_dialog_multichoice_material 0x7f0b0060
 int layout select_dialog_singlechoice_material 0x7f0b0061

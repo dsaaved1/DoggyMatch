@@ -16,6 +16,10 @@
         "source": "/Users/markgores/Documents/gitstuff/3_rk_1/Experiments/mark_gores/app/src/main/res/mipmap-mdpi/ic_launcher_round.webp"
     },
     {
+        "merged": "/Users/markgores/Documents/gitstuff/3_rk_1/Experiments/mark_gores/app/build/intermediates/merged_res/debug/layout_reg_activity.xml.flat",
+        "source": "/Users/markgores/Documents/gitstuff/3_rk_1/Experiments/mark_gores/app/src/main/res/layout/reg_activity.xml"
+    },
+    {
         "merged": "/Users/markgores/Documents/gitstuff/3_rk_1/Experiments/mark_gores/app/build/intermediates/merged_res/debug/mipmap-xhdpi_ic_launcher.webp.flat",
         "source": "/Users/markgores/Documents/gitstuff/3_rk_1/Experiments/mark_gores/app/src/main/res/mipmap-xhdpi/ic_launcher.webp"
     },

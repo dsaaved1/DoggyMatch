@@ -1923,6 +1923,7 @@ id bounceBoth
 id bounceEnd
 id bounceStart
 id button
+id button1
 id buttonPanel
 id cache_measures
 id cancel_button
@@ -1997,6 +1998,11 @@ id east
 id editText1
 id editText2
 id edit_query
+id edittext1
+id edittext2
+id edittext3
+id edittext4
+id edittext5
 id elastic
 id end
 id endToStart
@@ -2277,6 +2283,7 @@ id uniform
 id unlabeled
 id up
 id useLogo
+id usern
 id vertical_only
 id view_offset_helper
 id view_transition
@@ -2428,6 +2435,7 @@ layout notification_template_icon_group
 layout notification_template_part_chronometer
 layout notification_template_part_time
 layout prof_activity
+layout reg_activity
 layout select_dialog_item_material
 layout select_dialog_multichoice_material
 layout select_dialog_singlechoice_material
