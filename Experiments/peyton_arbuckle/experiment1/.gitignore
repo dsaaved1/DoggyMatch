@@ -31,7 +31,3 @@ build/
 
 ### VS Code ###
 .vscode/
-
-# Added by me
-application.properties
-.DS_STORE/
