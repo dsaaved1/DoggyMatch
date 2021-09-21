@@ -20,8 +20,10 @@ public class Match {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private int id;
+
   @Column(name = "date")
   private Date date;
+
   @ManyToMany(fetch = FetchType.EAGER)
   @JoinTable(name = "match_user", joinColumns = @JoinColumn(name = "match_id"), inverseJoinColumns = @JoinColumn(name = "user_id"))
   private List<User> users;

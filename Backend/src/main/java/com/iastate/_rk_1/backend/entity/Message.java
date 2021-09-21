@@ -1,5 +1,6 @@
 package com.iastate._rk_1.backend.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,12 +14,19 @@ import javax.persistence.Table;
 public class Message {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Column(name = "id")
   private int id;
+
+  @Column(name = "date")
   private String date;
+
+  @Column(name = "content")
   private String content;
+
   @ManyToOne
   @JoinColumn(name = "to")
   private User to;
+
   @ManyToOne
   @JoinColumn(name = "from")
   private User from;

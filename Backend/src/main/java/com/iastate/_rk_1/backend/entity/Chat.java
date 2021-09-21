@@ -1,6 +1,6 @@
 package com.iastate._rk_1.backend.entity;
 
-import java.util.List;
+import java.util.Set;
 import java.sql.Date;
 
 import javax.persistence.Column;
@@ -9,6 +9,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
@@ -26,16 +30,18 @@ public class Chat {
   private Date date;
 
   @ManyToMany(fetch = FetchType.EAGER)
+  @LazyCollection(LazyCollectionOption.FALSE)
   @JoinTable(name = "chat_user", joinColumns = @JoinColumn(name = "chat_id"), inverseJoinColumns = @JoinColumn(name = "user_id"))
-  private List<User> users;
+  private Set<User> users;
 
-  @OneToMany(mappedBy = "chat", fetch = FetchType.EAGER)
-  private List<Message> messages;
+  @OneToMany(mappedBy = "id", fetch = FetchType.EAGER)
+  @LazyCollection(LazyCollectionOption.FALSE)
+  private Set<Message> messages;
 
   public Chat() {
   }
 
-  public Chat(Date date, List<User> users, List<Message> messages) {
+  public Chat(Date date, Set<User> users, Set<Message> messages) {
     this.date = date;
     this.users = users;
     this.messages = messages;
@@ -57,19 +63,19 @@ public class Chat {
     this.date = date;
   }
 
-  public List<User> getUsers() {
+  public Set<User> getUsers() {
     return users;
   }
 
-  public void setUsers(List<User> users) {
+  public void setUsers(Set<User> users) {
     this.users = users;
   }
 
-  public List<Message> getMessages() {
+  public Set<Message> getMessages() {
     return messages;
   }
 
-  public void setMessages(List<Message> messages) {
+  public void setMessages(Set<Message> messages) {
     this.messages = messages;
   }
 

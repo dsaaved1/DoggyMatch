@@ -50,8 +50,8 @@ public class User {
   @Column(name = "photo")
   private String photo;
 
-  @Column(name = "referenceDogInfoTable")
-  private DogInfo referenceDogInfoTable;
+  @Column(name = "reference_dog_info_table")
+  private String referenceDogInfoTable;
 
   @Column(name = "matches")
   private String matches;
@@ -61,7 +61,7 @@ public class User {
 
   public User(String email, boolean active, Date lastLoginTime, String privacySettings, String firstName,
       String lastName, int age, String address, String university, String gender, String photo,
-      DogInfo referenceDogInfoTable, String matches) {
+      String referenceDogInfoTable, String matches) {
     this.email = email;
     this.active = active;
     this.lastLoginTime = lastLoginTime;
@@ -173,11 +173,11 @@ public class User {
     this.photo = photo;
   }
 
-  public DogInfo getReferenceDogInfoTable() {
+  public String getReferenceDogInfoTable() {
     return referenceDogInfoTable;
   }
 
-  public void setReferenceDogInfoTable(DogInfo referenceDogInfoTable) {
+  public void setReferenceDogInfoTable(String referenceDogInfoTable) {
     this.referenceDogInfoTable = referenceDogInfoTable;
   }
 }
