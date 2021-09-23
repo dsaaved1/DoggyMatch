@@ -1,0 +1,7 @@
+com/iastate/_rk_1/backend/entity/DogInfo.class
+com/iastate/_rk_1/backend/entity/Permission.class
+com/iastate/_rk_1/backend/entity/Preferences.class
+com/iastate/_rk_1/backend/entity/Viewer.class
+com/iastate/_rk_1/backend/entity/ConductViolation.class
+com/iastate/_rk_1/backend/BackendApplication.class
+com/iastate/_rk_1/backend/entity/Moderator.class

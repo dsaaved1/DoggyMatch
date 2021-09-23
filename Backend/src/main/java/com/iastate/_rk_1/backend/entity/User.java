@@ -17,7 +17,7 @@ public class User {
   @Column(name = "id")
   private int id;
 
-  @Column(name = "email")
+  @Column(name = "email", unique = true, nullable = false)
   private String email;
 
   @Column(name = "active")
@@ -29,10 +29,10 @@ public class User {
   @Column(name = "privacySettings")
   private String privacySettings;
 
-  @Column(name = "firstName")
+  @Column(name = "firstName", nullable = false)
   private String firstName;
 
-  @Column(name = "lastName")
+  @Column(name = "lastName", nullable = false)
   private String lastName;
 
   @Column(name = "age")
@@ -50,18 +50,15 @@ public class User {
   @Column(name = "photo")
   private String photo;
 
-  @Column(name = "referenceDogInfoTable")
-  private DogInfo referenceDogInfoTable;
-
-  @Column(name = "matches")
-  private String matches;
+  @Column(name = "reference_dog_info_table")
+  private String referenceDogInfoTable;
 
   public User() {
   }
 
   public User(String email, boolean active, Date lastLoginTime, String privacySettings, String firstName,
       String lastName, int age, String address, String university, String gender, String photo,
-      DogInfo referenceDogInfoTable, String matches) {
+      String referenceDogInfoTable) {
     this.email = email;
     this.active = active;
     this.lastLoginTime = lastLoginTime;
@@ -74,7 +71,10 @@ public class User {
     this.gender = gender;
     this.photo = photo;
     this.referenceDogInfoTable = referenceDogInfoTable;
-    this.matches = matches;
+  }
+
+  public boolean getActive() {
+    return this.active;
   }
 
   public int getId() {
@@ -173,11 +173,11 @@ public class User {
     this.photo = photo;
   }
 
-  public DogInfo getReferenceDogInfoTable() {
+  public String getReferenceDogInfoTable() {
     return referenceDogInfoTable;
   }
 
-  public void setReferenceDogInfoTable(DogInfo referenceDogInfoTable) {
+  public void setReferenceDogInfoTable(String referenceDogInfoTable) {
     this.referenceDogInfoTable = referenceDogInfoTable;
   }
 }
