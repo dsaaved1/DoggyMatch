@@ -1,4 +1,4 @@
-package com.iastate._rk_1.service;
+package com.iastate._rk_1.backend.service;
 
 import com.iastate._rk_1.backend.repository.UserRepository;
 
@@ -24,5 +24,9 @@ public class UserService {
 
   public User getUsersByEmail(String email) {
     return repository.findByEmail(email);
+  }
+
+  public User getUserByFirstName(String name) {
+    return repository.findByFirstName(name);
   }
 }
