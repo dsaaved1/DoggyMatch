@@ -1,6 +1,6 @@
 package com.iastate._rk_1.backend.entity;
 
-import java.sql.Date;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -56,21 +56,20 @@ public class User {
   public User() {
   }
 
-  public User(String email, boolean active, Date lastLoginTime, String privacySettings, String firstName,
-      String lastName, int age, String address, String university, String gender, String photo,
-      String referenceDogInfoTable) {
+  public User(String firstName, String lastName, String email, String password) {
     this.email = email;
-    this.active = active;
-    this.lastLoginTime = lastLoginTime;
-    this.privacySettings = privacySettings;
+    this.active = true;
+    this.lastLoginTime = new Date();
+    this.privacySettings = null;
     this.firstName = firstName;
     this.lastName = lastName;
-    this.age = age;
-    this.address = address;
-    this.university = university;
-    this.gender = gender;
-    this.photo = photo;
-    this.referenceDogInfoTable = referenceDogInfoTable;
+
+    this.age = 0;
+    this.address = null;
+    this.university = null;
+    this.gender = null;
+    this.photo = null;
+    this.referenceDogInfoTable = null;
   }
 
   public boolean getActive() {
