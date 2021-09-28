@@ -40,5 +40,9 @@ public class Post{
     public void setBigText(String bigText) {
         this.bigText = bigText;
     }
+    public String print(){
+        return "id" + this.id +"\n";
+    }
+
 }
 

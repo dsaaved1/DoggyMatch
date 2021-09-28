@@ -4,17 +4,21 @@ com/example/example/api/SlimCallback.java
  com.example.example.api.SlimCallback
 com/example/example/api/PostApi.java
  com.example.example.api.PostApi
-com/example/example/api/ApiClientFacotry.java
- com.example.example.api.ApiClientFacotry
 com/example/example/model/Post.java
  com.example.example.model.Post
-com/example/example/Profile.java
- com.example.example.Profile
-com/example/example/BuildConfig.java
- com.example.example.BuildConfig
 com/example/example/Register.java
  com.example.example.Register
  com.example.example.Register$1
+com/example/example/BuildConfig.java
+ com.example.example.BuildConfig
+com/example/example/Profile.java
+ com.example.example.Profile
+com/example/example/model/Photo.java
+ com.example.example.model.Photo
+com/example/example/api/PhotoApi.java
+ com.example.example.api.PhotoApi
+com/example/example/api/ApiClientFacotry.java
+ com.example.example.api.ApiClientFacotry
 com/example/example/MainActivity.java
  com.example.example.MainActivity
  com.example.example.MainActivity$1
