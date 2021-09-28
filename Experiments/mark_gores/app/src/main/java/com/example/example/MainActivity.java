@@ -1,17 +1,18 @@
 package com.example.example;
 
-import static com.example.example.api.ApiClientFacotry.GetPostApi;
+import static com.example.example.api.ApiClientFacotry.GetPhotoApi;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.example.api.SlimCallback;
-import com.example.example.model.Post;
+import com.example.example.model.Photo;
 
 public class MainActivity extends AppCompatActivity {
     Button log, reg;
@@ -24,12 +25,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         username = (EditText) findViewById(R.id.editText1);
         log = (Button) findViewById(R.id.button);
-        //TextView apiText1 = findViewById(R.id.usern);
+        TextView apiText1 = findViewById(R.id.test);
         log.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                GetPostApi().getPostByNum(username.getText().toString()).enqueue(new SlimCallback<Post>(post ->{
-                    usern= post.getTitle();
+                GetPhotoApi().getPhotoByNum(username.getText().toString()).enqueue(new SlimCallback<Photo>(photo ->{
+                    //apiText1.setText(photo.printable());
+                    usern = photo.printable();
                 }));
 
             profile(usern);
