@@ -1,5 +1,7 @@
 package com.example.example;
 
+import static com.example.example.api.ApiClientFacotry.GetPostApi;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -7,6 +9,9 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.example.api.SlimCallback;
+import com.example.example.model.Post;
 
 public class MainActivity extends AppCompatActivity {
     Button log, reg;
@@ -19,10 +24,14 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         username = (EditText) findViewById(R.id.editText1);
         log = (Button) findViewById(R.id.button);
+        //TextView apiText1 = findViewById(R.id.usern);
         log.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                usern = username.getText().toString();
+                GetPostApi().getPostByNum(username.getText().toString()).enqueue(new SlimCallback<Post>(post ->{
+                    usern= post.getTitle();
+                }));
+
             profile(usern);
             }
         });
