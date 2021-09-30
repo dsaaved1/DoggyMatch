@@ -1,12 +1,16 @@
 package com.iastate._rk_1.backend.entity;
 
 import java.util.Date;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -52,6 +56,12 @@ public class User {
 
   @Column(name = "reference_dog_info_table")
   private String referenceDogInfoTable;
+
+  @OneToMany(mappedBy = "id")
+  private Set<User> matches;
+
+  @OneToMany
+  private Set<Chat> chats;
 
   public User() {
   }
