@@ -46,7 +46,7 @@ public class UserController {
     return service.getUsersByEmail(email);
   }
 
-  @PostMapping("/new")
+  @PostMapping("/user")
   public User addUser(@RequestBody User user) {
     return service.saveUser(user);
   }
