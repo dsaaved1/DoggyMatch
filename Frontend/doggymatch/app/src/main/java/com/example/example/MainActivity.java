@@ -26,8 +26,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         username = (EditText) findViewById(R.id.editText1);
-        TextView test1 = findViewById(R.id.usern);
+       // TextView test1 = findViewById(R.id.usern);
         log = (Button) findViewById(R.id.button);
+        Button test = findViewById(R.id.button2);
         TextView apiText1 = findViewById(R.id.test);
         log.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -40,6 +41,20 @@ public class MainActivity extends AppCompatActivity {
               }));
 
             profile(username.getText().toString());
+            }
+        });
+        test.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                GetUserApi().getFirstUser().enqueue(new SlimCallback<User>(user1 ->{
+                    String test1 = String.valueOf(user1.getId());
+                    apiText1.setText(test1);
+                }));
+//        GetUserApi().getUserByNum(username.getText().toString()).enqueue(new SlimCallback<User>(user -> {
+//            // test1.setText(user.getUsername());
+//            //data.setText(user.getUsername());
+//            apiText1.setText(user.getId());
+//        }));
             }
         });
 

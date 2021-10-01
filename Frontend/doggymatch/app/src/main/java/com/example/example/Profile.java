@@ -39,7 +39,7 @@ public class Profile extends AppCompatActivity {
                 GetUserApi().getUserByNum(usname).enqueue(new SlimCallback<User>(user -> {
                     // test1.setText(user.getUsername());
                     //data.setText(user.getUsername());
-                    username = user.getUsername();
+                    username = user.getFirstname();
                     dat = user.getEmail();
                 }));
                 name.setText(username);

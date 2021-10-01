@@ -6,12 +6,12 @@ import retrofit2.http.GET;
 import retrofit2.http.Path;
 
 public interface UserApi {
-    @GET("users/1")
+    @GET("user/1")
     Call<User> getFirstUser();
-    @GET("users")
+    @GET("user")
     Call<List<User>> getAllUser();
 
 
-    @GET("users/{userNum}")
+    @GET("user/{userNum}")
     Call<User> getUserByNum(@Path("userNum") String userNum);
 }
