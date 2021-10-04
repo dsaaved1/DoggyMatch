@@ -22,15 +22,18 @@ public class Profile extends AppCompatActivity {
     TextView data;
     Button refresh;
     String dat;
+    String age;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.prof_activity);
-        refresh = findViewById(R.id.ref);
+        refresh = findViewById(R.id.ref); //added a refresh button to allow the page to load before sending it server data
         name = (TextView) findViewById(R.id.usern);
         data = findViewById(R.id.usern1);
+        TextView dataage = findViewById(R.id.age);
         Intent intent = getIntent();
         String usname = intent.getStringExtra("message_key");
         name.setText("UserId:" + usname);
+        //sets the text on page to data from server
         refresh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -41,10 +44,11 @@ public class Profile extends AppCompatActivity {
                     //data.setText(user.getUsername());
                     username = user.getFirstname();
                     dat = user.getEmail();
+                    age = String.valueOf(user.getAge());
                 }));
-                name.setText(username);
-                data.setText(dat);
-
+                name.setText("Hello, "+username);
+                data.setText("Email: "+dat);
+                dataage.setText("age: "+age);
             }
         });
 
