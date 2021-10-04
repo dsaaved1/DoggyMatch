@@ -46,9 +46,14 @@ public class Profile extends AppCompatActivity {
                     dat = user.getEmail();
                     age = String.valueOf(user.getAge());
                 }));
-                name.setText("Hello, "+username);
-                data.setText("Email: "+dat);
-                dataage.setText("age: "+age);
+                if(username==null){
+                    name.setText("loading...");
+                }
+                else {
+                    name.setText("Hello, " + username);
+                    data.setText("Email: " + dat);
+                    dataage.setText("age: " + age);
+                }
             }
         });
 
