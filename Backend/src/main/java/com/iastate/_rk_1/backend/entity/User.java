@@ -22,6 +22,9 @@ public class User {
   @Column(name = "email", unique = true, nullable = false)
   private String email;
 
+  @Column(name = "password")
+  private String password;
+
   @Column(name = "active")
   private boolean active;
 
@@ -71,6 +74,7 @@ public class User {
     this.privacySettings = null;
     this.firstName = firstName;
     this.lastName = lastName;
+    this.password = password;
 
     this.age = 0;
     this.address = null;
@@ -98,6 +102,14 @@ public class User {
 
   public void setEmail(String email) {
     this.email = email;
+  }
+
+  public String getPassword(){
+    return password;
+  }
+
+  public void setEncryptedPassword(String encryptedPassword){
+    this.password = encryptedPassword;
   }
 
   public boolean isActive() {
@@ -187,4 +199,6 @@ public class User {
   public void setReferenceDogInfoTable(String referenceDogInfoTable) {
     this.referenceDogInfoTable = referenceDogInfoTable;
   }
+
+
 }

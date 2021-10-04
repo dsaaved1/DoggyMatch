@@ -1,5 +1,6 @@
 package com.iastate._rk_1.backend.service;
 
+import antlr.BaseAST;
 import com.iastate._rk_1.backend.repository.UserRepository;
 
 import java.util.List;
@@ -7,12 +8,20 @@ import java.util.List;
 import com.iastate._rk_1.backend.entity.User;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
 public class UserService {
   @Autowired
   private UserRepository repository;
+
+
+  private final BCryptPasswordEncoder bCryptPasswordEncoder;
+
+  public UserService() {
+    bCryptPasswordEncoder = null;
+  }
 
   public User saveUser(User user) {
     return repository.save(user);
@@ -55,5 +64,24 @@ public class UserService {
     existingUser.setReferenceDogInfoTable(user.getReferenceDogInfoTable());
     existingUser.setUniversity(user.getUniversity());
     return repository.save(existingUser);
+  }
+
+  public void signUp(User user) {
+
+    //checking if this email is already in repository
+    User userExists = repository.findByEmail(user.getEmail());
+
+    if (userExists != null) {
+      throw new IllegalStateException("email already taken");
+    }
+
+
+    //encrypting the user's password using bcrypt, which uses the method "salting"
+
+    String encodedPassword = bCryptPasswordEncoder.encode(user.getPassword());
+
+    user.setEncryptedPassword(encodedPassword);
+
+    saveUser(user);
   }
 }
