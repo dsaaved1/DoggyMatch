@@ -11,15 +11,22 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:textSize="45dp" />
+        android:text="name"
+        android:textSize="30dp" />
     <TextView
         android:id="@+id/usern1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/usern"
         android:layout_centerHorizontal="true"
-        android:text="test"
-        android:textSize="45dp" />
+        android:textSize="20dp" />
+    <TextView
+        android:id="@+id/age"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/usern1"
+        android:layout_centerHorizontal="true"
+        android:textSize="20dp" />
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
