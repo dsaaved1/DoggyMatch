@@ -3,6 +3,7 @@ package com.example.domainmodel;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import com.doggy.*;
 
 public class MainActivity extends AppCompatActivity {
 
