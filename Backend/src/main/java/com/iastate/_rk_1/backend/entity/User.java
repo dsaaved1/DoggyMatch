@@ -67,8 +67,9 @@ public class User {
   public User() {
   }
 
-  public User(String firstName, String lastName, String email, String password) {
+  public User(int id, String firstName, String lastName, String email, String password) {
     this.email = email;
+    this.id = id;
     this.active = true;
     this.lastLoginTime = new Date();
     this.privacySettings = null;
