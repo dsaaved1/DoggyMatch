@@ -2,7 +2,6 @@ package com.example.homeplate;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -11,7 +10,10 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
 
     Button continueButton;
-    TextView doggyTitle;
+    TextView pageTitle;
+    TextView usernameBox;
+    TextView passwordBox;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,10 +30,11 @@ public class MainActivity extends AppCompatActivity {
         continueButton = findViewById(R.id.continueButton);
 
         //TextView
-        doggyTitle = findViewById(R.id.doggyTitle);
+        pageTitle = findViewById(R.id.doggyTitle);
 
         //TextBox
-
+        usernameBox = findViewById(R.id.usernameBox);
+        passwordBox = findViewById(R.id.passwordBox);
     }
 
     //Handle Interaction
@@ -42,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                doggyTitle.setText("YES!");
+                pageTitle.setText("YES!");
                 setContentView(R.layout.activity_home);
 
 
