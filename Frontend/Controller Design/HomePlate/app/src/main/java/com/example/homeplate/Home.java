@@ -25,13 +25,20 @@ public class Home extends AppCompatActivity {
         //Buttons
 
         /*
-        Class DoggyButton setValues()
+        Possibly:
+            DoggyButtons handles all, each is a DoggyButton
+
+        Class DoggyButton setValues(List names, List assignments)
             Pass a list of button names
             Pass a list of assignments
             Convert them to buttons and then use the another class for actions
            Example:
                 nameList: homeButton, chatButton, profileButton
                 assignmentList: R.id.homeButton, ...
+         */
+
+        /*
+            DoggyButton interact(Button, Action)
          */
 
         homeButton = findViewById(R.id.continueButton);
