@@ -43,6 +43,8 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 doggyTitle.setText("YES!");
+                setContentView(R.layout.activity_home);
+
 
             }
         });

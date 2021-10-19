@@ -4,6 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FF9800"
+    android:backgroundTint="#FF9800"
+    android:foregroundTint="#A8E11111"
     tools:context=".MainActivity">
 
     <Button
@@ -13,7 +16,10 @@
         android:layout_marginStart="288dp"
         android:layout_marginTop="46dp"
         android:layout_marginBottom="393dp"
+        android:background="#FFFFFF"
+        android:shadowColor="#000000"
         android:text="Continue"
+        android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword" />
