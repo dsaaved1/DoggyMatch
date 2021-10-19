@@ -9,10 +9,10 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button continueButton;
-    TextView pageTitle;
-    TextView usernameBox;
-    TextView passwordBox;
+    private Button continueButton;
+    private TextView pageTitle;
+    private TextView usernameBox;
+    private TextView passwordBox;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //Set Interaction Values
-    public void setValues()
+    private void setValues()
     {
         //Buttons
         continueButton = findViewById(R.id.continueButton);
@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //Handle Interaction
-    public void interact()
+    private void interact()
     {
 
         continueButton.setOnClickListener(new View.OnClickListener() {
