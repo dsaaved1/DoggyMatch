@@ -20,7 +20,14 @@ public class Home extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
         setValues();
-        interact();
+
+        homeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                pageHome.setText("Working.");
+            }
+        });
+        //Home.interact();
     }
 
     private void setValues()
