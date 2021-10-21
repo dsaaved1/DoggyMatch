@@ -17,6 +17,8 @@ public class MainActivity extends AppCompatActivity {
     private Button homeButton;
     private TextView homeTitle;
 
+     DoggyController doggy;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +37,10 @@ public class MainActivity extends AppCompatActivity {
         homeButton = findViewById(R.id.homeButton);
         homeTitle = findViewById(R.id.pageTitleHome);
 
+        doggy = new DoggyController(homeButton, homeTitle);
+
+        doggy.createTextField();
+
         //TextView
         pageTitle = findViewById(R.id.pageTitleMain);
 
@@ -52,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 pageTitle.setText("YES!");
-                homeTitle.setText("Success.");
+
                 setContentView(R.layout.activity_home);
 
 
