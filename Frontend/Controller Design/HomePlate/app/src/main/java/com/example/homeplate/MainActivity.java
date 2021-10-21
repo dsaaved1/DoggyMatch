@@ -14,6 +14,9 @@ public class MainActivity extends AppCompatActivity {
     private TextView usernameBox;
     private TextView passwordBox;
 
+    private Button homeButton;
+    private TextView homeTitle;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,8 +32,11 @@ public class MainActivity extends AppCompatActivity {
         //Buttons
         continueButton = findViewById(R.id.continueButton);
 
+        homeButton = findViewById(R.id.homeButton);
+        homeTitle = findViewById(R.id.pageTitleHome);
+
         //TextView
-        pageTitle = findViewById(R.id.doggyTitle);
+        pageTitle = findViewById(R.id.pageTitleMain);
 
         //TextBox
         usernameBox = findViewById(R.id.usernameBox);
@@ -46,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 pageTitle.setText("YES!");
+                homeTitle.setText("Success.");
                 setContentView(R.layout.activity_home);
 
 

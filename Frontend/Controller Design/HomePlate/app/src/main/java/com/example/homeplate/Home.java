@@ -3,13 +3,16 @@ package com.example.homeplate;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class Home extends AppCompatActivity {
 
     private Button homeButton;
     private Button chatButton;
     private Button profileButton;
+    private TextView pageHome;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,11 +44,21 @@ public class Home extends AppCompatActivity {
             DoggyButton interact(Button, Action)
          */
 
-        homeButton = findViewById(R.id.continueButton);
+        // homeButton = findViewById(R.id.homeButton);
+        chatButton = findViewById(R.id.chatButton);
+        profileButton = findViewById(R.id.profileButton);
+
+        //TextView
+        pageHome = findViewById(R.id.pageTitleHome);
     }
 
     private void interact()
     {
-
+        homeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                pageHome.setText("Working.");
+            }
+        });
     }
 }

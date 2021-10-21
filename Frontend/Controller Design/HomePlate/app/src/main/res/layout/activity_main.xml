@@ -49,7 +49,7 @@
         app:layout_constraintTop_toBottomOf="@+id/usernameBox" />
 
     <TextView
-        android:id="@+id/doggyTitle"
+        android:id="@+id/pageTitleMain"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
