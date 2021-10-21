@@ -9,11 +9,24 @@ public interface DoggyInterface {
 
     interface DoggyModel
     {
+        interface OnFinishedListener
+        {
+            void onFinished(String string);
+        }
 
+        void getNextCourse();
+    }
+
+    interface DoggyView
+    {
+        void showProgress();
+        void hideProgress();
+        void setString(String string);
     }
 
     interface DoggyPresenter
     {
-
+        void onButtonClick();
+        void onDestroy();
     }
 }
