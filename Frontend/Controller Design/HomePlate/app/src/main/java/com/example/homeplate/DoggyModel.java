@@ -19,19 +19,6 @@ public class DoggyModel implements DoggyInterface.DoggyModel {
                     "SDE 1 Interviews in top companies"
     );
 
-    @Override
-    // this method will invoke when
-    // user clicks on the button
-    // and it will take a delay of
-    // 1200 milliseconds to display next course detail
-    public void getNextCourse(final OnFinishedListener listener) {
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                listener.onFinished(getRandomString());
-            }
-        }, 1200);
-    }
 
     // method to select random
     // string from the list of strings

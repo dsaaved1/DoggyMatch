@@ -14,7 +14,7 @@ public interface DoggyInterface {
             void onFinished(String string);
         }
 
-        void getNextCourse();
+
     }
 
     interface DoggyView

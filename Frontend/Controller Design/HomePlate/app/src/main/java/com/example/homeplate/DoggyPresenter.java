@@ -20,7 +20,6 @@ public class DoggyPresenter implements DoggyInterface.DoggyPresenter, DoggyInter
         if (mainView != null) {
             mainView.showProgress();
         }
-        model.getNextCourse(this);
     }
 
     @Override
