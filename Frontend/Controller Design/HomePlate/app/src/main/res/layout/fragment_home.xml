@@ -13,7 +13,7 @@
         android:layout_marginTop="68dp"
         android:layout_marginBottom="455dp"
         android:text="Home"
-        android:textColor="#F44336"
+        android:textColor="#FF9800"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
