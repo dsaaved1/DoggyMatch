@@ -9,6 +9,11 @@ public class DoggyButton extends AppCompatActivity implements View.OnClickListen
 
     @Override
     public void onClick(View view) {
+
+        /*
+            Fragmenting
+            BottomNavigationView
+         */
         switch (view.getId())
         {
             case R.id.homeButton:
