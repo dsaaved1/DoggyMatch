@@ -11,6 +11,11 @@ public interface DoggyInterface {
 
     }
 
+    interface DoggyButton extends View.OnClickListener
+    {
+
+    }
+
     interface DoggyModel
     {
         interface OnFinishedListener
