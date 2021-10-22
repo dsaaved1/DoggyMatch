@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         //Buttons
         continueButton = findViewById(R.id.continueButton);
 
-        homeButton = findViewById(R.id.homeButton);
+        // homeButton = findViewById(R.id.homeButton);
         homeTitle = findViewById(R.id.pageTitleHome);
 
         //TextView

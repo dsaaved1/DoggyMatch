@@ -20,14 +20,6 @@ public class Home extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
         setValues();
-
-        homeButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                pageHome.setText("Working.");
-            }
-        });
-        //Home.interact();
     }
 
     private void setValues()
@@ -51,21 +43,11 @@ public class Home extends AppCompatActivity {
             DoggyButton interact(Button, Action)
          */
 
-        // homeButton = findViewById(R.id.homeButton);
-        chatButton = findViewById(R.id.chatButton);
-        profileButton = findViewById(R.id.profileButton);
 
-        //TextView
-        pageHome = findViewById(R.id.pageTitleHome);
     }
 
     private void interact()
     {
-        homeButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                pageHome.setText("Working.");
-            }
-        });
+
     }
 }
