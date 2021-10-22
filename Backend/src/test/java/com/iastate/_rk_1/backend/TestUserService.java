@@ -43,4 +43,18 @@ public class TestUserService {
             .thenReturn(testUser);
     assertEquals(1, userService.getUsersByEmail("test@iastate.edu").getId());
   }
+
+  @Test
+  public void testEncryptedPassword(){
+    UserService mockUserService = mock(UserService.class);
+    User testUser = new User(1, "Peyton", "Arbuckle", "peyt@iastate.edu", "password");
+
+    assertEquals("password", testUser.getPassword());
+
+    mockUserService.signUp(testUser);
+    mockUserService.saveUser(testUser);
+
+    assertEquals("password", testUser.getPassword());
+
+  }
 }
