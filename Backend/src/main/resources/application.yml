@@ -2,8 +2,8 @@ spring:
   datasource:
     username: demo2
     password: demo2
-    url: jdbc:mysql://${MYSQL_HOST:localhost}:3306/demo2
-    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:h2:mem:demo2
+    driver-class-name: org.h2.Driver
   h2:
     console.enabled: true
   jpa:
