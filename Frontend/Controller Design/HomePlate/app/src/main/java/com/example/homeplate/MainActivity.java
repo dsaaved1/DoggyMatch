@@ -46,6 +46,10 @@ public class MainActivity extends AppCompatActivity {
     //Handle Interaction
     private void interact()
     {
+        DoggyInterface.DoggyButton customButtonAction = new DoggyButton();
+        customButtonAction.setViewer("activity_home");
+        continueButton.setOnClickListener(customButtonAction);
+
 
         continueButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,7 +57,9 @@ public class MainActivity extends AppCompatActivity {
 
                 pageTitle.setText("YES!");
 
-                setContentView(R.layout.activity_home);
+
+
+                //setContentView(R.layout.activity_home);
 
 
             }

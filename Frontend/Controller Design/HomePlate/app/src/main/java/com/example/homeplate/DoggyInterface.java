@@ -1,10 +1,19 @@
 package com.example.homeplate;
 
+import android.view.View;
+
+import androidx.appcompat.app.AppCompatActivity;
+
 public interface DoggyInterface {
 
     interface DoggyController
     {
 
+    }
+
+    interface DoggyButton extends View.OnClickListener
+    {
+        void setAction();
     }
 
     interface DoggyModel

@@ -5,6 +5,6 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class DoggyController extends AppCompatActivity implements DoggyInterface.DoggyController{
+public class DoggyController extends AppCompatActivity implements DoggyInterface.DoggyController {
 
 }
