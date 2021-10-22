@@ -14,6 +14,7 @@ public class DoggyButton extends AppCompatActivity implements View.OnClickListen
             Fragmenting
             BottomNavigationView
          */
+        /*
         switch (view.getId())
         {
             case R.id.homeButton:
@@ -25,5 +26,7 @@ public class DoggyButton extends AppCompatActivity implements View.OnClickListen
             case R.id.profileButton:
                 break;
         }
+
+         */
     }
 }

@@ -3,6 +3,10 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
+        android:id="@+id/nav_chat"
+        android:icon="@drawable/icon_chat_24"
+        android:title="Chat" />
+    <item
         android:id="@+id/nav_home"
         android:icon="@drawable/icon_home_24"
         android:title="Home" />
@@ -10,8 +14,4 @@
         android:id="@+id/nav_profile"
         android:icon="@drawable/icon_profile_24"
         android:title="Profile" />
-    <item
-        android:id="@+id/nav_chat"
-        android:icon="@drawable/icon_chat_24"
-        android:title="Chat" />
 </menu>
