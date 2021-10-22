@@ -26,7 +26,7 @@ public class Home extends AppCompatActivity {
 
         getSupportFragmentManager().beginTransaction()
                 .setReorderingAllowed(true)
-                .add(R.id.fragment_container, HomeFragment.class, null)
+                .add(R.id.fragment_container_view, HomeFragment.class, null)
                 .commit();
 
         BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
