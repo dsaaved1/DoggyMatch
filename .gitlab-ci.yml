@@ -10,7 +10,7 @@ maven-build: #this is a JOB
     - springboot_tag # this is LINK to the shell runner on the remote-server
   script:
     - cd Backend
-    - mvn package -b
+    - mvn package
 
 maven_test:
   stage: maventest
