@@ -15,12 +15,4 @@ public class Main {
 	public static void main(String[] args) {
 		SpringApplication.run(Main.class, args);
 	}
-
-	@Bean
-	CommandLineRunner initUser(UserRepository userRepository) {
-		return args -> {
-			User user1 = new User(1, "Peyton", "Arbuckle", "peyt@iastate.edu", "password");
-			userRepository.save(user1);
-		};
-	}
 }
