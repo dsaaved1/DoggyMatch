@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
 
         setValues();
         //interact();
-        Intent intent = new Intent(new MainActivity(), Home.class);
+        Intent intent = new Intent(this, Home.class);
         startActivity(intent);
         // Intent intent = new Intent(this, Home.class);
         // startActivity(intent);
