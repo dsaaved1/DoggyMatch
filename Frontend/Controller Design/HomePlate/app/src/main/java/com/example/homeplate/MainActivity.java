@@ -18,10 +18,14 @@ public class MainActivity extends AppCompatActivity {
     private Button homeButton;
     private TextView homeTitle;
 
+    private Bundle saveState;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        saveState = savedInstanceState;
 
         setValues();
         interact();
@@ -58,9 +62,9 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-                // setContentView(R.layout.activity_home);
-
-                return;
+                setContentView(R.layout.activity_home);
+                Home home = new Home();
+                home.createMyActivity(saveState);
 
             }
         });

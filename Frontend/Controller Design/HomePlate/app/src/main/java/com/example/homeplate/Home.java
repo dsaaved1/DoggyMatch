@@ -43,7 +43,7 @@ public class Home extends AppCompatActivity {
         //setValues();
     }
 
-    private void startActivity(Bundle savedInstance)
+    public void createMyActivity(Bundle savedInstance)
     {
         onCreate(savedInstance);
 
