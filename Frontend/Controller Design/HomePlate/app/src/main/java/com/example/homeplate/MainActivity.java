@@ -28,7 +28,9 @@ public class MainActivity extends AppCompatActivity {
         saveState = savedInstanceState;
 
         setValues();
-        interact();
+        //interact();
+        Intent intent = new Intent(new MainActivity(), Home.class);
+        startActivity(intent);
         // Intent intent = new Intent(this, Home.class);
         // startActivity(intent);
     }
