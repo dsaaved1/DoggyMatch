@@ -9,6 +9,15 @@
     android:foregroundTint="#A8E11111"
     tools:context=".MainActivity">
 
+    <TextView
+        android:id="@+id/pageTitleMain2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Register"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="317dp" />
+
     <Button
         android:id="@+id/continueButton"
         android:layout_width="wrap_content"
