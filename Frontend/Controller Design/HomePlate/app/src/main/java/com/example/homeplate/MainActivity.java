@@ -28,9 +28,8 @@ public class MainActivity extends AppCompatActivity {
         saveState = savedInstanceState;
 
         setValues();
-        //interact();
-        Intent intent = new Intent(this, Home.class);
-        startActivity(intent);
+        interact();
+
         // Intent intent = new Intent(this, Home.class);
         // startActivity(intent);
     }
@@ -64,7 +63,9 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-                setContentView(R.layout.activity_home);
+                // setContentView(R.layout.activity_home);
+                Intent intent = new Intent(MainActivity.this, Home.class);
+                startActivity(intent);
 
             }
         });
