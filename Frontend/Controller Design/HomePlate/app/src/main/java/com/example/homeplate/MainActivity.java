@@ -11,27 +11,20 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
 
     private Button continueButton;
+    private TextView registerButton;
     private TextView pageTitle;
     private TextView usernameBox;
     private TextView passwordBox;
 
-    private Button homeButton;
-    private TextView homeTitle;
 
-    private Bundle saveState;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        saveState = savedInstanceState;
-
         setValues();
         interact();
-
-        // Intent intent = new Intent(this, Home.class);
-        // startActivity(intent);
     }
 
     //Set Interaction Values
@@ -39,9 +32,8 @@ public class MainActivity extends AppCompatActivity {
     {
         //Buttons
         continueButton = findViewById(R.id.continueButton);
-
-        // homeButton = findViewById(R.id.homeButton);
-        homeTitle = findViewById(R.id.pageTitleHome);
+        registerButton = findViewById(R.id.registerTextButton);
+        registerButton.setEnabled(false);
 
         //TextView
         pageTitle = findViewById(R.id.pageTitleMain);
@@ -60,8 +52,13 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 pageTitle.setText("YES!");
+                registerButton.setEnabled(true);
+            }
+        });
 
-
+        registerButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
                 // setContentView(R.layout.activity_home);
                 Intent intent = new Intent(MainActivity.this, Home.class);
