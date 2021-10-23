@@ -2,6 +2,7 @@ package com.example.homeplate;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -24,6 +25,8 @@ public class MainActivity extends AppCompatActivity {
 
         setValues();
         interact();
+        Intent intent = new Intent(this, Home.class);
+        startActivity(intent);
     }
 
     //Set Interaction Values
@@ -55,8 +58,9 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-                setContentView(R.layout.activity_home);
+                // setContentView(R.layout.activity_home);
 
+                return;
 
             }
         });
