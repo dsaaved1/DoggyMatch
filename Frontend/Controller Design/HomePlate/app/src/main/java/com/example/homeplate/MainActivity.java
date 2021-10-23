@@ -65,8 +65,6 @@ public class MainActivity extends AppCompatActivity {
 
 
                 setContentView(R.layout.activity_home);
-                Home home = new Home();
-                home.createMyActivity(saveState);
 
             }
         });
