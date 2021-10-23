@@ -3,20 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFC107">
+    android:background="#FFFFFF" >
 
-    <TextView
-        android:id="@+id/pageTitleHome"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="68dp"
-        android:layout_marginBottom="455dp"
-        android:text="Home"
-        android:textColor="#FF9800"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="372dp"
+        android:layout_height="482dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="144dp"
+        app:srcCompat="@drawable/icon_profile_24" />
 </RelativeLayout>

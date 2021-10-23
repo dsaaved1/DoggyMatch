@@ -43,19 +43,6 @@ public class Home extends AppCompatActivity {
         //setValues();
     }
 
-    public void createMyActivity(Bundle savedInstance)
-    {
-        onCreate(savedInstance);
-
-        getSupportFragmentManager().beginTransaction()
-                .setReorderingAllowed(true)
-                .add(R.id.fragment_container_view, HomeFragment.class, null)
-                .commit();
-
-        BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
-        bottomNav.setOnNavigationItemSelectedListener(navListener);
-    }
-
     private BottomNavigationView.OnNavigationItemSelectedListener navListener =
             new BottomNavigationView.OnNavigationItemSelectedListener() {
                 @Override
