@@ -52,6 +52,10 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 pageTitle.setText("YES!");
+
+                registerButton.setText(usernameBox.getText());
+                pageTitle.setText(passwordBox.getText());
+
                 registerButton.setEnabled(true);
             }
         });
