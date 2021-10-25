@@ -31,20 +31,13 @@ public class TestUserService {
 
   @Test
   public void getUserByIdTest() {
-<<<<<<< HEAD
     UserRepository mockRepository = mock(UserRepository.class);
     UserService mockUserService = mock(UserService.class);
     User testUser = new User("Peyton", "Arbuckle", "peyt@iastate.edu", "password");
 
     mockUserService.saveUser(testUser);
-=======
-    when(mockUserRepository.getById(1))
-            .thenReturn(testUser);
-    User user = userService.getUserById(1);
-    assertEquals("test@iastate.edu", user.getEmail());
-  }
->>>>>>> a95d80389763f8a7d3eb1524e56a35d8126c1fda
 
+  }
   @Test
   public void findUserByEmailTest() {
     when(mockUserRepository.findByEmail("test@iastate.edu"))
