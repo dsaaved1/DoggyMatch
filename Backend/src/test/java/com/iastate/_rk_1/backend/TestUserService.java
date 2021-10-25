@@ -24,7 +24,7 @@ public class TestUserService {
   public void getUserByIdTest() {
     UserRepository mockRepository = mock(UserRepository.class);
     UserService mockUserService = mock(UserService.class);
-    User testUser = new User(1, "Peyton", "Arbuckle", "peyt@iastate.edu", "password");
+    User testUser = new User("Peyton", "Arbuckle", "peyt@iastate.edu", "password");
 
     mockUserService.saveUser(testUser);
 
@@ -34,7 +34,7 @@ public class TestUserService {
   @Test
   public void testEncryptedPassword(){
     UserService mockUserService = mock(UserService.class);
-    User testUser = new User(1, "Peyton", "Arbuckle", "peyt@iastate.edu", "password");
+    User testUser = new User("Peyton", "Arbuckle", "peyt@iastate.edu", "password");
 
     assertEquals("password", testUser.getPassword());
 

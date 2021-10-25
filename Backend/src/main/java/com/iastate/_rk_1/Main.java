@@ -19,7 +19,7 @@ public class Main {
 	@Bean
 	CommandLineRunner initUser(UserRepository userRepository) {
 		return args -> {
-			User user1 = new User(1, "Peyton", "Arbuckle", "peyt@iastate.edu", "password");
+			User user1 = new User("Peyton", "Arbuckle", "peyt@iastate.edu", "password");
 			userRepository.save(user1);
 		};
 	}
