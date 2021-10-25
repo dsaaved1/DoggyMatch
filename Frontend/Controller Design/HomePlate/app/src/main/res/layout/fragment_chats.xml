@@ -21,9 +21,15 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ListView
+        android:id="@+id/chatList"
         android:layout_width="match_parent"
         android:layout_height="433dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="175dp" />
+        android:layout_marginBottom="175dp"
+        android:divider="#f0000000"
+        android:dividerHeight="1dp"
+        android:listSelector="@color/purple_200"
+        />
+
 </RelativeLayout>
