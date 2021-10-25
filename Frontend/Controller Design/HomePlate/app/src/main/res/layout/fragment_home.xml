@@ -9,9 +9,11 @@
         android:id="@+id/name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/imageView"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="26dp"
+        android:layout_marginTop="19dp"
         android:layout_marginBottom="278dp"
         android:text="Name"
         android:textColor="#000000" />
@@ -30,7 +32,7 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="20dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="120dp"
         android:background="#FFFFFF"
         android:text="Yes"
         android:textColor="#000000"
@@ -45,7 +47,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginStart="219dp"
         android:layout_marginEnd="20dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="120dp"
         android:background="#FFFFFF"
         android:text="No"
         android:textColor="#000000" />
@@ -56,7 +58,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="23dp"
+        android:layout_marginStart="26dp"
         android:layout_marginBottom="248dp"
         android:text="Description"
         android:textColor="#000000" />
