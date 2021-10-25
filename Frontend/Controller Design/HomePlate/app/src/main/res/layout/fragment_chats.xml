@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#673AB7">
+    android:background="#FFFFFF">
 
     <TextView
         android:id="@+id/pageTitle"
@@ -14,8 +14,16 @@
         android:layout_marginTop="68dp"
         android:layout_marginBottom="644dp"
         android:text="Chat"
+        android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="433dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="175dp" />
 </RelativeLayout>
