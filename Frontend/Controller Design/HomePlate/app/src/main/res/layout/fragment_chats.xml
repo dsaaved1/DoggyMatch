@@ -29,7 +29,7 @@
         android:layout_marginBottom="175dp"
         android:divider="#f0000000"
         android:dividerHeight="1dp"
-        android:listSelector="@color/purple_200"
+        android:listSelector="#FFB783"
         android:textColor="#000000" />
 
 </RelativeLayout>
