@@ -15,8 +15,6 @@ public class Main {
 	public static void main(String[] args) {
 		SpringApplication.run(Main.class, args);
 	}
-<<<<<<< HEAD
-
 	@Bean
 	CommandLineRunner initUser(UserRepository userRepository) {
 		return args -> {
@@ -24,6 +22,5 @@ public class Main {
 			userRepository.save(user1);
 		};
 	}
-=======
->>>>>>> a95d80389763f8a7d3eb1524e56a35d8126c1fda
+
 }
