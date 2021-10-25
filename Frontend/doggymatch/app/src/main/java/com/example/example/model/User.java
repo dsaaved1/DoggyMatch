@@ -1,5 +1,8 @@
 package com.example.example.model;
 
+import static com.example.example.api.ApiClientFacotry.GetUserApi;
+
+import com.example.example.api.SlimCallback;
 import com.google.gson.annotations.SerializedName;
 
 //import com.google.gson.annotations.SerializedName;
@@ -13,7 +16,11 @@ public class User {
 
 
 
-    public User() {
+    public User(String path) {
+        GetUserApi().getUserByNum(path).enqueue(new SlimCallback<User>(user -> {
+
+
+        }));
     }
 
     public int getId() {
