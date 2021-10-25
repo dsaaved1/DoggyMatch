@@ -30,6 +30,6 @@
         android:divider="#f0000000"
         android:dividerHeight="1dp"
         android:listSelector="@color/purple_200"
-        />
+        android:textColor="#000000" />
 
 </RelativeLayout>
