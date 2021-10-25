@@ -2,12 +2,7 @@ package com.iastate._rk_1.backend;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import com.iastate._rk_1.backend.repository.UserRepository;
 import com.iastate._rk_1.backend.service.UserService;
@@ -15,20 +10,46 @@ import com.iastate._rk_1.backend.entity.User;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 
+@RunWith(SpringRunner.class)
+@SpringBootTest
 public class TestUserService {
+
+  @Autowired
+  private UserService userService;
+
+  @Mock
+  private UserRepository mockUserRepository;
+
+  final User testUser = new User(1, "First", "Last", "test@iastate.edu", "password");
+
   @Test
   public void getUserByIdTest() {
+<<<<<<< HEAD
     UserRepository mockRepository = mock(UserRepository.class);
     UserService mockUserService = mock(UserService.class);
     User testUser = new User("Peyton", "Arbuckle", "peyt@iastate.edu", "password");
 
     mockUserService.saveUser(testUser);
+=======
+    when(mockUserRepository.getById(1))
+            .thenReturn(testUser);
+    User user = userService.getUserById(1);
+    assertEquals("test@iastate.edu", user.getEmail());
+  }
+>>>>>>> a95d80389763f8a7d3eb1524e56a35d8126c1fda
 
-    assertEquals("peyt@iastate.edu", testUser.getEmail());
+  @Test
+  public void findUserByEmailTest() {
+    when(mockUserRepository.findByEmail("test@iastate.edu"))
+            .thenReturn(testUser);
+    assertEquals(1, userService.getUsersByEmail("test@iastate.edu").getId());
   }
 
   @Test
