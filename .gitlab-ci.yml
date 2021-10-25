@@ -35,12 +35,15 @@ autoDeploy:
     - sudo systemctl stop system-web-demo
     - sudo systemctl start system-web-demo
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> main
 android-build: #this is another job
-  image: javiersantos/android-ci:latest      # this is a directive to DOCKER
+  image: javiersantos/android-ci:latest # this is a directive to DOCKER
   stage: androidtry
   tags:
-   - android_tag         #this is LINK to the docker runner on the remote-server        
+    - android_tag #this is LINK to the docker runner on the remote-server
   before_script:
     - export GRADLE_USER_HOME=`pwd`/.gradle
     - chmod +x ./Frontend/gradlew
