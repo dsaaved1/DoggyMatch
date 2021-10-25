@@ -5,6 +5,17 @@
     android:layout_height="match_parent"
     android:background="#FFFFFF">
 
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="26dp"
+        android:layout_marginBottom="278dp"
+        android:text="Name"
+        android:textColor="#000000" />
+
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="match_parent"
@@ -14,12 +25,12 @@
 
     <Button
         android:id="@+id/yesButton"
-        android:layout_width="117dp"
-        android:layout_height="wrap_content"
+        android:layout_width="175dp"
+        android:layout_height="50dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="26dp"
-        android:layout_marginBottom="170dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginBottom="20dp"
         android:background="#FFFFFF"
         android:text="Yes"
         android:textColor="#000000"
@@ -27,12 +38,14 @@
 
     <Button
         android:id="@+id/noButton"
-        android:layout_width="109dp"
-        android:layout_height="37dp"
+        android:layout_width="179dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="208dp"
-        android:layout_marginBottom="185dp"
+        android:layout_marginStart="219dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
         android:background="#FFFFFF"
         android:text="No"
         android:textColor="#000000" />
@@ -43,8 +56,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="31dp"
-        android:layout_marginBottom="270dp"
+        android:layout_marginStart="23dp"
+        android:layout_marginBottom="248dp"
         android:text="Description"
         android:textColor="#000000" />
 
