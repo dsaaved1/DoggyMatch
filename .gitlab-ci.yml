@@ -35,10 +35,6 @@ autoDeploy:
     - sudo systemctl stop system-web-demo
     - sudo systemctl start system-web-demo
 
-<<<<<<< HEAD
-
-=======
->>>>>>> main
 android-build: #this is another job
   image: javiersantos/android-ci:latest # this is a directive to DOCKER
   stage: androidtry
