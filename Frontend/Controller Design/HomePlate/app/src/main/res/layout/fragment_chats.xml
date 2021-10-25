@@ -6,7 +6,7 @@
     android:background="#673AB7">
 
     <TextView
-        android:id="@+id/pageTitleHome"
+        android:id="@+id/pageTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
