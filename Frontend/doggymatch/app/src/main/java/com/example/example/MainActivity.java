@@ -20,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
     Button log, reg;
     EditText username;
     String userna;
+    User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //gets the username by id number and creates a user object
+                user = new User(username.getText().toString());
                 GetUserApi().getUserByNum(username.getText().toString()).enqueue(new SlimCallback<User>(user -> {
                    // test1.setText(user.getUsername());
                   //data.setText(user.getUsername());

@@ -45,4 +45,5 @@ android-build: #this is another job
     - chmod +x ./Frontend/gradlew
   script:
     - cd Frontend
+    - cd doggymatch
     - ./gradlew assemble

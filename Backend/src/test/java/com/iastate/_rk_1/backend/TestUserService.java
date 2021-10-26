@@ -21,7 +21,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest
 public class TestUserService {
 
-  @Autowired
+  @Mock
   private UserService userService;
 
   @Mock
