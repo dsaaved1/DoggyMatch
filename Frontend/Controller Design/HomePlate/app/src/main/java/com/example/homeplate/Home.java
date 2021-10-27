@@ -54,6 +54,7 @@ public class Home extends AppCompatActivity {
                     switch (item.getItemId()) {
                         case R.id.nav_home:
                             selectedFragment = new HomeFragment();
+                            nameText.setText("Bob");
                             break;
                         case R.id.nav_profile:
                             selectedFragment = new ProfileFragment();
@@ -92,7 +93,7 @@ public class Home extends AppCompatActivity {
          */
 
         nameText = findViewById(R.id.name);
-        nameText.setText("Bob");
+
     }
 
     private void interact()
