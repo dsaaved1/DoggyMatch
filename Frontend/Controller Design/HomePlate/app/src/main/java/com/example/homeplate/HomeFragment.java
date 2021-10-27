@@ -13,7 +13,7 @@ import androidx.fragment.app.Fragment;
 public class HomeFragment extends Fragment{
 
     TextView nameText;
-
+    TextView descriptionText;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -22,6 +22,9 @@ public class HomeFragment extends Fragment{
 
         nameText = view.findViewById(R.id.name);
         nameText.setText("Bob");
+
+        descriptionText = view.findViewById(R.id.description);
+        descriptionText.setText("Holy Moly");
 
         return view;
     }
