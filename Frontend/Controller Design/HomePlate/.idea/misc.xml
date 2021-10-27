@@ -5,6 +5,7 @@
       <map>
         <entry key="app/src/main/res/layout/activity_chats.xml" value="0.14447463768115942" />
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.21965205851870787" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.22826086956521738" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.165" />
         <entry key="app/src/main/res/layout/fragment_chats.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.45" />

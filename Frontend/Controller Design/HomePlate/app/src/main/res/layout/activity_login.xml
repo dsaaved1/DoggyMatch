@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FF9800"
+    tools:context=".Login">
+
+    <TextView
+        android:id="@+id/registerTextButton2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Register"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="317dp" />
+
+    <Button
+        android:id="@+id/continueButton2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="288dp"
+        android:layout_marginTop="46dp"
+        android:layout_marginBottom="393dp"
+        android:background="#FFFFFF"
+        android:shadowColor="#000000"
+        android:text="Continue"
+        android:textColor="#000000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/passwordBox" />
+
+    <EditText
+        android:id="@+id/usernameBox2"
+        android:layout_width="382dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="16dp"
+        android:ems="10"
+        android:hint="Username"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="215dp" />
+
+    <EditText
+        android:id="@+id/passwordBox2"
+        android:layout_width="382dp"
+        android:layout_height="52dp"
+        android:layout_marginBottom="20dp"
+        android:ems="10"
+        android:hint="Password"
+        android:inputType="textPassword"
+        app:layout_constraintBottom_toTopOf="@+id/usernameBox2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/pageTitleMain2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="82dp"
+        android:layout_marginBottom="23dp"
+        android:text="DoggyMatch"
+        app:layout_constraintBottom_toTopOf="@+id/usernameBox"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
