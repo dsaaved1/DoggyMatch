@@ -20,13 +20,18 @@ public class HomeFragment extends Fragment{
 
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
+        setValues(view);
+        
+        return view;
+    }
+
+    private void setValues(View view)
+    {
         nameText = view.findViewById(R.id.name);
         nameText.setText("Bob");
 
         descriptionText = view.findViewById(R.id.description);
         descriptionText.setText("Holy Moly");
-
-        return view;
     }
 
 }
