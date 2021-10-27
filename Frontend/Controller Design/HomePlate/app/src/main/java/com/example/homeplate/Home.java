@@ -19,6 +19,8 @@ public class Home extends AppCompatActivity {
     private Button profileButton;
     private TextView pageHome;
 
+    private TextView nameText;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -40,7 +42,7 @@ public class Home extends AppCompatActivity {
                 new HomeFragment()).commit();
 
          */
-        //setValues();
+        setValues();
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener navListener =
@@ -89,7 +91,8 @@ public class Home extends AppCompatActivity {
             DoggyButton interact(Button, Action)
          */
 
-
+        nameText = findViewById(R.id.name);
+        nameText.setText("Bob");
     }
 
     private void interact()
