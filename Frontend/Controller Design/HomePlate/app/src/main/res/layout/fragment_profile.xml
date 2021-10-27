@@ -6,16 +6,21 @@
     android:background="#CDDC39">
 
     <TextView
-        android:id="@+id/pageTitle"
+        android:id="@+id/name2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="68dp"
-        android:layout_marginBottom="644dp"
-        android:text="Profile"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginStart="182dp"
+        android:layout_marginBottom="330dp"
+        android:text="Name"
+        android:textColor="#000000" />
+
+    <ImageView
+        android:id="@+id/profilePP"
+        android:layout_width="match_parent"
+        android:layout_height="368dp"
+        android:background="#787878"
+        app:srcCompat="@drawable/icon_profile_24" />
 </RelativeLayout>

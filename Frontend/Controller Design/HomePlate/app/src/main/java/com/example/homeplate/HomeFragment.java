@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,6 +17,7 @@ public class HomeFragment extends Fragment{
     TextView descriptionText;
     Button yesButton;
     Button noButton;
+    ImageView profilePicture;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -37,6 +39,9 @@ public class HomeFragment extends Fragment{
         //Buttons
         yesButton = view.findViewById(R.id.yesButton);
         noButton = view.findViewById(R.id.noButton);
+
+        //Image
+        profilePicture = view.findViewById(R.id.profilePicture);
     }
 
     private void interact()
