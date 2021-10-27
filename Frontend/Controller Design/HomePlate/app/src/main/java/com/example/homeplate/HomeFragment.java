@@ -14,6 +14,8 @@ public class HomeFragment extends Fragment{
 
     TextView nameText;
     TextView descriptionText;
+    Button yesButton;
+    Button noButton;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -25,15 +27,32 @@ public class HomeFragment extends Fragment{
 
     private void setValues(View view)
     {
+        //TextView
         nameText = view.findViewById(R.id.name);
         nameText.setText("Bob");
 
         descriptionText = view.findViewById(R.id.description);
         descriptionText.setText("Holy Moly");
+
+        //Buttons
+        yesButton = view.findViewById(R.id.yesButton);
+        noButton = view.findViewById(R.id.noButton);
     }
 
     private void interact()
     {
+        yesButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                descriptionText.setText("Wow it works!");
+            }
+        });
 
+        noButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
     }
 }
