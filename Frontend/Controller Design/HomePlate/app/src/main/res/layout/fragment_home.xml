@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF">
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="26dp"
+        android:layout_marginBottom="250dp"
+        android:text="Name"
+        android:textColor="#000000" />
+
+    <ImageView
+        android:id="@+id/profilePicture"
+        android:layout_width="match_parent"
+        android:layout_height="368dp"
+        android:background="#787878"
+        app:srcCompat="@drawable/icon_profile_24" />
+
+    <Button
+        android:id="@+id/yesButton"
+        android:layout_width="175dp"
+        android:layout_height="50dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginBottom="70dp"
+        android:background="#02FA0C"
+        android:text="Yes"
+        android:textColor="#000000"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/noButton"
+        android:layout_width="179dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="219dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="70dp"
+        android:background="#F44336"
+        android:text="No"
+        android:textColor="#000000" />
+
+    <TextView
+        android:id="@+id/description"
+        android:layout_width="369dp"
+        android:layout_height="107dp"
+        android:layout_below="@+id/name"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="26dp"
+        android:layout_marginTop="-250dp"
+        android:layout_marginBottom="142dp"
+        android:text="Description"
+        android:textColor="#000000" />
+
+</RelativeLayout>
