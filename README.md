@@ -1,7 +1,4 @@
 # 3_RK_1
 
-__test commit__
-
-__test commit 2__
-
-__test commit 3 by Me__
+**Doggy Match**
+_Platform for safely connecting dogs to others for playful interactions._
