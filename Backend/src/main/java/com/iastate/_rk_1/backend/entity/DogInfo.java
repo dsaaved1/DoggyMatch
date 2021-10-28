@@ -1,11 +1,6 @@
 package com.iastate._rk_1.backend.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "dog_info")
@@ -24,17 +19,20 @@ public class DogInfo {
   @Column(name = "ageDog")
   private int ageDog;
 
-  @Column(name = "descriptionDog")
-  private String descriptionDog;
+  @Column(name = "genderDog")
+  private String genderDog;
 
   @Column(name = "energyDog")
   private String energyDog;
 
-  @Column(name = "genderDog")
-  private String genderDog;
+  @Column(name = "descriptionDog")
+  private String descriptionDog;
 
   @Column(name = "photosDog")
   private String photosDog;
+
+  @OneToOne(mappedBy = "dogInfo")
+  private User user;
 
   public DogInfo() {
     super();
@@ -46,9 +44,9 @@ public class DogInfo {
     this.firstNameDog = firstNameDog;
     this.breed = breed;
     this.ageDog = ageDog;
-    this.descriptionDog = descriptionDog;
-    this.energyDog = energyDog;
     this.genderDog = genderDog;
+    this.energyDog = energyDog;
+    this.descriptionDog = descriptionDog;
     this.photosDog = photosDog;
   }
 
@@ -84,12 +82,12 @@ public class DogInfo {
     this.ageDog = ageDog;
   }
 
-  public String getDescriptionDog() {
-    return descriptionDog;
+  public String getGenderDog() {
+    return genderDog;
   }
 
-  public void setDescriptionDog(String descriptionDog) {
-    this.descriptionDog = descriptionDog;
+  public void setGenderDog(String genderDog) {
+    this.genderDog = genderDog;
   }
 
   public String getEnergyDog() {
@@ -100,12 +98,12 @@ public class DogInfo {
     this.energyDog = energyDog;
   }
 
-  public String getGenderDog() {
-    return genderDog;
+  public String getDescriptionDog() {
+    return descriptionDog;
   }
 
-  public void setGenderDog(String genderDog) {
-    this.genderDog = genderDog;
+  public void setDescriptionDog(String descriptionDog) {
+    this.descriptionDog = descriptionDog;
   }
 
   public String getPhotosDog() {

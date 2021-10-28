@@ -3,13 +3,7 @@ package com.iastate._rk_1.backend.entity;
 import java.util.Date;
 import java.util.Set;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "user")
@@ -19,7 +13,7 @@ public class User {
   @Column(name = "id")
   private int id;
 
-  @Column(name = "email", unique = true, nullable = false)
+  @Column(name = "email", unique = true)
   private String email;
 
   @Column(name = "password")
@@ -34,10 +28,10 @@ public class User {
   @Column(name = "privacySettings")
   private String privacySettings;
 
-  @Column(name = "firstName", nullable = false)
+  @Column(name = "firstName")
   private String firstName;
 
-  @Column(name = "lastName", nullable = false)
+  @Column(name = "lastName")
   private String lastName;
 
   @Column(name = "age")
@@ -55,8 +49,16 @@ public class User {
   @Column(name = "photo")
   private String photo;
 
-  @Column(name = "reference_dog_info_table")
-  private String referenceDogInfoTable;
+  @OneToOne(cascade = {CascadeType.ALL})
+  @JoinColumn(name = "dogInfo_id")
+  private DogInfo dogInfo;
+
+  @OneToOne(cascade = {CascadeType.ALL})
+  @JoinColumn(name = "preferences_id")
+  private Preferences preferences;
+
+  @Column(name = "compatibility")
+  private int compatibility;
 
   @OneToMany(mappedBy = "id")
   private Set<User> matches;
@@ -67,26 +69,13 @@ public class User {
   public User() {
   }
 
-  public User(String firstName, String lastName, String email, String password) {
+  public User(String email, String password) {
     this.email = email;
+    this.password = password;
     this.active = true;
     this.lastLoginTime = new Date();
-    this.privacySettings = null;
-    this.firstName = firstName;
-    this.lastName = lastName;
-    this.password = password;
-
-    this.age = 0;
-    this.address = null;
-    this.university = null;
-    this.gender = null;
-    this.photo = null;
-    this.referenceDogInfoTable = null;
   }
 
-  public boolean getActive() {
-    return this.active;
-  }
 
   public int getId() {
     return id;
@@ -112,7 +101,7 @@ public class User {
     this.password = encryptedPassword;
   }
 
-  public boolean isActive() {
+  public boolean getActive() {
     return active;
   }
 
@@ -192,13 +181,31 @@ public class User {
     this.photo = photo;
   }
 
-  public String getReferenceDogInfoTable() {
-    return referenceDogInfoTable;
+  public DogInfo getDogInfo() {
+    return dogInfo;
   }
 
-  public void setReferenceDogInfoTable(String referenceDogInfoTable) {
-    this.referenceDogInfoTable = referenceDogInfoTable;
+  public void setDogInfo(DogInfo dogInfo) {
+    this.dogInfo = dogInfo;
   }
+
+  public Preferences getPreferences() {
+    return preferences;
+  }
+
+  public void setPreferences(Preferences preferences) {
+    this.preferences = preferences;
+  }
+
+  public int getCompatibility() {
+    return compatibility;
+  }
+
+  public void clearCompatibility() {
+    compatibility = 0;
+  }
+
+  public void addCompatibility(){compatibility++;}
 
 
 }

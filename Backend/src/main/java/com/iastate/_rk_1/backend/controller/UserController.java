@@ -1,5 +1,7 @@
 package com.iastate._rk_1.backend.controller;
 
+import com.iastate._rk_1.backend.entity.DogInfo;
+import com.iastate._rk_1.backend.entity.Preferences;
 import com.iastate._rk_1.backend.entity.User;
 import com.iastate._rk_1.backend.service.UserService;
 
@@ -28,7 +30,7 @@ public class UserController {
 
   @PutMapping("/user")
   public User updateUser(@RequestBody User user) {
-    return service.updateUser(user);
+    return service.updateUser(user,1);
   }
 
   @DeleteMapping("/user/{id}")
@@ -46,8 +48,49 @@ public class UserController {
     return service.getUsersByEmail(email);
   }
 
+
+
   @PostMapping("/user")
   public User addUser(@RequestBody User user) {
     return service.saveUser(user);
   }
+
+  //Diego
+  @PutMapping("/user/sign-in")
+  public String signIn(@RequestBody User possibleUser){
+    //verifies if there is given email in repository
+    if (userByEmail(possibleUser.getEmail()) != null){
+      User existingUser = service.getUsersByEmail(possibleUser.getEmail());
+      //verifies if existing email matches with given password
+      if (existingUser.getPassword().equals(possibleUser.getPassword())){
+        return "Success: Enters home page";
+      }
+    }
+    return "Email not found";
+  }
+
+  //Diego
+  @PutMapping(("/user/register/{id}"))
+  public User ownersInfo(@RequestBody User user, @PathVariable(name = "id") int id){
+    return service.updateUser(user, id);
+  }
+
+  //Diego
+  @PostMapping(("/user/register/dog-info/{id}"))
+  public User dogsInfo(@RequestBody DogInfo dogInfo, @PathVariable(name = "id") int id){
+    return service.updateUserDogInfo(dogInfo, id);
+  }
+
+  //Diego
+  @PostMapping(("/user/register/preferences/{id}"))
+  public User preferences(@RequestBody Preferences preferences, @PathVariable(name = "id") int id){
+    return service.updateUserPreferences(preferences, id);
+  }
+
+  //Diego
+  @GetMapping(("/user/home/{email}"))
+  public List<User> findMatches(@PathVariable(name = "email") String email) {
+    return service.findMatches(email);
+  }
+
 }
