@@ -1,11 +1,6 @@
 package com.iastate._rk_1.backend.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "preferences")
@@ -15,29 +10,36 @@ public class Preferences {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private int id;
 
-  @Column(name = "energy")
-  private int energy;
+  @Column(name = "breed")
+  private String breed;
 
-  @Column(name = "active")
-  private int active;
+  @Column(name = "ageDog")
+  private int ageDog;
+
+  @Column(name = "genderDog")
+  private String genderDog;
+
+  @Column(name = "energyDog")
+  private String energyDog;
 
   @Column(name = "dog_park")
   private boolean dogPark;
 
-  @Column(name = "water")
-  private boolean water;
-
   @Column(name = "at_home")
   private boolean atHome;
+
+  @OneToOne(mappedBy = "preferences")
+  private User user;
 
   public Preferences() {
   }
 
-  public Preferences(int energy, int active, boolean dogPark, boolean water, boolean atHome) {
-    this.energy = energy;
-    this.active = active;
+  public Preferences(String breed, int ageDog, String genderDog, String energyDog, boolean dogPark, boolean atHome) {
+    this.breed = breed;
+    this.ageDog = ageDog;
+    this.genderDog = genderDog;
+    this.energyDog = energyDog;
     this.dogPark = dogPark;
-    this.water = water;
     this.atHome = atHome;
   }
 
@@ -49,21 +51,38 @@ public class Preferences {
     this.id = id;
   }
 
-  public int getEnergy() {
-    return energy;
+  public String getBreed() {
+    return breed;
   }
 
-  public void setEnergy(int energy) {
-    this.energy = energy;
+  public void setBreed(String breed) {
+    this.breed = breed;
   }
 
-  public int getActive() {
-    return active;
+  public int getAgeDog() {
+    return ageDog;
   }
 
-  public void setActive(int active) {
-    this.active = active;
+  public void setAgeDog(int ageDog) {
+    this.ageDog = ageDog;
   }
+
+  public String getGenderDog() {
+    return genderDog;
+  }
+
+  public void setGenderDog(String genderDog) {
+    this.genderDog = genderDog;
+  }
+
+  public String getEnergyDog() {
+    return energyDog;
+  }
+
+  public void setEnergy(String energyDog) {
+    this.energyDog = energyDog;
+  }
+
 
   public boolean isDogPark() {
     return dogPark;
@@ -71,14 +90,6 @@ public class Preferences {
 
   public void setDogPark(boolean dogPark) {
     this.dogPark = dogPark;
-  }
-
-  public boolean isWater() {
-    return water;
-  }
-
-  public void setWater(boolean water) {
-    this.water = water;
   }
 
   public boolean isAtHome() {

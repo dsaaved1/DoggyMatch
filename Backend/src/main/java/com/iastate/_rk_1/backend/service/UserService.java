@@ -1,8 +1,11 @@
 package com.iastate._rk_1.backend.service;
 
 import antlr.BaseAST;
+import com.iastate._rk_1.backend.entity.DogInfo;
+import com.iastate._rk_1.backend.entity.Preferences;
 import com.iastate._rk_1.backend.repository.UserRepository;
 
+import java.util.Iterator;
 import java.util.List;
 
 import com.iastate._rk_1.backend.entity.User;
@@ -48,25 +51,35 @@ public class UserService {
     return "success";
   }
 
-  public User updateUser(User user) {
-    User existingUser = repository.findById(user.getId());
-    existingUser.setActive(user.isActive());
-    existingUser.setAddress(user.getAddress());
-    existingUser.setAge(user.getAge());
-    existingUser.setEmail(user.getEmail());
+  //Diego
+  public User updateUser(User user, int id) {
+    User existingUser = repository.findById(id);
     existingUser.setFirstName(user.getFirstName());
-    existingUser.setGender(user.getGender());
-    existingUser.setLastLoginTime(user.getLastLoginTime());
-    existingUser.setEmail(user.getEmail());
     existingUser.setLastName(user.getLastName());
-    existingUser.setPhoto(user.getPhoto());
-    existingUser.setPrivacySettings(user.getPrivacySettings());
-    existingUser.setReferenceDogInfoTable(user.getReferenceDogInfoTable());
+    existingUser.setAge(user.getAge());
+    existingUser.setAddress(user.getAddress());
     existingUser.setUniversity(user.getUniversity());
+    existingUser.setGender(user.getGender());
+    existingUser.setPhoto(user.getPhoto());
     return repository.save(existingUser);
   }
 
-  public void signUp(User user) {
+  //Diego
+  public User updateUserDogInfo(DogInfo dogInfo, int id){
+    User existingUser = repository.findById(id);
+    existingUser.setDogInfo(dogInfo);
+    return repository.save(existingUser);
+  }
+
+  //Diego
+  public User updateUserPreferences(Preferences preferences, int id){
+    User existingUser = repository.findById(id);
+    existingUser.setPreferences(preferences);
+    return repository.save(existingUser);
+  }
+
+  //Diego
+  public User signUp(User user) {
 
     //checking if this email is already in repository
     User userExists = repository.findByEmail(user.getEmail());
@@ -75,13 +88,66 @@ public class UserService {
       throw new IllegalStateException("email already taken");
     }
 
-
     //encrypting the user's password using bcrypt, which uses the method "salting"
 
     String encodedPassword = bCryptPasswordEncoder.encode(user.getPassword());
 
     user.setEncryptedPassword(encodedPassword);
 
-    saveUser(user);
+    return saveUser(user);
   }
+
+  //Diego
+  public List<User> findMatches(String email) {
+      List<User> allUsers = repository.findAll();
+
+        for (Iterator<User> iterator = allUsers.iterator(); iterator.hasNext(); ) {
+          User user = iterator.next();
+          if (user.getEmail().equals(email)){
+            iterator.remove();
+          }
+        }
+
+       Preferences userPreferences = getUsersByEmail(email).getPreferences();
+       for (Iterator<User> iterator = allUsers.iterator(); iterator.hasNext(); ) {
+
+           User possibleMatch = iterator.next();
+           DogInfo dogPossibleMatch = possibleMatch.getDogInfo();
+
+           if (dogPossibleMatch.getBreed().equals(userPreferences.getBreed())){
+              possibleMatch.addCompatibility();
+           }
+           if (dogPossibleMatch.getAgeDog() == userPreferences.getAgeDog()){
+              possibleMatch.addCompatibility();
+           }
+           if (dogPossibleMatch.getGenderDog().equals(userPreferences.getGenderDog())){
+              possibleMatch.addCompatibility();
+           }
+
+       }
+
+      int n = allUsers.size();
+       // One by one move boundary of unsorted subarray
+       for (int i = 0; i < n-1; i++) {
+       // Find the user with the highest compatibility in unsorted array
+       int max_idx = i;
+       for (int j = i+1; j < n; j++) {
+         if (allUsers.get(j).getCompatibility() > allUsers.get(max_idx).getCompatibility()){
+           max_idx = j;
+          }
+       }
+       // Swap the user with the highest compatibility with the first user
+       User temp = allUsers.get(max_idx);
+       allUsers.set(max_idx, allUsers.get(i));
+       allUsers.set(i, temp);
+       }
+
+       for (Iterator<User> iterator = allUsers.iterator(); iterator.hasNext(); ) {
+          User user = iterator.next();
+          user.clearCompatibility();
+       }
+
+      return allUsers;
+  }
+
 }
