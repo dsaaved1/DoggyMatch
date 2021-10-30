@@ -1,6 +1,7 @@
 package com.iastate._rk_1.backend.service;
 
 import antlr.BaseAST;
+import com.iastate._rk_1.backend.entity.Chat;
 import com.iastate._rk_1.backend.entity.DogInfo;
 import com.iastate._rk_1.backend.entity.Preferences;
 import com.iastate._rk_1.backend.repository.UserRepository;
@@ -149,5 +150,51 @@ public class UserService {
 
       return allUsers;
   }
+
+  /**
+    public void match(int userId, int possibleMatchId) {
+        User currentUser = getUserById(userId);
+        User possibleMatchUser = getUserById(possibleMatchId);
+        System.out.println(currentUser.getPossibleMatches());
+        System.out.println(possibleMatchUser.getPossibleMatches());
+    }
+
+   */
+
+
+     //Diego
+     public User match(int userId, int possibleMatchId) {
+     User currentUser = getUserById(userId);
+     User possibleMatchUser = getUserById(possibleMatchId);
+
+
+     //checks if you are on possibleMatches of the user you would like to match with
+     System.out.println("checking possible matches from possibleMatch: should be empty");
+     System.out.println(possibleMatchUser.getPossibleMatches());
+     for (User user: possibleMatchUser.getPossibleMatches()){
+     System.out.println("checking user in possibleMatches");
+     System.out.println(user.getEmail());
+     //if you are, it creates a chat with you
+         if (user.getId() == userId){
+             System.out.println("checking if it has the same id as user");
+             System.out.println(user.getId());
+             Chat chat = new Chat();
+             chat.getUsers().add(currentUser);
+             chat.getUsers().add(possibleMatchUser);
+             currentUser.getChats().add(chat);
+             possibleMatchUser.getChats().add(chat);
+             possibleMatchUser.getPossibleMatches().remove(currentUser);
+             return repository.save(currentUser);
+         }
+     }
+
+     System.out.println("checking if they don't match");
+     System.out.println(currentUser.getPossibleMatches());
+     //if user doesn't like you yet, it adds the possibleMatchUser to possible matches
+     currentUser.getPossibleMatches().add(possibleMatchUser);
+
+     return repository.save(currentUser);
+     }
+
 
 }

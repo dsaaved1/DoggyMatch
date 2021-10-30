@@ -1,6 +1,7 @@
 package com.iastate._rk_1.backend.entity;
 
 import java.sql.Date;
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -24,5 +25,32 @@ public class Chat {
   private Date date;
 
   @OneToMany
-  private Set<User> users;
+  private Set<User> users = new HashSet<>();
+
+  public Chat() {
+  }
+
+  public int getId() {
+    return id;
+  }
+
+  public void setId(int id) {
+    this.id = id;
+  }
+
+  public Date getDate() {
+    return date;
+  }
+
+  public void setDate(Date date) {
+    this.date = date;
+  }
+
+  public Set<User> getUsers() {
+    return users;
+  }
+
+  public void setUsers(Set<User> users) {
+    this.users = users;
+  }
 }
