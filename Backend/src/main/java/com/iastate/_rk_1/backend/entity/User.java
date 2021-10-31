@@ -1,6 +1,7 @@
 package com.iastate._rk_1.backend.entity;
 
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.*;
@@ -60,10 +61,12 @@ public class User {
   @Column(name = "compatibility")
   private int compatibility;
 
-  @OneToMany(mappedBy = "id")
-  private Set<User> matches;
+  @OneToMany(cascade = {CascadeType.ALL})
+  @JoinColumn(name = "possibleMatches")
+  private Set<User> possibleMatches;
 
-  @OneToMany
+  @OneToMany(cascade = {CascadeType.ALL})
+  @JoinColumn(name = "chats")
   private Set<Chat> chats;
 
   public User() {
@@ -207,5 +210,20 @@ public class User {
 
   public void addCompatibility(){compatibility++;}
 
+  public Set<User> getPossibleMatches() {
+    return possibleMatches;
+  }
+
+  public Set<Chat> getChats() {
+    return chats;
+  }
+
+  public void setPossibleMatches(Set<User> possibleMatches) {
+    this.possibleMatches = possibleMatches;
+  }
+
+  public void setChats(Set<Chat> chats) {
+    this.chats = chats;
+  }
 
 }

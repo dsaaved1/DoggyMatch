@@ -69,28 +69,33 @@ public class UserController {
     return "Email not found";
   }
 
-  //Diego path should be: /user/register/{id} with path variable int id as a parameter
+  //Diego
   @PutMapping("/user/register/{id}")
   public User ownersInfo(@RequestBody User user, @PathVariable(name = "id") int id){
     return service.updateUser(user, id);
   }
 
-  //Diego path should be /user/register/dog-info/{id} with path variable int id as a parameter
+  //Diego
   @PostMapping("/user/register/dog-info/{id}")
   public User dogsInfo(@RequestBody DogInfo dogInfo, @PathVariable(name = "id") int id){
     return service.updateUserDogInfo(dogInfo, id);
   }
 
-  //Diego path should be: /user/register/preferences/{id} with path variable int id as a parameter
+  //Diego
   @PostMapping("/user/register/preferences/{id}")
   public User preferences(@RequestBody Preferences preferences, @PathVariable(name = "id") int id){
     return service.updateUserPreferences(preferences, id);
   }
 
-  //Diego path should be" /user/home/{email} with path variable String email as a parameter
+  //Diego
   @GetMapping("/user/home/{email}")
   public List<User> findMatches(@PathVariable(name = "email") String email) {
     return service.findMatches(email);
+  }
+
+  @PutMapping("/user/home/match/{id},{id2}")
+  public User match(@PathVariable(name = "id") int userId, @PathVariable(name = "id2") int possibleMatchId){
+    return service.match(userId, possibleMatchId);
   }
 
 }
