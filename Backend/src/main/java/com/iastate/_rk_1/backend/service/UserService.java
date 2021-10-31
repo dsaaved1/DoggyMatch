@@ -124,23 +124,22 @@ public class UserService {
            if (dogPossibleMatch.getGenderDog().equals(userPreferences.getGenderDog())){
               possibleMatch.addCompatibility();
            }
-
        }
 
-      int n = allUsers.size();
+       int n = allUsers.size();
        // One by one move boundary of unsorted subarray
        for (int i = 0; i < n-1; i++) {
-       // Find the user with the highest compatibility in unsorted array
-       int max_idx = i;
-       for (int j = i+1; j < n; j++) {
-         if (allUsers.get(j).getCompatibility() > allUsers.get(max_idx).getCompatibility()){
-           max_idx = j;
-          }
-       }
-       // Swap the user with the highest compatibility with the first user
-       User temp = allUsers.get(max_idx);
-       allUsers.set(max_idx, allUsers.get(i));
-       allUsers.set(i, temp);
+           // Find the user with the highest compatibility in unsorted array
+           int max_idx = i;
+           for (int j = i+1; j < n; j++) {
+             if (allUsers.get(j).getCompatibility() > allUsers.get(max_idx).getCompatibility()){
+               max_idx = j;
+              }
+           }
+           // Swap the user with the highest compatibility with the first user
+           User temp = allUsers.get(max_idx);
+           allUsers.set(max_idx, allUsers.get(i));
+           allUsers.set(i, temp);
        }
 
        for (Iterator<User> iterator = allUsers.iterator(); iterator.hasNext(); ) {
@@ -151,50 +150,40 @@ public class UserService {
       return allUsers;
   }
 
-  /**
-    public void match(int userId, int possibleMatchId) {
-        User currentUser = getUserById(userId);
-        User possibleMatchUser = getUserById(possibleMatchId);
-        System.out.println(currentUser.getPossibleMatches());
-        System.out.println(possibleMatchUser.getPossibleMatches());
-    }
 
-   */
+  //Diego
+  public User match(int userId, int possibleMatchId) {
+         User currentUser = getUserById(userId);
+         User possibleMatchUser = getUserById(possibleMatchId);
 
+         //checks if you are on the possibleMatches of the user you would like to match with
+         for (User user: possibleMatchUser.getPossibleMatches()){
+             //if you are, it creates a chat with you because both "liked" each other
+             if (user.getId() == userId){
+                 Chat chatCurrentUser = new Chat();
+                 Chat chatMatchUser = new Chat();
 
-     //Diego
-     public User match(int userId, int possibleMatchId) {
-     User currentUser = getUserById(userId);
-     User possibleMatchUser = getUserById(possibleMatchId);
+                 //need to add user objects to be stored in each chat object without stackoverflow error
+                 //for now only storing the email on each chat object of the person they got the match with
+                 chatCurrentUser.setUserMail(possibleMatchUser.getEmail());
+                 chatMatchUser.setUserMail(currentUser.getEmail());
+                 //chatCurrentUser.setUser(possibleMatchUser);
+                 //chatMatchUser.setUser(currentUser);
 
-
-     //checks if you are on possibleMatches of the user you would like to match with
-     System.out.println("checking possible matches from possibleMatch: should be empty");
-     System.out.println(possibleMatchUser.getPossibleMatches());
-     for (User user: possibleMatchUser.getPossibleMatches()){
-     System.out.println("checking user in possibleMatches");
-     System.out.println(user.getEmail());
-     //if you are, it creates a chat with you
-         if (user.getId() == userId){
-             System.out.println("checking if it has the same id as user");
-             System.out.println(user.getId());
-             Chat chat = new Chat();
-             chat.getUsers().add(currentUser);
-             chat.getUsers().add(possibleMatchUser);
-             currentUser.getChats().add(chat);
-             possibleMatchUser.getChats().add(chat);
-             possibleMatchUser.getPossibleMatches().remove(currentUser);
-             return repository.save(currentUser);
+                 currentUser.getChats().add(chatCurrentUser);
+                 possibleMatchUser.getChats().add(chatMatchUser);
+                 possibleMatchUser.getPossibleMatches().remove(currentUser);
+                 repository.save(possibleMatchUser);
+                 return repository.save(currentUser);
+             }
          }
-     }
 
-     System.out.println("checking if they don't match");
-     System.out.println(currentUser.getPossibleMatches());
-     //if user doesn't like you yet, it adds the possibleMatchUser to possible matches
-     currentUser.getPossibleMatches().add(possibleMatchUser);
-
-     return repository.save(currentUser);
-     }
+         //if user doesn't like you yet, it adds the possibleMatchUser to possibleMatches
+        //Problem: users can't be on different possibleMatchUsers. If they are in one user, and you
+        //add them to another user, they will be removed from the old user
+         currentUser.getPossibleMatches().add(possibleMatchUser);
+         return repository.save(currentUser);
+  }
 
 
 }

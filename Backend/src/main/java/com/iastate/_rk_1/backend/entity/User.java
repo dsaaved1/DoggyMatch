@@ -62,9 +62,11 @@ public class User {
   private int compatibility;
 
   @OneToMany(cascade = {CascadeType.ALL})
+  @JoinColumn(name = "possibleMatches")
   private Set<User> possibleMatches;
 
   @OneToMany(cascade = {CascadeType.ALL})
+  @JoinColumn(name = "chats")
   private Set<Chat> chats;
 
   public User() {
