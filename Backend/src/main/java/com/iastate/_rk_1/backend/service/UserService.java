@@ -98,16 +98,29 @@ public class UserService {
     return saveUser(user);
   }
 
+  public List<User> findEverybody(String email) {
+    List<User> users = repository.findAll();
+
+    for (Iterator<User> iterator = users.iterator(); iterator.hasNext(); ) {
+      User user = iterator.next();
+      if (user.getEmail().equals(email)){
+        iterator.remove();
+      }
+    }
+
+    return users;
+  }
+
   //Diego
   public List<User> findMatches(String email) {
       List<User> allUsers = repository.findAll();
 
-        for (Iterator<User> iterator = allUsers.iterator(); iterator.hasNext(); ) {
-          User user = iterator.next();
-          if (user.getEmail().equals(email)){
-            iterator.remove();
-          }
+      for (Iterator<User> iterator = allUsers.iterator(); iterator.hasNext(); ) {
+        User user = iterator.next();
+        if (user.getEmail().equals(email)){
+          iterator.remove();
         }
+      }
 
        Preferences userPreferences = getUsersByEmail(email).getPreferences();
        for (Iterator<User> iterator = allUsers.iterator(); iterator.hasNext(); ) {

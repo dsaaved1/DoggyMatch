@@ -93,6 +93,12 @@ public class UserController {
     return service.findMatches(email);
   }
 
+  // Peyton
+  @GetMapping("/user/everybody/{email}")
+  public List<User> getEverybody(@PathVariable(name = "email") String email) {
+    return service.findEverybody(email);
+  }
+
   @PutMapping("/user/home/match/{id},{id2}")
   public User match(@PathVariable(name = "id") int userId, @PathVariable(name = "id2") int possibleMatchId){
     return service.match(userId, possibleMatchId);
