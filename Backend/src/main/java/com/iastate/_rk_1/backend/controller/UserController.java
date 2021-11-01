@@ -56,7 +56,7 @@ public class UserController {
   }
 
   //Diego
-  @PutMapping("/user/sign-in")
+  @PostMapping("/user/sign-in")
   public String signIn(@RequestBody User possibleUser){
     //verifies if there is given email in repository
     if (userByEmail(possibleUser.getEmail()) != null){
