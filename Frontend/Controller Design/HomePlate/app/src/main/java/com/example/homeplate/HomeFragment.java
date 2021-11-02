@@ -1,6 +1,12 @@
 package com.example.homeplate;
 
+import static android.content.Intent.getIntent;
+import static android.content.Intent.getIntentOld;
+import static com.example.homeplate.api.ApiClientFacotry.GetUserApi;
+
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +17,13 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import com.example.homeplate.api.ApiClientFacotry;
+import com.example.homeplate.api.SlimCallback;
+import com.example.homeplate.model.User;
+import com.example.homeplate.model.staticUser;
+
+import java.util.List;
+
 public class HomeFragment extends Fragment{
 
     TextView nameText;
@@ -18,10 +31,14 @@ public class HomeFragment extends Fragment{
     Button yesButton;
     Button noButton;
     ImageView profilePicture;
+    String email;
+    int i = 2;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
+
+       email = StaticUserEmail.getEmail();
         setValues(view);
         interact();
         return view;
@@ -29,12 +46,29 @@ public class HomeFragment extends Fragment{
 
     private void setValues(View view)
     {
-        //TextView
         nameText = view.findViewById(R.id.name);
-        nameText.setText("Bob");
-
         descriptionText = view.findViewById(R.id.description);
-        descriptionText.setText("Holy Moly");
+
+
+        //TextView
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                nameText.setText(staticUser.allusers.get(1).getFirstName());
+                descriptionText.setText(staticUser.allusers.get(1).getLastName());
+            }
+        },700);
+
+
+
+
+
+
+
+
+
+
+
 
         //Buttons
         yesButton = view.findViewById(R.id.yesButton);
@@ -49,14 +83,30 @@ public class HomeFragment extends Fragment{
         yesButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                descriptionText.setText("Wow it works!");
+                if(i<staticUser.allusers.size()) {
+                descriptionText.setText(staticUser.allusers.get(i).getLastName());
+                nameText.setText(staticUser.allusers.get(i).getFirstName());
+                i++;
             }
+                else {
+                nameText.setText("Out of matches");
+                descriptionText.setText("try again tomorrow!");
+            }
+        }
         });
 
         noButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                if(i<staticUser.allusers.size()) {
+                    descriptionText.setText(staticUser.allusers.get(i).getLastName());
+                    nameText.setText(staticUser.allusers.get(i).getFirstName());
+                    i++;
+                }
+                else {
+                    nameText.setText("Out of matches");
+                    descriptionText.setText("try again tomorrow!");
+                }
             }
         });
     }

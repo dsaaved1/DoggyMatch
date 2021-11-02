@@ -14,8 +14,8 @@
         android:layout_marginBottom="40dp"
         android:text="Register"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="317dp" />
+        app:layout_constraintEnd_toEndOf="@+id/continueButton"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/continueButton"
@@ -65,4 +65,11 @@
         android:text="DoggyMatch"
         app:layout_constraintBottom_toTopOf="@+id/usernameBox"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/failed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@+id/passwordBox"
+        app:layout_constraintTop_toBottomOf="@+id/passwordBox" />
 </androidx.constraintlayout.widget.ConstraintLayout>

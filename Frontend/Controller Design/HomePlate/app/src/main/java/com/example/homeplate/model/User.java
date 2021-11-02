@@ -23,13 +23,11 @@ public class User {
     private String photo;
 
 
+    public User() {
 
-    public User(String path) {
-        GetUserApi().getUserByNum(path).enqueue(new SlimCallback<User>(user -> {
-
-
-        }));
     }
+
+
 
     public int getId() {
         return id;

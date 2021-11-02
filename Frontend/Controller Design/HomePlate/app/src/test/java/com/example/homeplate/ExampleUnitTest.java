@@ -1,6 +1,14 @@
 package com.example.homeplate;
 
 import org.junit.Test;
+import org.junit.Assert;
+import org.junit.Rule;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.Mockito;
+import org.mockito.junit.MockitoJUnit;
+import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.MockitoRule;
 
 import static org.junit.Assert.*;
 
@@ -9,9 +17,14 @@ import static org.junit.Assert.*;
  *
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
+@RunWith(MockitoJUnitRunner.class)
+
 public class ExampleUnitTest {
+    @Rule
+    public MockitoRule mockitoRule = MockitoJUnit.rule();
+
     @Test
-    public void addition_isCorrect() {
-        assertEquals(4, 2 + 2);
+    public void testtrylog() {
+
     }
 }

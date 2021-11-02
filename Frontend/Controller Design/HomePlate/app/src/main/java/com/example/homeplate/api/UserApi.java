@@ -2,7 +2,10 @@ package com.example.homeplate.api;
 import java.util.List;
 import com.example.homeplate.model.*;
 import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.GET;
+import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Path;
 
 public interface UserApi {
@@ -15,4 +18,12 @@ public interface UserApi {
 
     @GET("user/{userNum}")
     Call<User> getUserByNum(@Path("userNum") String userNum);
+    @POST("user/sign-in")
+    Call<User> signin(@Body User user);
+    @GET("user/everybody/{userEmail}")
+    Call<List<User>> getAll(@Path("userEmail") String email);
+
+    @GET("user/register/preference/id/{userNum}")
+    Call<Preferences> getUserPref(@Path("userNum") String userNum);
+
 }
