@@ -54,8 +54,14 @@ public class HomeFragment extends Fragment{
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                nameText.setText(staticUser.allusers.get(1).getFirstName());
-                descriptionText.setText(staticUser.allusers.get(1).getLastName());
+                if(staticUser.allusers.size()>i) {
+                    nameText.setText(staticUser.allusers.get(1).getFirstName());
+                    descriptionText.setText(staticUser.allusers.get(1).getLastName());
+                }
+                else{
+                    nameText.setText("No matches right now, come back tomorrow!");
+                    descriptionText.setText("");
+                }
             }
         },700);
 

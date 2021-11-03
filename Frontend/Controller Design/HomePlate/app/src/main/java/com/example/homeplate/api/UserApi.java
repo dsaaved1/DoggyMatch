@@ -25,5 +25,8 @@ public interface UserApi {
 
     @GET("user/register/preference/id/{userNum}")
     Call<Preferences> getUserPref(@Path("userNum") String userNum);
+    @POST("user")
+    Call<User> postuser(@Body User user );
+
 
 }

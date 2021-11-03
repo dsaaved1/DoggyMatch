@@ -23,7 +23,7 @@ public static void getall(){
     }));
 }
 public static void setlist(List<User> list){
-    //allusers.clear();
+
     for(User u: list){
         allusers.add(u);
     }

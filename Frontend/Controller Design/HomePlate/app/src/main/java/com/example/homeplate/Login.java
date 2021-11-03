@@ -3,29 +3,20 @@ package com.example.homeplate;
 import static com.example.homeplate.api.ApiClientFacotry.GetUserApi;
 import com.example.homeplate.model.staticUser;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.Lifecycling;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.homeplate.DoggyInterface;
-import com.example.homeplate.api.ApiClientFacotry;
 import com.example.homeplate.api.SlimCallback;
 import com.example.homeplate.model.User;
 
 import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class Login extends AppCompatActivity {
 
@@ -60,7 +51,7 @@ private String password;
         pageTitle = findViewById(R.id.pageTitleLogin);
 
         //TextBox
-        usernameBox = findViewById(R.id.usernameBox);
+        usernameBox = findViewById(R.id.email);
         passwordBox = findViewById(R.id.passwordBox);
         failed = findViewById(R.id.failed);
     }
@@ -88,8 +79,9 @@ private String password;
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //TODO
-                // Add Register Page and Connect to it
+
+                startActivity(new Intent(Login.this,Register.class));
+
                 /*GetUserApi().getAllUser().enqueue(new SlimCallback<List<User>>(user->{ staticUser.setlist(user); }));
                 new Handler().postDelayed(new Runnable() {
                     @Override public void run() { failed.setText(staticUser.allusers.get(0).getFirstName()); }},700);*/

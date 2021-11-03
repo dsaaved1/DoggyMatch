@@ -10,6 +10,8 @@ import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
+import com.example.homeplate.model.staticUser;
+
 public class ProfileFragment extends Fragment {
 
     private TextView nameText;
@@ -28,6 +30,7 @@ public class ProfileFragment extends Fragment {
 
         //TextView
         nameText = view.findViewById(R.id.profileName);
+        nameText.setText(staticUser.user.getFirstName());
 
         //Buttons
         signOutButton = view.findViewById(R.id.signOutButtonProfile);
