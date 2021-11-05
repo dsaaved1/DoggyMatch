@@ -21,13 +21,29 @@ public class User {
     private String university;
     private String gender;
     private String photo;
+    private Doginfo dog;
+    private Preferences preferences;
 
 
     public User() {
 
     }
 
+    public Doginfo getDog() {
+        return dog;
+    }
 
+    public void setDog(Doginfo dog) {
+        this.dog = dog;
+    }
+
+    public Preferences getPreferences() {
+        return preferences;
+    }
+
+    public void setPreferences(Preferences preferences) {
+        this.preferences = preferences;
+    }
 
     public int getId() {
         return id;
