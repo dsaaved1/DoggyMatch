@@ -1,4 +1,4 @@
 # 3_RK_1
 
 **Doggy Match**
-_A platform for safely connecting dogs for playful interactions._
+_A platform to safely connect dogs for playful interactions._

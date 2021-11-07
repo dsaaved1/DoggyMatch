@@ -34,7 +34,24 @@ public class TestUserService {
     User testUser = new User("peyt@iastate.edu", "password");
 
     mockUserService.saveUser(testUser);
+    
+    when(mockRepository.findById(testUser.getId())).thenReturn(testUser);
+    assertEquals(testUser, mockRepository.findById(testUser.getId()));
 
+  }
+
+  // Testing the method "mockRepository.findByEmail"
+  @Test
+  public void getUserByEmailTest() {
+    UserRepository mockRepository = mock(UserRepository.class);
+    UserService mockUserService = mock(UserService.class);
+    User testUser = new User("peyt@iastate.edu", "password");
+
+    mockUserService.saveUser(testUser);
+    
+    when(mockRepository.findByEmail(testUser.getEmail())).thenReturn(testUser);
+
+    assertEquals(testUser, mockRepository.findByEmail(testUser.getEmail()));
   }
 
   @Test

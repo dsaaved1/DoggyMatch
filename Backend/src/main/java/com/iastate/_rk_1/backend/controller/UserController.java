@@ -56,7 +56,7 @@ public class UserController {
   }
 
   //Diego
-  @PutMapping("/user/sign-in")
+  @PostMapping("/user/sign-in")
   public String signIn(@RequestBody User possibleUser){
     //verifies if there is given email in repository
     if (userByEmail(possibleUser.getEmail()) != null){
@@ -91,6 +91,12 @@ public class UserController {
   @GetMapping("/user/home/{email}")
   public List<User> findMatches(@PathVariable(name = "email") String email) {
     return service.findMatches(email);
+  }
+
+  // Peyton
+  @GetMapping("/user/everybody/{email}")
+  public List<User> getEverybody(@PathVariable(name = "email") String email) {
+    return service.findEverybody(email);
   }
 
   @PutMapping("/user/home/match/{id},{id2}")
