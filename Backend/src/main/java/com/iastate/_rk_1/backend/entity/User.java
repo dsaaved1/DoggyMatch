@@ -1,5 +1,7 @@
 package com.iastate._rk_1.backend.entity;
 
+import io.swagger.annotations.ApiModelProperty;
+
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -14,6 +16,7 @@ public class User {
   @Column(name = "id")
   private int id;
 
+  @ApiModelProperty(notes = "email of user",name="email",required=true,value="test email")
   @Column(name = "email", unique = true)
   private String email;
 
