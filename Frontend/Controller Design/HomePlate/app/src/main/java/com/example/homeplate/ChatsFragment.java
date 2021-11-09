@@ -7,6 +7,9 @@ import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
 
+/** Layout for the chat
+ * @author Corbin
+ */
 public class ChatsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

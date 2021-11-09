@@ -12,6 +12,9 @@ import androidx.fragment.app.Fragment;
 
 import com.example.homeplate.model.staticUser;
 
+/** The layout for the profile page
+ * @author Corbin
+ */
 public class ProfileFragment extends Fragment {
 
     private TextView nameText;

@@ -12,6 +12,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.homeplate.api.SlimCallback;
 import com.example.homeplate.model.User;
 
+/** Registetration activity that sends a put request for a new user
+ * @author Corbin
+ */
 public class Register extends AppCompatActivity {
     Button regs;
     EditText email;

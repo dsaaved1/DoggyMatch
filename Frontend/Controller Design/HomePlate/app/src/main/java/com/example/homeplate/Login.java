@@ -18,6 +18,9 @@ import com.example.homeplate.model.User;
 
 import java.util.List;
 
+/** Activity for logging into applications
+ * @author Corbin
+ */
 public class Login extends AppCompatActivity {
 
     private Button continueButton;

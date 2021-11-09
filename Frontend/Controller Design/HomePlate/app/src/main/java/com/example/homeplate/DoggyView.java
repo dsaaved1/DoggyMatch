@@ -2,6 +2,9 @@ package com.example.homeplate;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+/** Unused for now
+ * @author Corbin
+ */
 public class DoggyView extends AppCompatActivity implements DoggyInterface.DoggyView{
 
     @Override

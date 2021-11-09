@@ -8,6 +8,10 @@ import com.example.homeplate.api.SlimCallback;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The current user loged in and list of all the users on the data base
+ * @author Mark Gores
+ */
 public class staticUser {
 public static User user;
 public static List<User> allusers = new ArrayList<User>();

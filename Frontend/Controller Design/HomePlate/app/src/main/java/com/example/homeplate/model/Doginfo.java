@@ -1,5 +1,9 @@
 package com.example.homeplate.model;
 
+/**
+ * All of the dogs information
+ * @author Mark Gores
+ */
 public class Doginfo {
     private String firstNameDog;
     private String breed;

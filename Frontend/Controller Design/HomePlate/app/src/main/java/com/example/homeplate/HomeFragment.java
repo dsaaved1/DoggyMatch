@@ -24,6 +24,9 @@ import com.example.homeplate.model.staticUser;
 
 import java.util.List;
 
+/** Matching activity also sets the layout for the home
+ * @author Corbin
+ */
 public class HomeFragment extends Fragment{
 
     TextView nameText;
@@ -32,7 +35,7 @@ public class HomeFragment extends Fragment{
     Button noButton;
     ImageView profilePicture;
     String email;
-    int i = 2;
+    int i = 1;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -54,6 +57,7 @@ public class HomeFragment extends Fragment{
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
+
                 if(staticUser.allusers.size()>i) {
                     nameText.setText(staticUser.allusers.get(1).getFirstName());
                     descriptionText.setText(staticUser.allusers.get(1).getLastName());
@@ -89,10 +93,13 @@ public class HomeFragment extends Fragment{
         yesButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //chat code
+                //staticUser.user.getChats().stream().findFirst().get().getUserMail();
+                GetUserApi().match(staticUser.user.getId(),staticUser.allusers.get(i).getId()).enqueue(new SlimCallback<User>(user->{  }));
+                i++;
                 if(i<staticUser.allusers.size()) {
                 descriptionText.setText(staticUser.allusers.get(i).getLastName());
                 nameText.setText(staticUser.allusers.get(i).getFirstName());
-                i++;
             }
                 else {
                 nameText.setText("Out of matches");
@@ -104,10 +111,10 @@ public class HomeFragment extends Fragment{
         noButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                i++;
                 if(i<staticUser.allusers.size()) {
                     descriptionText.setText(staticUser.allusers.get(i).getLastName());
                     nameText.setText(staticUser.allusers.get(i).getFirstName());
-                    i++;
                 }
                 else {
                     nameText.setText("Out of matches");

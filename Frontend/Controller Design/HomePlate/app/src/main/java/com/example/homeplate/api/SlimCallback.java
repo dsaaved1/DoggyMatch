@@ -7,6 +7,10 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+/** part of the retrofit library used so we dont have to constantly write code for the callback every time a server request is made
+ * @author Mark Gores
+ * @param <T> Is the user
+ */
 public class SlimCallback<T> implements Callback<T> {
 
     LambdaInterface<T> lambdaInterface;

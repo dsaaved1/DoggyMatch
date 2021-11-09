@@ -1,12 +1,20 @@
 package com.example.homeplate.model;
 import static com.example.homeplate.api.ApiClientFacotry.GetUserApi;
 
+import android.util.ArraySet;
+
 import com.example.homeplate.api.SlimCallback;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 //import com.google.gson.annotations.SerializedName;
+
+/** Gets all of the data for a user
+ * @author Mark Gores
+ */
 public class User {
     private int id;
     private String email;
@@ -23,7 +31,25 @@ public class User {
     private String photo;
     private Doginfo dog;
     private Preferences preferences;
+    private Set<User> possibleMatches;
+    private Set<Chat> chats = new HashSet<Chat>();
 
+
+    public Set<User> getPossibleMatches() {
+        return possibleMatches;
+    }
+
+    public void setPossibleMatches(Set<User> possibleMatches) {
+        this.possibleMatches = possibleMatches;
+    }
+
+    public Set<Chat> getChats() {
+        return chats;
+    }
+
+    public void setChats(Set<Chat> chats) {
+        this.chats = chats;
+    }
 
     public User() {
 

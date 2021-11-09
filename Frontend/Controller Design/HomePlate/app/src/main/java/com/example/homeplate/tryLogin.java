@@ -5,6 +5,9 @@ import static com.example.homeplate.api.ApiClientFacotry.GetUserApi;
 import com.example.homeplate.api.*;
 import com.example.homeplate.model.*;
 
+/** Trys to log user in
+ * @author Mark
+ */
 public class tryLogin {
 String em;
 String passw;
