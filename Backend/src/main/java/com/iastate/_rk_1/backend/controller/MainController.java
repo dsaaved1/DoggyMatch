@@ -5,6 +5,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class MainController {
+  
+  /** 
+   * @return String
+   */
   @GetMapping("/")
   public String index() {
       return "server running";
