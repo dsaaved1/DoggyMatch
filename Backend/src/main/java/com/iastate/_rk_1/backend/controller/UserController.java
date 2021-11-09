@@ -27,38 +27,73 @@ public class UserController {
   @Autowired
   private UserService service;
 
+  
+  /** 
+   * @return List<User>
+   */
   @GetMapping("/user")
   public List<User> index() {
     return service.getUsers();
   }
 
+  
+  /** 
+   * @param user
+   * @param id
+   * @return User
+   */
   @PutMapping("/user")
   public User updateUser(@RequestBody User user, @PathVariable int id) {
     return service.updateUser(user, id);
   }
 
+  
+  /** 
+   * @param id
+   * @return String
+   */
   @DeleteMapping("/user/{id}")
   public String deleteUser(@PathVariable int id) {
     return service.deleteUser(id);
   }
 
+  
+  /** 
+   * @param id
+   * @return User
+   */
   @GetMapping("/user/{id}")
   public User getByID(@PathVariable int id) {
     return service.getUserById(id);
   }
 
+  
+  /** 
+   * @param email
+   * @return User
+   */
   @GetMapping("/user/email/{email}")
   public User userByEmail(@PathVariable String email) {
     return service.getUsersByEmail(email);
   }
 
 
+  
+  /** 
+   * @param user
+   * @return User
+   */
   @ApiOperation(value = "Add user to the database.", tags = "addUser")
   @PostMapping("/user")
   public User addUser(@RequestBody User user) {
     return service.saveUser(user);
   }
 
+  
+  /** 
+   * @param possibleUser
+   * @return String
+   */
   @ApiOperation(value = "Take user to home page if user is in database.", tags = "signIn")
   @PostMapping("/user/sign-in")
   public String signIn(@RequestBody User possibleUser){
@@ -73,36 +108,70 @@ public class UserController {
     return "Email not found";
   }
 
+  
+  /** 
+   * @param user
+   * @param id
+   * @return User
+   */
   @ApiOperation(value = "Complete user's information in the System.", tags = "ownersInfo")
   @PutMapping("/user/register/{id}")
   public User ownersInfo(@RequestBody User user, @PathVariable(name = "id") int id){
     return service.updateUser(user, id);
   }
 
+  
+  /** 
+   * @param dogInfo
+   * @param id
+   * @return User
+   */
   @ApiOperation(value = "Post users' dog information in the System.", tags = "dogInfo")
   @PostMapping("/user/register/dog-info/{id}")
   public User dogsInfo(@RequestBody DogInfo dogInfo, @PathVariable(name = "id") int id){
     return service.updateUserDogInfo(dogInfo, id);
   }
 
+  
+  /** 
+   * @param preferences
+   * @param id
+   * @return User
+   */
   @ApiOperation(value = "Post users' preferences in the System.", tags = "preferences")
   @PostMapping("/user/register/preferences/{id}")
   public User preferences(@RequestBody Preferences preferences, @PathVariable(name = "id") int id){
     return service.updateUserPreferences(preferences, id);
   }
 
+  
+  /** 
+   * @param email
+   * @return List<User>
+   */
   @ApiOperation(value = "Get list of users (possible matches) sorted by the given user preferences.", tags = "findMatches")
   @GetMapping("/user/home/{email}")
   public List<User> findMatches(@PathVariable(name = "email") String email) {
     return service.findMatches(email);
   }
 
+  
+  /** 
+   * @param email
+   * @return List<User>
+   */
   @ApiOperation(value = "Get list of users (possible matches) without any sorting.", tags = "getEverybody")
   @GetMapping("/user/everybody/{email}")
   public List<User> getEverybody(@PathVariable(name = "email") String email) {
     return service.findEverybody(email);
   }
 
+  
+  /** 
+   * @param userId
+   * @param possibleMatchId
+   * @return User
+   */
   @ApiOperation(value = "Creates a chat in both given users, if both users liked each other. Otherwise, puts the liked user in its possible matches field.", tags = "match")
   @PutMapping("/user/home/match/{id},{id2}")
   public User match(@PathVariable(name = "id") int userId, @PathVariable(name = "id2") int possibleMatchId){

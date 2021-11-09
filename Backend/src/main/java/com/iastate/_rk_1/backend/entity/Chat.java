@@ -26,10 +26,18 @@ public class Chat {
   public Chat() {
   }
 
+  
+  /** 
+   * @return int
+   */
   public int getId() {
     return id;
   }
 
+  
+  /** 
+   * @param id
+   */
   public void setId(int id) {
     this.id = id;
   }
@@ -64,6 +72,10 @@ public class Chat {
     return userMail;
   }
 
+  
+  /** 
+   * @param userMail
+   */
   public void setUserMail(String userMail) {
     this.userMail = userMail;
   }
