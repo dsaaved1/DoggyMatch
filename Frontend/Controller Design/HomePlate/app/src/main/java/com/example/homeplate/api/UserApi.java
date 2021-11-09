@@ -25,6 +25,8 @@ public interface UserApi {
     Call<User> signin(@Body User user);
     @GET("user/everybody/{userEmail}")
     Call<List<User>> getAll(@Path("userEmail") String email);
+    @GET("user/everybody/{email}")
+    Call<List<User>> getEverbody (@Path("email") String email);
 
     @GET("user/register/preference/id/{userNum}")
     Call<Preferences> getUserPref(@Path("userNum") String userNum);

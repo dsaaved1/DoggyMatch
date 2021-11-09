@@ -103,9 +103,10 @@ private String password;
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
-
+                        //sets current user
                         staticUser.setUser(user);
-                        GetUserApi().getAllUser().enqueue(new SlimCallback<List<User>>(user->{ staticUser.setlist(user); }));
+                        //generates the list of all users besides current
+                        GetUserApi().getEverbody(user.getEmail()).enqueue(new SlimCallback<List<User>>(user->{ staticUser.setlist(user); }));
                         startActivity(new Intent(Login.this,Home.class));
                     }
                 },1000);

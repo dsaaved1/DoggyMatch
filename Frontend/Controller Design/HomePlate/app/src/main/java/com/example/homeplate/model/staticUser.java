@@ -20,7 +20,7 @@ getall();
 }
 
 public static void getall(){
-    GetUserApi().getAllUser().enqueue(new SlimCallback<List<User>>(user->{
+    GetUserApi().getEverbody(user.getEmail()).enqueue(new SlimCallback<List<User>>(user->{
         for(User u: user){
             allusers.add(u);
         }

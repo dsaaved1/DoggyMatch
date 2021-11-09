@@ -35,7 +35,7 @@ public class HomeFragment extends Fragment{
     Button noButton;
     ImageView profilePicture;
     String email;
-    int i = 1;
+    int i = 0;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -59,8 +59,8 @@ public class HomeFragment extends Fragment{
             public void run() {
 
                 if(staticUser.allusers.size()>i) {
-                    nameText.setText(staticUser.allusers.get(1).getFirstName());
-                    descriptionText.setText(staticUser.allusers.get(1).getLastName());
+                    nameText.setText(staticUser.allusers.get(i).getFirstName());
+                    descriptionText.setText(staticUser.allusers.get(i).getLastName());
                 }
                 else{
                     nameText.setText("No matches right now, come back tomorrow!");
@@ -95,9 +95,10 @@ public class HomeFragment extends Fragment{
             public void onClick(View view) {
                 //chat code
                 //staticUser.user.getChats().stream().findFirst().get().getUserMail();
-                GetUserApi().match(staticUser.user.getId(),staticUser.allusers.get(i).getId()).enqueue(new SlimCallback<User>(user->{  }));
-                i++;
+
                 if(i<staticUser.allusers.size()) {
+                    GetUserApi().match(staticUser.user.getId(),staticUser.allusers.get(i).getId()).enqueue(new SlimCallback<User>(user->{  }));
+                    i++;
                 descriptionText.setText(staticUser.allusers.get(i).getLastName());
                 nameText.setText(staticUser.allusers.get(i).getFirstName());
             }
