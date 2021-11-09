@@ -4,6 +4,9 @@ import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+/** unused for now
+ * @author Corbin
+ */
 public interface DoggyInterface {
 
     interface DoggyController

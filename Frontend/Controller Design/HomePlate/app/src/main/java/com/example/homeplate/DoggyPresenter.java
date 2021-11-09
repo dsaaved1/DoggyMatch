@@ -1,5 +1,8 @@
 package com.example.homeplate;
 
+/** Unused for now
+ * @author Corbin
+ */
 public class DoggyPresenter implements DoggyInterface.DoggyPresenter, DoggyInterface.DoggyModel.OnFinishedListener{
 
     private DoggyInterface.DoggyView mainView;

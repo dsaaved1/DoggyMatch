@@ -8,6 +8,10 @@ import com.example.homeplate.api.SlimCallback;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The current user loged in and list of all the users on the data base
+ * @author Mark Gores
+ */
 public class staticUser {
 public static User user;
 public static List<User> allusers = new ArrayList<User>();
@@ -16,7 +20,7 @@ getall();
 }
 
 public static void getall(){
-    GetUserApi().getAllUser().enqueue(new SlimCallback<List<User>>(user->{
+    GetUserApi().getEverbody(user.getEmail()).enqueue(new SlimCallback<List<User>>(user->{
         for(User u: user){
             allusers.add(u);
         }

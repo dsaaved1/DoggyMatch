@@ -1,5 +1,9 @@
 package com.example.homeplate.model;
 
+/**
+ * Users preferences
+ * @author Mark Gores
+ */
 public class Preferences {
     private String breed;
     private int ageDog;

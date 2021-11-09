@@ -18,6 +18,9 @@ import com.example.homeplate.model.User;
 
 import java.util.List;
 
+/** Activity for logging into applications
+ * @author Corbin
+ */
 public class Login extends AppCompatActivity {
 
     private Button continueButton;
@@ -100,9 +103,10 @@ private String password;
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
-
+                        //sets current user
                         staticUser.setUser(user);
-                        GetUserApi().getAllUser().enqueue(new SlimCallback<List<User>>(user->{ staticUser.setlist(user); }));
+                        //generates the list of all users besides current
+                        GetUserApi().getEverbody(user.getEmail()).enqueue(new SlimCallback<List<User>>(user->{ staticUser.setlist(user); }));
                         startActivity(new Intent(Login.this,Home.class));
                     }
                 },1000);

@@ -4,6 +4,9 @@ import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+/** Unused for now
+ * @author Corbin
+ */
 public class DoggyButton extends AppCompatActivity implements View.OnClickListener
 {
 

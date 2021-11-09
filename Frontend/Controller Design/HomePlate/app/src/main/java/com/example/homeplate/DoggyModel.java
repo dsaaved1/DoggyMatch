@@ -5,6 +5,9 @@ import java.util.List;
 import java.util.Random;
 import java.util.logging.Handler;
 
+/** Unused for now
+ * @author Corbin
+ */
 public class DoggyModel implements DoggyInterface.DoggyModel {
 
     private List<String> arrayList = Arrays.asList(

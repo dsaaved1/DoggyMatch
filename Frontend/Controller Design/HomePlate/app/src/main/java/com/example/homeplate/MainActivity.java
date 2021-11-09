@@ -8,6 +8,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+/** Main activity that launches login page
+ * @author Corbin
+ */
 public class MainActivity extends AppCompatActivity {
 
     @Override

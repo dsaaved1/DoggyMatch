@@ -12,6 +12,10 @@ import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+/** Frame for views
+ * @author Corbin
+ *
+ */
 public class Home extends AppCompatActivity {
 
     private Button homeButton;
