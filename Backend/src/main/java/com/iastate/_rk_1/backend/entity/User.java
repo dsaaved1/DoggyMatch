@@ -1,5 +1,6 @@
 package com.iastate._rk_1.backend.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.swagger.annotations.ApiModelProperty;
 
 import java.util.Date;
@@ -68,9 +69,13 @@ public class User {
   @JoinColumn(name = "possibleMatches")
   private Set<User> possibleMatches;
 
-  @OneToMany(cascade = {CascadeType.ALL})
-  @JoinColumn(name = "chats")
-  private Set<Chat> chats;
+  @ManyToMany(cascade = {CascadeType.ALL})
+  @JoinTable(
+          name = "chat_users",
+          joinColumns = @JoinColumn(name = "chat_id"),
+          inverseJoinColumns = @JoinColumn(name = "user_id")
+  )
+  private Set<Chat> chats = new HashSet<>();
 
   public User() {
   }
@@ -336,8 +341,7 @@ public class User {
   }
 
   
-  /** 
-   * @param getPossibleMatches(
+  /**
    */
   public void addCompatibility(){compatibility++;}
 

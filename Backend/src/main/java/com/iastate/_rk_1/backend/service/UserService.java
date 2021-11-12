@@ -180,8 +180,9 @@ public class UserService {
                  //for now only storing the email on each chat object of the person they got the match with
                  chatCurrentUser.setUserMail(possibleMatchUser.getEmail());
                  chatMatchUser.setUserMail(currentUser.getEmail());
-                 //chatCurrentUser.setUser(possibleMatchUser);
-                 //chatMatchUser.setUser(currentUser);
+                 chatCurrentUser.getUsersInChat().add(possibleMatchUser);
+                 chatMatchUser.getUsersInChat().add(possibleMatchUser);
+
 
                  currentUser.getChats().add(chatCurrentUser);
                  possibleMatchUser.getChats().add(chatMatchUser);
