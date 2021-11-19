@@ -11,6 +11,13 @@ import com.example.homeplate.model.*;
 public class tryLogin {
 String em;
 String passw;
+
+    /**
+     * checks if there is a user in the data base with the given email and password
+     * @param email
+     * @param password
+     * @return ture or false
+     */
     public boolean tryLogin(String email, String password){
         GetUserApi().getUserByEmail(email).enqueue(new SlimCallback<User>(user -> {
             em= String.valueOf(user.getId());

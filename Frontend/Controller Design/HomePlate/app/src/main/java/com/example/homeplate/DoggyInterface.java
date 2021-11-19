@@ -4,23 +4,36 @@ import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-/** unused for now
+/**
+ * Interface for basic application functions
  * @author Corbin
  */
 public interface DoggyInterface {
+    /**
+     * Controller for Internal Functions
+     */
 
     interface DoggyController
     {
 
     }
+    /**
+     * Custom Button Actions and Design
+     */
 
     interface DoggyButton extends View.OnClickListener
     {
 
     }
+    /**
+     * Model for Consistent App View
+     */
 
     interface DoggyModel
     {
+        /**
+         * Sets the onclick listener for buttons
+         */
         interface OnFinishedListener
         {
             void onFinished(String string);
@@ -28,17 +41,28 @@ public interface DoggyInterface {
 
 
     }
-
+    /**
+     * Offload Data Assertion and Collection from Individual Views
+     * Last Page to Create
+     */
     interface DoggyView
     {
+        /**
+         * shows progress of view
+         */
         void showProgress();
+
+        /**
+         * hides progress
+         */
         void hideProgress();
+
+        /**
+         * sets the string to view
+         * @param string view
+         */
         void setString(String string);
     }
 
-    interface DoggyPresenter
-    {
-        void onButtonClick();
-        void onDestroy();
-    }
+
 }

@@ -5,5 +5,9 @@ package com.example.homeplate.api;
  * @param <T>
  */
 public interface LambdaInterface<T> {
+    /**
+     * basic interface to be overridden to communicate with the server
+     * @param result
+     */
     public void doSomething(T result);
 }

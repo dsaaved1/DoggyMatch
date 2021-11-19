@@ -18,11 +18,16 @@ import static org.junit.Assert.*;
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
 @RunWith(MockitoJUnitRunner.class)
-
+/**
+ * example tests
+ */
 public class ExampleUnitTest {
     @Rule
     public MockitoRule mockitoRule = MockitoJUnit.rule();
 
+    /**
+     * try login test
+     */
     @Test
     public void testtrylog() {
 

@@ -12,26 +12,78 @@ import retrofit2.http.Path;
  * @author Mark Gores
  */
 public interface UserApi {
+    /**
+     * gets the first user in the data base
+     * @return first User
+     */
     @GET("user/1")
     Call<User> getFirstUser();
+
+    /**
+     * gets all the user from database including current user
+     * @return
+     */
     @GET("user")
     Call<List<User>> getAllUser();
+
+    /**
+     * gets a specific user by their email
+     * @param email
+     * @return User
+     */
     @GET("user/email/{email}")
     Call<User> getUserByEmail(@Path("email") String email);
 
+    /**
+     * gets the user by their ID
+     * @param userNum Id of user
+     * @return User
+     */
     @GET("user/{userNum}")
     Call<User> getUserByNum(@Path("userNum") String userNum);
+
+    /**
+     * attempts to login a user with email and password
+     * @param user
+     * @return successful or failure
+     */
     @POST("user/sign-in")
     Call<User> signin(@Body User user);
+
+    /*
     @GET("user/everybody/{userEmail}")
-    Call<List<User>> getAll(@Path("userEmail") String email);
+    Call<List<User>> getAll(@Path("userEmail") String email);*/
+    /**
+     * gets all users except the current user (used to find matches)
+     * @param email
+     * @return list of users
+     */
     @GET("user/everybody/{email}")
     Call<List<User>> getEverbody (@Path("email") String email);
 
+    /**
+     * gets a users preferences
+     * @param userNum
+     * @return user preferences
+     */
     @GET("user/register/preference/id/{userNum}")
     Call<Preferences> getUserPref(@Path("userNum") String userNum);
+
+    /**
+     * creates a new user on the server
+     * @param user
+     * @return successful
+     */
     @POST("user")
     Call<User> postuser(@Body User user );
+
+    /**
+     * used for when a current user "likes" another user, liked user is moved to potential match
+     * and if liked user also likes current user a match is created
+     * @param userId current users id
+     * @param userId1 liked users id
+     * @return poential match
+     */
     @PUT("user/home/match/{id},{id2}")
     Call<User> match(@Path("id") int userId, @Path("id2")int userId1);
 

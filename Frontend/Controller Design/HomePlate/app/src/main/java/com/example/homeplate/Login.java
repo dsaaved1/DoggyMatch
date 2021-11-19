@@ -90,6 +90,10 @@ private String password;
                     @Override public void run() { failed.setText(staticUser.allusers.get(0).getFirstName()); }},700);*/
             }});
     }
+
+    /**
+     * trys to login user if successful will login user in if not will give error message
+     */
     public void login(){
        User puser = new User();
 

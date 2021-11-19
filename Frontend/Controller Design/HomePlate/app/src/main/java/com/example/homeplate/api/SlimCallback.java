@@ -18,18 +18,30 @@ public class SlimCallback<T> implements Callback<T> {
     String logTag;
 
 
-
+    /**
+     * makes the call to the server
+     * @param lambdaInterface telling the server what is needed
+     */
     public SlimCallback(LambdaInterface<T> lambdaInterface){
         this.lambdaInterface = lambdaInterface;
     }
 
+    /**
+     * makes server call
+     * @param lambdaInterface tells server what is needed
+     * @param customTag custom error message for debugging
+     */
     public SlimCallback(LambdaInterface<T> lambdaInterface, String customTag){
         this.lambdaInterface = lambdaInterface;
         this.logTag = customTag;
     }
 
 
-
+    /**
+     * gets the reponse from the server and determines if it was successfull or a failure
+     * @param call call to server
+     * @param response reponse from server
+     */
     @Override
     public void onResponse(Call<T> call, Response<T> response) {
 
@@ -42,6 +54,11 @@ public class SlimCallback<T> implements Callback<T> {
 
     }
 
+    /**
+     * tells what to do if the response was a failure
+     * @param call call to server
+     * @param t throwable error
+     */
     @Override
     public void onFailure(Call<T> call, Throwable t) {
 
