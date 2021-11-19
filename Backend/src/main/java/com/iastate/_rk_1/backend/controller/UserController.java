@@ -37,10 +37,11 @@ public class UserController {
   }
 
   
-  /** 
-   * @param user
-   * @param id
-   * @return User
+  /**
+   * Updates a user
+   * @param user the user that will be updated
+   * @param id the id of the user that will be updated
+   * @return User the user that will be updated
    */
   @PutMapping("/user")
   public User updateUser(@RequestBody User user, @PathVariable int id) {
@@ -48,8 +49,9 @@ public class UserController {
   }
 
   
-  /** 
-   * @param id
+  /**
+   * Deletes a user
+   * @param id the id of the user to be deleted
    * @return String
    */
   @DeleteMapping("/user/{id}")
@@ -58,8 +60,9 @@ public class UserController {
   }
 
   
-  /** 
-   * @param id
+  /**
+   * Gets a user by id
+   * @param id the id of the user to get
    * @return User
    */
   @GetMapping("/user/{id}")
@@ -68,8 +71,9 @@ public class UserController {
   }
 
   
-  /** 
-   * @param email
+  /**
+   * Gets a user by email
+   * @param email the email of the user to get
    * @return User
    */
   @GetMapping("/user/email/{email}")
@@ -79,8 +83,9 @@ public class UserController {
 
 
   
-  /** 
-   * @param user
+  /**
+   * Adds a new user to the database
+   * @param user the user that will be added
    * @return User
    */
   @ApiOperation(value = "Add user to the database.", tags = "addUser")
@@ -90,8 +95,9 @@ public class UserController {
   }
 
   
-  /** 
-   * @param possibleUser
+  /**
+   * Signs in a user
+   * @param possibleUser the user that will be signed in
    * @return String
    */
   @ApiOperation(value = "Take user to home page if user is in database.", tags = "signIn")
@@ -109,9 +115,9 @@ public class UserController {
   }
 
   
-  /** 
-   * @param user
-   * @param id
+  /** Registers a user
+   * @param user the user that will be registered
+   * @param id the id of the user to register
    * @return User
    */
   @ApiOperation(value = "Complete user's information in the System.", tags = "ownersInfo")
@@ -121,9 +127,10 @@ public class UserController {
   }
 
   
-  /** 
-   * @param dogInfo
-   * @param id
+  /**
+   * Adds a users dog info to the database
+   * @param dogInfo the doginfo that will be added
+   * @param id the id of the user to update the doginfo
    * @return User
    */
   @ApiOperation(value = "Post users' dog information in the System.", tags = "dogInfo")
@@ -133,9 +140,10 @@ public class UserController {
   }
 
   
-  /** 
-   * @param preferences
-   * @param id
+  /**
+   * Adds a user's preferences to the database
+   * @param preferences the preferences that will be added
+   * @param id the id of the user to update the preferences
    * @return User
    */
   @ApiOperation(value = "Post users' preferences in the System.", tags = "preferences")
@@ -145,8 +153,9 @@ public class UserController {
   }
 
   
-  /** 
-   * @param email
+  /**
+   * Gets a list of possible matches
+   * @param email the email of the user to get matches for
    * @return List<User>
    */
   @ApiOperation(value = "Get list of users (possible matches) sorted by the given user preferences.", tags = "findMatches")
@@ -156,8 +165,9 @@ public class UserController {
   }
 
   
-  /** 
-   * @param email
+  /**
+   * Gets every user except the provided email
+   * @param email the email of the user to exclude
    * @return List<User>
    */
   @ApiOperation(value = "Get list of users (possible matches) without any sorting.", tags = "getEverybody")
@@ -167,9 +177,10 @@ public class UserController {
   }
 
   
-  /** 
-   * @param userId
-   * @param possibleMatchId
+  /**
+   * Creates a match between two users
+   * @param userId the id of the first match
+   * @param possibleMatchId the id of the second match
    * @return User
    */
   @ApiOperation(value = "Creates a chat in both given users, if both users liked each other. Otherwise, puts the liked user in its possible matches field.", tags = "match")

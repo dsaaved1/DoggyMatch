@@ -36,7 +36,7 @@ public class Chat {
 
   
   /** 
-   * @param id
+   * @param id the id to be set
    */
   public void setId(int id) {
     this.id = id;
@@ -74,7 +74,7 @@ public class Chat {
 
   
   /** 
-   * @param userMail
+   * @param userMail the mail of the user
    */
   public void setUserMail(String userMail) {
     this.userMail = userMail;
