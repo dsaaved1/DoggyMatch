@@ -38,7 +38,7 @@ public class UserController {
 
   
   /**
-   * Updates a user
+   * Updates a user with the given user object
    * @param user the user that will be updated
    * @param id the id of the user that will be updated
    * @return User the user that will be updated
@@ -50,7 +50,7 @@ public class UserController {
 
   
   /**
-   * Deletes a user
+   * Deletes a user with the provided id
    * @param id the id of the user to be deleted
    * @return String
    */
@@ -61,7 +61,7 @@ public class UserController {
 
   
   /**
-   * Gets a user by id
+   * Gets a user by the provided id
    * @param id the id of the user to get
    * @return User
    */
@@ -72,7 +72,7 @@ public class UserController {
 
   
   /**
-   * Gets a user by email
+   * Gets a user by the provided email
    * @param email the email of the user to get
    * @return User
    */
@@ -96,7 +96,7 @@ public class UserController {
 
   
   /**
-   * Signs in a user
+   * Checks if the user exists and signs them in
    * @param possibleUser the user that will be signed in
    * @return String
    */
@@ -115,7 +115,7 @@ public class UserController {
   }
 
   
-  /** Registers a user
+  /** Registers a user and adds them to the database
    * @param user the user that will be registered
    * @param id the id of the user to register
    * @return User
