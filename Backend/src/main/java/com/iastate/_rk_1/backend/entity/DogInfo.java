@@ -50,66 +50,130 @@ public class DogInfo {
     this.photosDog = photosDog;
   }
 
+  /**
+   *
+   * @return
+   */
   public int getId() {
     return id;
   }
 
+  /**
+   *
+   * @param id
+   */
   public void setId(int id) {
     this.id = id;
   }
 
+  /**
+   *
+   * @return
+   */
   public String getFirstNameDog() {
     return firstNameDog;
   }
 
+  /**
+   *
+   * @param firstNameDog
+   */
   public void setFirstNameDog(String firstNameDog) {
     this.firstNameDog = firstNameDog;
   }
 
+  /**
+   *
+   * @return
+   */
   public String getBreed() {
     return breed;
   }
 
+  /**
+   *
+   * @param breed
+   */
   public void setBreed(String breed) {
     this.breed = breed;
   }
 
+  /**
+   *
+   * @return
+   */
   public int getAgeDog() {
     return ageDog;
   }
 
+  /**
+   *
+   * @param ageDog
+   */
   public void setAgeDog(int ageDog) {
     this.ageDog = ageDog;
   }
 
+  /**
+   *
+   * @return
+   */
   public String getGenderDog() {
     return genderDog;
   }
 
+  /**
+   *
+   * @param genderDog
+   */
   public void setGenderDog(String genderDog) {
     this.genderDog = genderDog;
   }
 
+  /**
+   *
+   * @return
+   */
   public String getEnergyDog() {
     return energyDog;
   }
 
+  /**
+   *
+   * @param energyDog
+   */
   public void setEnergyDog(String energyDog) {
     this.energyDog = energyDog;
   }
 
+  /**
+   *
+   * @return
+   */
   public String getDescriptionDog() {
     return descriptionDog;
   }
 
+  /**
+   *
+   * @param descriptionDog
+   */
   public void setDescriptionDog(String descriptionDog) {
     this.descriptionDog = descriptionDog;
   }
 
+  /**
+   *
+   * @return
+   */
   public String getPhotosDog() {
     return photosDog;
   }
 
+  /**
+   *
+   * @param photosDog
+   */
   public void setPhotosDog(String photosDog) {
     this.photosDog = photosDog;
   }

@@ -44,50 +44,98 @@ public class Moderator {
     this.privacySettings = privacySettings;
   }
 
+  /**
+   *
+   * @return
+   */
   public int getId() {
     return id;
   }
 
+  /**
+   *
+   * @param id
+   */
   public void setId(int id) {
     this.id = id;
   }
 
+  /**
+   *
+   * @return
+   */
   public String getEmail() {
     return email;
   }
 
+  /**
+   *
+   * @param email
+   */
   public void setEmail(String email) {
     this.email = email;
   }
 
+  /**
+   *
+   * @return
+   */
   public String getHashedPassword() {
     return hashedPassword;
   }
 
+  /**
+   *
+   * @param hashedPassword
+   */
   public void setHashedPassword(String hashedPassword) {
     this.hashedPassword = hashedPassword;
   }
 
+  /**
+   *
+   * @return
+   */
   public String getCodeModerator() {
     return codeModerator;
   }
 
+  /**
+   *
+   * @param codeModerator
+   */
   public void setCodeModerator(String codeModerator) {
     this.codeModerator = codeModerator;
   }
 
+  /**
+   *
+   * @return
+   */
   public Date getLastLoginTime() {
     return lastLoginTime;
   }
 
+  /**
+   *
+   * @param lastLoginTime
+   */
   public void setLastLoginTime(Date lastLoginTime) {
     this.lastLoginTime = lastLoginTime;
   }
 
+  /**
+   *
+   * @return
+   */
   public String getPrivacySettings() {
     return privacySettings;
   }
 
+  /**
+   *
+   * @param privacySettings
+   */
   public void setPrivacySettings(String privacySettings) {
     this.privacySettings = privacySettings;
   }

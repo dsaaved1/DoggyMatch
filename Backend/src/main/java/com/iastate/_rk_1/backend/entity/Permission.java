@@ -44,50 +44,98 @@ public class Permission {
     this.dateRevoked = dateRevoked;
   }
 
+  /**
+   *
+   * @return
+   */
   public int getPermissionId() {
     return permissionId;
   }
 
+  /**
+   *
+   * @param permissionId
+   */
   public void setPermissionId(int permissionId) {
     this.permissionId = permissionId;
   }
 
+  /**
+   *
+   * @return
+   */
   public int getUserId() {
     return userId;
   }
 
+  /**
+   *
+   * @param userId
+   */
   public void setUserId(int userId) {
     this.userId = userId;
   }
 
+  /**
+   *
+   * @return
+   */
   public String getCode() {
     return code;
   }
 
+  /**
+   *
+   * @param code
+   */
   public void setCode(String code) {
     this.code = code;
   }
 
+  /**
+   *
+   * @return
+   */
   public String getType() {
     return type;
   }
 
+  /**
+   *
+   * @param type
+   */
   public void setType(String type) {
     this.type = type;
   }
 
+  /**
+   *
+   * @return
+   */
   public Date getDateGranted() {
     return dateGranted;
   }
 
+  /**
+   *
+   * @param dateGranted
+   */
   public void setDateGranted(Date dateGranted) {
     this.dateGranted = dateGranted;
   }
 
+  /**
+   *
+   * @return
+   */
   public Date getDateRevoked() {
     return dateRevoked;
   }
 
+  /**
+   *
+   * @param dateRevoked
+   */
   public void setDateRevoked(Date dateRevoked) {
     this.dateRevoked = dateRevoked;
   }

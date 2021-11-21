@@ -28,7 +28,7 @@ public class Chat {
 
   
   /** 
-   * @return int
+   * @return int id
    */
   public int getId() {
     return id;
@@ -42,32 +42,11 @@ public class Chat {
     this.id = id;
   }
 
+
   /**
-  public Date getDate() {
-    return date;
-  }
-
-  public void setDate(Date date) {
-    this.date = date;
-  }
-
-  public Set<User> getUsers() {
-    return users;
-  }
-
-  public void setUsers(Set<User> users) {
-    this.users = users;
-  }
-
-  public User getUser() {
-    return user;
-  }
-
-  public void setUser(User user) {
-    this.user = user;
-  }
+   *
+   * @return userMail
    */
-
   public String getUserMail() {
     return userMail;
   }

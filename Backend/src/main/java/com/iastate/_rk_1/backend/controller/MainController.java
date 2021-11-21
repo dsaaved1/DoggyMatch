@@ -8,7 +8,7 @@ public class MainController {
   
   /**
    * Returns "server running" if the server is running
-   * @return String
+   * @return String that tells us that server is running
    */
   @GetMapping("/")
   public String index() {

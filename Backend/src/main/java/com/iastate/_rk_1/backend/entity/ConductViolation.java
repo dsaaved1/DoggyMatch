@@ -34,34 +34,66 @@ public class ConductViolation {
     this.notes = notes;
   }
 
+  /**
+   *
+   * @return
+   */
   public int getId() {
     return id;
   }
 
+  /**
+   *
+   * @param id
+   */
   public void setId(int id) {
     this.id = id;
   }
 
+  /**
+   *
+   * @return
+   */
   public String getDate() {
     return date;
   }
 
+  /**
+   *
+   * @param date
+   */
   public void setDate(String date) {
     this.date = date;
   }
 
+  /**
+   *
+   * @return
+   */
   public String getUser() {
     return user;
   }
 
+  /**
+   *
+   * @param user
+   */
   public void setUser(String user) {
     this.user = user;
   }
 
+  /**
+   *
+   * @return
+   */
   public String getNotes() {
     return notes;
   }
 
+  /**
+   *
+   * @param notes
+   */
   public void setNotes(String notes) {
     this.notes = notes;
   }
