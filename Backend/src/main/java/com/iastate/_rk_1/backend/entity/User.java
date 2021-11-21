@@ -3,9 +3,7 @@ package com.iastate._rk_1.backend.entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.swagger.annotations.ApiModelProperty;
 
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 import javax.persistence.*;
 
@@ -65,16 +63,11 @@ public class User {
   @Column(name = "compatibility")
   private int compatibility;
 
-  @OneToMany(cascade = {CascadeType.ALL})
-  @JoinColumn(name = "possibleMatches")
-  private Set<User> possibleMatches;
+  @ElementCollection
+  @Column(name = "possibleMatches")
+  private Set<String> possibleMatches = new HashSet<>();
 
-  @ManyToMany(cascade = {CascadeType.ALL})
-  @JoinTable(
-          name = "chat_users",
-          joinColumns = @JoinColumn(name = "chat_id"),
-          inverseJoinColumns = @JoinColumn(name = "user_id")
-  )
+  @OneToMany(cascade = {CascadeType.ALL})
   private Set<Chat> chats = new HashSet<>();
 
   public User() {
@@ -349,7 +342,7 @@ public class User {
   /** 
    * @return Set<User>
    */
-  public Set<User> getPossibleMatches() {
+  public Set<String> getPossibleMatches() {
     return possibleMatches;
   }
 
@@ -365,7 +358,7 @@ public class User {
   /** 
    * @param possibleMatches
    */
-  public void setPossibleMatches(Set<User> possibleMatches) {
+  public void setPossibleMatches(Set<String> possibleMatches) {
     this.possibleMatches = possibleMatches;
   }
 

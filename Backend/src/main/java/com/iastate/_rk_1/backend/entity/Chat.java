@@ -17,14 +17,6 @@ public class Chat {
 
   private String userMail;
 
-  @Column(name = "date")
-  private Date date;
-
-
-  @JsonIgnore
-  @ManyToMany(mappedBy = "chats")
-  private Set<User> usersInChat = new HashSet<>();
-
   public Chat() {
   }
 
@@ -44,20 +36,10 @@ public class Chat {
     this.id = id;
   }
 
-
-  public Date getDate() {
-    return date;
-  }
-
-  public void setDate(Date date) {
-    this.date = date;
-  }
-
-
+ 
   public String getUserMail() {
     return userMail;
   }
-
   
   /** 
    * @param userMail
@@ -67,11 +49,4 @@ public class Chat {
   }
 
 
-  public Set<User> getUsersInChat() {
-    return usersInChat;
-  }
-
-  public void setUsersInChat(Set<User> usersInChat) {
-    this.usersInChat = usersInChat;
-  }
 }

@@ -170,32 +170,25 @@ public class UserService {
          User possibleMatchUser = getUserById(possibleMatchId);
 
          //checks if you are on the possibleMatches of the user you would like to match with
-         for (User user: possibleMatchUser.getPossibleMatches()){
+         for (String userMail: possibleMatchUser.getPossibleMatches()){
              //if you are, it creates a chat with you because both "liked" each other
-             if (user.getId() == userId){
+             if (userMail == currentUser.getEmail()){
                  Chat chatCurrentUser = new Chat();
                  Chat chatMatchUser = new Chat();
 
-                 //need to add user objects to be stored in each chat object without stackoverflow error
                  //for now only storing the email on each chat object of the person they got the match with
                  chatCurrentUser.setUserMail(possibleMatchUser.getEmail());
                  chatMatchUser.setUserMail(currentUser.getEmail());
-                 chatCurrentUser.getUsersInChat().add(possibleMatchUser);
-                 chatMatchUser.getUsersInChat().add(possibleMatchUser);
-
 
                  currentUser.getChats().add(chatCurrentUser);
                  possibleMatchUser.getChats().add(chatMatchUser);
-                 possibleMatchUser.getPossibleMatches().remove(currentUser);
+                 possibleMatchUser.getPossibleMatches().remove(currentUser.getEmail());
                  repository.save(possibleMatchUser);
                  return repository.save(currentUser);
              }
          }
-
-         //if user doesn't like you yet, it adds the possibleMatchUser to possibleMatches
-        //Problem: users can't be on different possibleMatchUsers. If they are in one user, and you
-        //add them to another user, they will be removed from the old user
-         currentUser.getPossibleMatches().add(possibleMatchUser);
+          //if user doesn't like you yet, it adds the possibleMatchUser to possibleMatches
+         currentUser.getPossibleMatches().add(possibleMatchUser.getEmail());
          return repository.save(currentUser);
   }
 
