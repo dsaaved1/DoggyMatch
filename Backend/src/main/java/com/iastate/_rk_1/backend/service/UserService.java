@@ -27,18 +27,37 @@ public class UserService {
     bCryptPasswordEncoder = null;
   }
 
+    /**
+     * Adds a new user to the database if user isn't already in database
+     * @param user the User object that will be added
+     * @return the User that has been added to the database
+     */
   public User saveUser(User user) {
     return repository.save(user);
   }
 
+    /**
+     * Shows a list of all the users in the repository.
+     * @return a list of User objects
+     */
   public List<User> getUsers() {
     return repository.findAll();
   }
 
+    /**
+     * Gets a user by the provided id
+     * @param id the id of the user to get
+     * @return the User object if the id provided matches with an existing User
+     */
   public User getUserById(int id) {
     return repository.findById(id);
   }
 
+    /**
+     * Gets a user by the provided email
+     * @param email the email of the user to get
+     * @return he User object if the email provided matches with an existing User
+     */
   public User getUsersByEmail(String email) {
     return repository.findByEmail(email);
   }
@@ -47,11 +66,22 @@ public class UserService {
     return repository.findByFirstName(name);
   }
 
+    /**
+     * Deletes a user with the provided id
+     * @param id the id of the user to be deleted
+     * @return a string "success" that tells us that the user has been deleted
+     */
   public String deleteUser(int id) {
     repository.deleteById(id);
     return "success";
   }
 
+    /**
+     * Updates a user with the given user object
+     * @param user the user that will be updated
+     * @param id the id of the user that will be updated
+     * @return User the user that will be updated with the information already updated
+     */
   //Diego
   public User updateUser(User user, int id) {
     User existingUser = repository.findById(id);
@@ -65,6 +95,12 @@ public class UserService {
     return repository.save(existingUser);
   }
 
+    /**
+     * Adds a User's dog information to the database provided by an id
+     * @param dogInfo the dogInfo object that will be added to the User
+     * @param id the id of the user to update its dogInfo
+     * @return the User object with its dogInfo stored
+     */
   //Diego
   public User updateUserDogInfo(DogInfo dogInfo, int id){
     User existingUser = repository.findById(id);
@@ -72,6 +108,12 @@ public class UserService {
     return repository.save(existingUser);
   }
 
+    /**
+     * Adds a user's preferences to the database provided by an id
+     * @param preferences the preferences that will be added to the User
+     * @param id the id of the user to update the preferences
+     * @return the User object with its preferences stored
+     */
   //Diego
   public User updateUserPreferences(Preferences preferences, int id){
     User existingUser = repository.findById(id);
@@ -79,6 +121,11 @@ public class UserService {
     return repository.save(existingUser);
   }
 
+    /**
+     * Adds a new user to the database if user isn't already in database
+     * @param user the User object that will be added
+     * @return the User that has been added to the database
+     */
   //Diego
   public User signUp(User user) {
 
@@ -98,6 +145,11 @@ public class UserService {
     return saveUser(user);
   }
 
+    /**
+     * Gets every user except the User from provided email
+     * @param email the email of the user to exclude
+     * @return all Users on the database except the User from provided email
+     */
   public List<User> findEverybody(String email) {
     List<User> users = repository.findAll();
 
@@ -107,10 +159,16 @@ public class UserService {
         iterator.remove();
       }
     }
-
     return users;
   }
 
+    /**
+     * Gets a list of possible matches of a given user, which are User objects, sorted by the user preferences.
+     * The first possible match being the "best one" for the user, and the last possible match on the list
+     * being the "worst one".
+     * @param email the email of the user we want to get its possible matches
+     * @return the possible matches (User objects) of the User provided by email
+     */
   //Diego
   public List<User> findMatches(String email) {
       List<User> allUsers = repository.findAll();
@@ -164,6 +222,12 @@ public class UserService {
   }
 
 
+    /**
+     * Creates a match between two users.
+     * @param userId the id of the user
+     * @param possibleMatchId the id of user who the first user wants to make a match with
+     * @return User
+     */
   //Diego
   public User match(int userId, int possibleMatchId) {
          User currentUser = getUserById(userId);

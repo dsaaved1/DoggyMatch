@@ -32,42 +32,82 @@ public class Message {
 
   }
 
+  /**
+   *
+   * @return
+   */
   public int getId() {
     return this.id;
   }
 
+  /**
+   *
+   * @param id
+   */
   public void setId(int id) {
     this.id = id;
   }
 
+  /**
+   *
+   * @return
+   */
   public Date getDate() {
     return this.date;
   }
 
+  /**
+   *
+   * @param date
+   */
   public void setDate(Date date) {
     this.date = date;
   }
 
+  /**
+   *
+   * @return
+   */
   public String getContent() {
     return this.content;
   }
 
+  /**
+   *
+   * @param content
+   */
   public void setContent(String content) {
     this.content = content;
   }
 
+  /**
+   *
+   * @return
+   */
   public User getTo() {
     return this.to;
   }
 
+  /**
+   *
+   * @param to
+   */
   public void setTo(User to) {
     this.to = to;
   }
 
+  /**
+   *
+   * @return
+   */
   public User getFrom() {
     return this.from;
   }
 
+  /**
+   *
+   * @param from
+   */
   public void setFrom(User from) {
     this.from = from;
   }

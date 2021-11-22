@@ -9,6 +9,11 @@ import springfox.documentation.spring.web.plugins.Docket;
 
 @Configuration
 public class SpringFoxConfig {
+
+    /**
+     * Method that sets up Swagger for the project.
+     * @return Docket object that creates a Swagger Doc
+     */
     @Bean
     public Docket api() {
         return new Docket(DocumentationType.SWAGGER_2)

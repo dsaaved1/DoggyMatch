@@ -10,7 +10,10 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class ApiClientFacotry {
     static Retrofit apiClientSeed = null;
 
-
+    /**
+     * gets url for the server and makes a connection
+     * @return the connection to the server
+     */
     static Retrofit GetApiClientSeed() {
         HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor();
         httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);

@@ -28,8 +28,9 @@ public class UserController {
   private UserService service;
 
   
-  /** 
-   * @return List<User>
+  /**
+   * Shows a list of all the users in the repository.
+   * @return a list of User objects
    */
   @GetMapping("/user")
   public List<User> index() {
@@ -37,10 +38,11 @@ public class UserController {
   }
 
   
-  /** 
-   * @param user
-   * @param id
-   * @return User
+  /**
+   * Updates a user with the given user object
+   * @param user the user that will be updated
+   * @param id the id of the user that will be updated
+   * @return User the user that will be updated with the information already updated
    */
   @PutMapping("/user")
   public User updateUser(@RequestBody User user, @PathVariable int id) {
@@ -48,9 +50,10 @@ public class UserController {
   }
 
   
-  /** 
-   * @param id
-   * @return String
+  /**
+   * Deletes a user with the provided id
+   * @param id the id of the user to be deleted
+   * @return a string "success" that tells us that the user has been deleted
    */
   @DeleteMapping("/user/{id}")
   public String deleteUser(@PathVariable int id) {
@@ -58,9 +61,10 @@ public class UserController {
   }
 
   
-  /** 
-   * @param id
-   * @return User
+  /**
+   * Gets a user by the provided id
+   * @param id the id of the user to get
+   * @return the User object if the id provided matches with an existing User
    */
   @GetMapping("/user/{id}")
   public User getByID(@PathVariable int id) {
@@ -68,9 +72,10 @@ public class UserController {
   }
 
   
-  /** 
-   * @param email
-   * @return User
+  /**
+   * Gets a user by the provided email
+   * @param email the email of the user to get
+   * @return he User object if the email provided matches with an existing User
    */
   @GetMapping("/user/email/{email}")
   public User userByEmail(@PathVariable String email) {
@@ -79,9 +84,10 @@ public class UserController {
 
 
   
-  /** 
-   * @param user
-   * @return User
+  /**
+   * Adds a new user to the database if user isn't already in database
+   * @param user the User object that will be added
+   * @return the User that has been added to the database
    */
   @ApiOperation(value = "Add user to the database.", tags = "addUser")
   @PostMapping("/user")
@@ -90,9 +96,11 @@ public class UserController {
   }
 
   
-  /** 
-   * @param possibleUser
-   * @return String
+  /**
+   * Checks if the user exists and signs them in
+   * @param possibleUser the user that will be signed in
+   * @return a String "Success: Enters home page" if the possibleUser exists in the database.
+   * A String "Email not found" if email not found.
    */
   @ApiOperation(value = "Take user to home page if user is in database.", tags = "signIn")
   @PostMapping("/user/sign-in")
@@ -109,10 +117,10 @@ public class UserController {
   }
 
   
-  /** 
-   * @param user
-   * @param id
-   * @return User
+  /** Updates a User's info provided by an id
+   * @param user the user that will be updated
+   * @param id the id of the user to update his or her information
+   * @return the User object with its new information updated
    */
   @ApiOperation(value = "Complete user's information in the System.", tags = "ownersInfo")
   @PutMapping("/user/register/{id}")
@@ -121,10 +129,11 @@ public class UserController {
   }
 
   
-  /** 
-   * @param dogInfo
-   * @param id
-   * @return User
+  /**
+   * Adds a User's dog information to the database provided by an id
+   * @param dogInfo the dogInfo object that will be added to the User
+   * @param id the id of the user to update its dogInfo
+   * @return the User object with its dogInfo stored
    */
   @ApiOperation(value = "Post users' dog information in the System.", tags = "dogInfo")
   @PostMapping("/user/register/dog-info/{id}")
@@ -133,10 +142,11 @@ public class UserController {
   }
 
   
-  /** 
-   * @param preferences
-   * @param id
-   * @return User
+  /**
+   * Adds a user's preferences to the database provided by an id
+   * @param preferences the preferences that will be added to the User
+   * @param id the id of the user to update the preferences
+   * @return the User object with its preferences stored
    */
   @ApiOperation(value = "Post users' preferences in the System.", tags = "preferences")
   @PostMapping("/user/register/preferences/{id}")
@@ -145,9 +155,12 @@ public class UserController {
   }
 
   
-  /** 
-   * @param email
-   * @return List<User>
+  /**
+   * Gets a list of possible matches of a given user, which are User objects, sorted by the user preferences.
+   * The first possible match being the "best one" for the user, and the last possible match on the list
+   * being the "worst one".
+   * @param email the email of the user we want to get its possible matches
+   * @return the possible matches (User objects) of the User provided by email
    */
   @ApiOperation(value = "Get list of users (possible matches) sorted by the given user preferences.", tags = "findMatches")
   @GetMapping("/user/home/{email}")
@@ -156,9 +169,10 @@ public class UserController {
   }
 
   
-  /** 
-   * @param email
-   * @return List<User>
+  /**
+   * Gets every user except the User from provided email
+   * @param email the email of the user to exclude
+   * @return all Users on the database except the User from provided email
    */
   @ApiOperation(value = "Get list of users (possible matches) without any sorting.", tags = "getEverybody")
   @GetMapping("/user/everybody/{email}")
@@ -167,9 +181,10 @@ public class UserController {
   }
 
   
-  /** 
-   * @param userId
-   * @param possibleMatchId
+  /**
+   * Creates a match between two users.
+   * @param userId the id of the user
+   * @param possibleMatchId the id of user who the first user wants to make a match with
    * @return User
    */
   @ApiOperation(value = "Creates a chat in both given users, if both users liked each other. Otherwise, puts the liked user in its possible matches field.", tags = "match")

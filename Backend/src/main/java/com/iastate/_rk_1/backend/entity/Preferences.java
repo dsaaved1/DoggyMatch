@@ -43,59 +43,114 @@ public class Preferences {
     this.atHome = atHome;
   }
 
+  /**
+   *
+   * @return
+   */
   public int getId() {
     return id;
   }
 
+  /**
+   *
+   * @param id
+   */
   public void setId(int id) {
     this.id = id;
   }
 
+  /**
+   *
+   * @return breed of the dog
+   */
   public String getBreed() {
     return breed;
   }
 
+  /**
+   * Updates the breed of the dog
+   * @param breed
+   */
   public void setBreed(String breed) {
     this.breed = breed;
   }
 
+  /**
+   *
+   * @return age of User's dog
+   */
   public int getAgeDog() {
     return ageDog;
   }
 
+  /**
+   * Updates the age of the dog
+   * @param ageDog
+   */
   public void setAgeDog(int ageDog) {
     this.ageDog = ageDog;
   }
 
+  /**
+   *
+   * @return
+   */
   public String getGenderDog() {
     return genderDog;
   }
 
+  /**
+   *
+   * @param genderDog
+   */
   public void setGenderDog(String genderDog) {
     this.genderDog = genderDog;
   }
 
+  /**
+   *
+   * @return
+   */
   public String getEnergyDog() {
     return energyDog;
   }
 
+  /**
+   *
+   * @param energyDog
+   */
   public void setEnergy(String energyDog) {
     this.energyDog = energyDog;
   }
 
-
+  /**
+   *
+   * @return
+   */
   public boolean isDogPark() {
     return dogPark;
   }
 
+  /**
+   *
+   * @param dogPark
+   */
   public void setDogPark(boolean dogPark) {
     this.dogPark = dogPark;
   }
 
+  /**
+   *
+   * @return
+   */
   public boolean isAtHome() {
     return atHome;
   }
 
+  /**
+   *
+   * @param atHome
+   */
   public void setAtHome(boolean atHome) {
     this.atHome = atHome;
   }

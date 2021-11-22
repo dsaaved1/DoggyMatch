@@ -122,7 +122,8 @@ public class User {
   }
 
   
-  /** 
+  /**
+   * Changes the password ffffffwith the generated encrypted password
    * @param encryptedPassword
    */
   public void setEncryptedPassword(String encryptedPassword){
@@ -329,12 +330,16 @@ public class User {
     return compatibility;
   }
 
+  /**
+   *
+   */
   public void clearCompatibility() {
     compatibility = 0;
   }
 
-  
+
   /**
+   * Increases compatibility field.
    */
   public void addCompatibility(){compatibility++;}
 

@@ -6,8 +6,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class MainController {
   
-  /** 
-   * @return String
+  /**
+   * Returns "server running" if the server is running
+   * @return String that tells us that server is running
    */
   @GetMapping("/")
   public String index() {
