@@ -1,6 +1,9 @@
 package com.iastate._rk_1.backend.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -13,15 +16,6 @@ public class Chat {
   private int id;
 
   private String userMail;
-
-  //@Column(name = "date")
-  //private Date date;
-
-  //@OneToOne
-  //private User user;
-
-  //@OneToMany
-  //private Set<User> users = new HashSet<>();
 
   public Chat() {
   }
@@ -50,7 +44,6 @@ public class Chat {
   public String getUserMail() {
     return userMail;
   }
-
   
   /** 
    * @param userMail the mail of the user
@@ -58,5 +51,6 @@ public class Chat {
   public void setUserMail(String userMail) {
     this.userMail = userMail;
   }
+
 
 }
