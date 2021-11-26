@@ -1,12 +1,12 @@
 package com.iastate._rk_1.backend.controller;
 
-import com.iastate._rk_1.backend.entity.DogInfo;
-import com.iastate._rk_1.backend.entity.Preferences;
-import com.iastate._rk_1.backend.entity.User;
+import com.iastate._rk_1.backend.entity.*;
+import com.iastate._rk_1.backend.service.ModeratorService;
 import com.iastate._rk_1.backend.service.UserService;
 
 import java.util.List;
 
+import com.iastate._rk_1.backend.service.ViewerService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,32 +33,10 @@ public class UserController {
    * @return a list of User objects
    */
   @GetMapping("/user")
-  public List<User> index() {
+  public List<User> getUsers() {
     return service.getUsers();
   }
 
-  
-  /**
-   * Updates a user with the given user object
-   * @param user the user that will be updated
-   * @param id the id of the user that will be updated
-   * @return User the user that will be updated with the information already updated
-   */
-  @PutMapping("/user")
-  public User updateUser(@RequestBody User user, @PathVariable int id) {
-    return service.updateUser(user, id);
-  }
-
-  
-  /**
-   * Deletes a user with the provided id
-   * @param id the id of the user to be deleted
-   * @return a string "success" that tells us that the user has been deleted
-   */
-  @DeleteMapping("/user/{id}")
-  public String deleteUser(@PathVariable int id) {
-    return service.deleteUser(id);
-  }
 
   
   /**
@@ -95,14 +73,29 @@ public class UserController {
     return service.saveUser(user);
   }
 
-  
+
+
+  @PostMapping("/user/register/{userType}")
+  public String signUp(@RequestBody User user, @PathVariable String userType){
+    if (userType.equals("Moderator")){
+      return "goes to moderator sign-up page";
+    }
+    if (userType.equals("Viewer")){
+      return "goes to viewer sign-up page";
+    }
+
+    return "goes to user sign-up page";
+  }
+
+
   /**
    * Checks if the user exists and signs them in
    * @param possibleUser the user that will be signed in
    * @return a String "Success: Enters home page" if the possibleUser exists in the database.
    * A String "Email not found" if email not found.
    */
-  @ApiOperation(value = "Take user to home page if user is in database.", tags = "signIn")
+  @ApiOperation(value = "Take user to home page if user is in database. The requestBody should be given " +
+          "an email and a password", tags = "signIn")
   @PostMapping("/user/sign-in")
   public String signIn(@RequestBody User possibleUser){
     //verifies if there is given email in repository
@@ -111,6 +104,8 @@ public class UserController {
       //verifies if existing email matches with given password
       if (existingUser.getPassword().equals(possibleUser.getPassword())){
         return "Success: Enters home page";
+      } else {
+        return "Incorrect Password";
       }
     }
     return "Email not found";
@@ -192,5 +187,6 @@ public class UserController {
   public User match(@PathVariable(name = "id") int userId, @PathVariable(name = "id2") int possibleMatchId){
     return service.match(userId, possibleMatchId);
   }
+
 
 }

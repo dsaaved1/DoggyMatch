@@ -9,7 +9,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "user")
-public class User {
+public class User{
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "id")
@@ -123,7 +123,7 @@ public class User {
 
   
   /**
-   * Changes the password ffffffwith the generated encrypted password
+   * Changes the password with the generated encrypted password
    * @param encryptedPassword
    */
   public void setEncryptedPassword(String encryptedPassword){

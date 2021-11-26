@@ -136,8 +136,8 @@ public class UserService {
       throw new IllegalStateException("email already taken");
     }
 
-    //encrypting the user's password using bcrypt, which uses the method "salting"
 
+    //encrypting the user's password using bcrypt, which uses the method "salting"
     String encodedPassword = bCryptPasswordEncoder.encode(user.getPassword());
 
     user.setEncryptedPassword(encodedPassword);
