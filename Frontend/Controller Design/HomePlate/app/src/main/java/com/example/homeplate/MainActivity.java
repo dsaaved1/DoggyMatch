@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -25,9 +26,11 @@ public class MainActivity extends AppCompatActivity {
     //Handle Interaction
     private void interact()
     {
+        /*
         Intent intent = new Intent(MainActivity.this, Login.class);
         startActivity(intent);
         finish();
 
+         */
     }
 }
