@@ -16,15 +16,36 @@ import android.widget.TextView;
  */
 public class MainActivity extends AppCompatActivity {
 
+    // Local Variables
+    private Button signInButton;
+    private Button signUpButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        setValues();
         onLaunch(savedInstanceState);
+        interact();
     }
 
-    //Handle Interaction
+    /**
+     * Initialize Values
+     */
+    private void setValues()
+    {
+        // Buttons
+        signInButton = findViewById(R.id.signInButton);
+        signUpButton = findViewById(R.id.signUpButton);
+    }
+
+    /**
+     * Call with App State to check if the User is Logged in
+     * If they are not signed in, it will present buttons for options
+     * to either Register or Sign In.
+     * @param savedInstanceState
+     */
     private void onLaunch(Bundle savedInstanceState)
     {
         //TODO
@@ -46,13 +67,34 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
             finish();
         }
-
-
          */
 
-        // Currently Assuming the User is not signed in to this device.
-        Intent intent = new Intent(MainActivity.this, Login.class);
-        startActivity(intent);
-        finish();
+        // Assume the User is not Signed in.
+        // If the User is not Signed in, do nothing.
+    }
+
+    /**
+     * Wait for Interaction
+     * then Handle interaction
+     */
+    private void interact()
+    {
+        // Buttons
+        // Sign In -> Login
+        signInButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, Login.class));
+                finish();
+            }
+        });
+        // Sign Up -> Register
+        signUpButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, Register.class));
+                finish();
+            }
+        });
     }
 }
