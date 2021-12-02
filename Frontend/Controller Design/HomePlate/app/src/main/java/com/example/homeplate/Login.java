@@ -18,12 +18,12 @@ import android.widget.TextView;
 public class Login extends AppCompatActivity {
 
     // Local Fields
-    private Button continueButton;
-    private TextView registerButton;
-    private TextView pageTitle;
-    private TextView usernameBox;
-    private TextView passwordBox;
-    private TextView statusBox;
+    private Button continueButton;      // Continue Button
+    private TextView registerButton;    // Register Button (Textbox)
+    private TextView pageTitle;         // "Sign In" Title
+    private TextView usernameBox;       // Textbox for Username
+    private TextView passwordBox;       // Textbox for Password
+    private TextView statusBox;         // Textbox for Login Status
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

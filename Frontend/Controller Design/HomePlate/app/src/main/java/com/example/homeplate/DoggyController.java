@@ -17,14 +17,17 @@ import com.example.homeplate.model.staticUser;
 
 import java.util.List;
 
-/** Unused for now
- * @author Corbin
+/**
+ * Controller for Common Internal Functions
+ * used throughout the interface.
+ * @author Corbin Graham
  */
 public class DoggyController extends AppCompatActivity implements DoggyInterface.DoggyController {
 
     /**
-     * Attempt to login and return results
-     * as MessageReturn type.
+     * Create a login request
+     * and return results as
+     * MessageReturn type.
      * @param username Username (Email)
      * @param password Password
      * @return Return Message (String Error Message, ENUM Status)
