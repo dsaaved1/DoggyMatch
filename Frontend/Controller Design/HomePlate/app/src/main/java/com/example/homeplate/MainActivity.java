@@ -16,7 +16,7 @@ import android.widget.TextView;
  */
 public class MainActivity extends AppCompatActivity {
 
-    // Local Variables
+    // Local Fields
     private Button signInButton;
     private Button signUpButton;
 
@@ -31,7 +31,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * Initialize Values
+     * Initialize Fields
+     * and Values
      */
     private void setValues()
     {

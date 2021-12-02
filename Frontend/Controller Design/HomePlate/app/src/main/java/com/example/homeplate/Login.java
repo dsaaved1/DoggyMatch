@@ -18,17 +18,24 @@ import com.example.homeplate.model.User;
 
 import java.util.List;
 
-/** Activity for logging into applications
- * @author Corbin
+/** Login Page
+ * Retrieves User Email and Password
+ * and sends it for check before moving
+ * to next page.
+ * @author Corbin Graham
  */
 public class Login extends AppCompatActivity {
 
+    // Local Fields
     private Button continueButton;
     private TextView registerButton;
     private TextView pageTitle;
     private TextView usernameBox;
     private TextView passwordBox;
     private TextView failed;
+
+    // Local Variables
+
 private String email;
 private String password;
     private boolean fail= false;
@@ -44,25 +51,32 @@ private String password;
         interact();
     }
 
-    //Set Interaction Values
+    /**
+     * Initialize Fields
+     * and Values
+     */
     private void setValues()
     {
-        //Buttons
+        // Buttons
         continueButton = findViewById(R.id.continueButton);
         registerButton = findViewById(R.id.registerTextButton);
+
         //TextView
         pageTitle = findViewById(R.id.pageTitleLogin);
 
         //TextBox
-        usernameBox = findViewById(R.id.email);
+        usernameBox = findViewById(R.id.usernameBox);
         passwordBox = findViewById(R.id.passwordBox);
         failed = findViewById(R.id.failed);
     }
 
-    //Handle Interaction
+    /**
+     * Wait for Interaction
+     * then Handle interaction
+     */
     private void interact()
     {
-
+        // Continue Button
         continueButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -74,27 +88,33 @@ private String password;
                 {
                     failed.setText("email/password is empty");
                 }
-                else{ login();
+                else{ attemptLogin();
                 }
             }
         });
 
+        // Register Button
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 startActivity(new Intent(Login.this,Register.class));
-
-                /*GetUserApi().getAllUser().enqueue(new SlimCallback<List<User>>(user->{ staticUser.setlist(user); }));
-                new Handler().postDelayed(new Runnable() {
-                    @Override public void run() { failed.setText(staticUser.allusers.get(0).getFirstName()); }},700);*/
+                finish();
             }});
     }
 
     /**
-     * trys to login user if successful will login user in if not will give error message
+     * === Move outside of body ===
+     * Tries to login user if successful
+     * will login user in if not will
+     * give error message
+     * ============================
      */
-    public void login(){
+    public void attemptLogin(){
+
+        /*GetUserApi().getAllUser().enqueue(new SlimCallback<List<User>>(user->{ staticUser.setlist(user); }));
+                new Handler().postDelayed(new Runnable() {
+                    @Override public void run() { failed.setText(staticUser.allusers.get(0).getFirstName()); }},700);*/
+
        User puser = new User();
 
         puser.setEmail(usernameBox.getText().toString());

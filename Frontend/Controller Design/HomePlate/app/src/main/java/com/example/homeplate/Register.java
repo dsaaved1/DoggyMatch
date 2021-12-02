@@ -31,7 +31,7 @@ public class Register extends AppCompatActivity {
     }
     private void setValues(){
         regs = findViewById(R.id.button);
-        email = findViewById(R.id.email);
+        email = findViewById(R.id.usernameBox);
         password = findViewById(R.id.password);
 
     }
