@@ -6,6 +6,7 @@ import com.example.homeplate.DoggyInterface;
  * for storing Return values with
  * an ENUM Type and
  * a String Message (Error or Success Message)
+ * @author Corbin Graham
  */
 public class MessageReturn {
 
