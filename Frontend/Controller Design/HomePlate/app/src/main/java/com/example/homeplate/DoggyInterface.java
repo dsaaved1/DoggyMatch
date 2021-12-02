@@ -9,6 +9,13 @@ import androidx.appcompat.app.AppCompatActivity;
  * @author Corbin
  */
 public interface DoggyInterface {
+
+    public enum Status
+    {
+        SUCCESS,
+        FAILURE
+    }
+
     /**
      * Controller for Internal Functions
      */

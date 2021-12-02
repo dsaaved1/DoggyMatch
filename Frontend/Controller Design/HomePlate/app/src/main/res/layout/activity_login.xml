@@ -135,12 +135,12 @@
         app:layout_constraintTop_toTopOf="@+id/avbg" />
 
     <TextView
-        android:id="@+id/failed"
+        android:id="@+id/statusBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
         android:layout_marginTop="5dp"
-        android:text="Status"
+        android:text="Login"
         android:textColor="#000000"
         app:layout_constraintStart_toStartOf="@+id/ActivityView"
         app:layout_constraintTop_toBottomOf="@+id/passwordBox" />
