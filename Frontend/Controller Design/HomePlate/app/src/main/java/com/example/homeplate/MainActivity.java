@@ -85,7 +85,9 @@ public class MainActivity extends AppCompatActivity {
         signInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, Login.class));
+                // TODO
+                // Undo Changes (Home -> Login)
+                startActivity(new Intent(MainActivity.this, Home.class));
                 finish();
             }
         });

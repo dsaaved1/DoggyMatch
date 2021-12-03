@@ -14,7 +14,6 @@
         android:layout_marginTop="-20dp"
         android:background="#FFB783"
         android:scaleType="centerCrop"
-        app:layout_constraintBottom_toTopOf="@+id/avbg"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/doggymatchalphatitle" />
 

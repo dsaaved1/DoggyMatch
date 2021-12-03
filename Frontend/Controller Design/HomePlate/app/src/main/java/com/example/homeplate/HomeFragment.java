@@ -1,12 +1,6 @@
 package com.example.homeplate;
 
-import static android.content.Intent.getIntent;
-import static android.content.Intent.getIntentOld;
-import static com.example.homeplate.api.ApiClientFacotry.GetUserApi;
-
-import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,15 +8,9 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
-import com.example.homeplate.api.ApiClientFacotry;
-import com.example.homeplate.api.SlimCallback;
-import com.example.homeplate.model.User;
 import com.example.homeplate.model.staticUser;
-
-import java.util.List;
 
 /**
  * Matching Activity
@@ -61,7 +49,7 @@ public class HomeFragment extends Fragment{
         // Fields
         // Text
         nameText = view.findViewById(R.id.name);
-        descriptionText = view.findViewById(R.id.description);
+        descriptionText = view.findViewById(R.id.recentMessage);
 
         // Buttons
         yesButton = view.findViewById(R.id.yesButton);

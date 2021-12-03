@@ -46,7 +46,6 @@ public interface DoggyInterface {
      * Controller for Common Internal Functions
      * used throughout the interface.
      * @todo Currently all functions are Static.
-     * @todo Offload Functions to Interface.
      * @author Corbin Graham
      */
     interface DoggyController

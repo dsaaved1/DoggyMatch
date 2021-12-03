@@ -31,7 +31,7 @@
         android:textSize="34sp" />
 
     <TextView
-        android:id="@+id/description"
+        android:id="@+id/recentMessage"
         android:layout_width="363dp"
         android:layout_height="100dp"
         android:layout_below="@+id/name"
