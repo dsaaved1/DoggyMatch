@@ -63,7 +63,7 @@ public class Login extends AppCompatActivity {
         continueButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                MessageReturn message = DoggyController.login(usernameBox.getText().toString(), passwordBox.getText().toString());
+                MessageReturn message = DoggyInterface.DoggyController.login(usernameBox.getText().toString(), passwordBox.getText().toString());
                 if(message.getStatus() != DoggyInterface.Status.SUCCESS)
                 {
                     statusBox.setText("Status: " + message.getMessage());

@@ -5,28 +5,27 @@
     android:layout_height="match_parent"
     android:background="#FFFFFF">
 
-    <TextView
-        android:id="@+id/pageTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="68dp"
-        android:layout_marginBottom="644dp"
-        android:text="Chat"
-        android:textColor="#000000"
+    <ImageView
+        android:id="@+id/customTitle3"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="-20dp"
+        android:background="#FFB783"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toTopOf="@+id/avbg"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:srcCompat="@drawable/doggymatchalphatitle" />
 
     <ListView
         android:id="@+id/chatList"
-        android:layout_width="match_parent"
-        android:layout_height="433dp"
-        android:layout_alignParentStart="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/customTitle3"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="175dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginBottom="70dp"
         android:divider="#f0000000"
         android:dividerHeight="1dp"
         android:listSelector="#FFB783"

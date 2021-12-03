@@ -40,14 +40,12 @@ public class HomeFragment extends Fragment{
     private ImageView profilePicture;
 
     // Local Variables
-    String email;
     int i = 0;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
-       email = StaticUserEmail.getEmail();
         setValues(view);
         interact();
         return view;
@@ -68,7 +66,14 @@ public class HomeFragment extends Fragment{
         profilePicture = view.findViewById(R.id.profilePicture);
 
         // Variables
-        // Name and Description
+        staticUser.setIndex();
+
+        // Set Initial Values
+        nameText.setText(DoggyInterface.DoggyView.getName());
+        descriptionText.setText(DoggyInterface.DoggyView.getDescription());
+        profilePicture.setImageResource(DoggyInterface.DoggyView.getImage());
+
+        /* Unnecessary
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -83,6 +88,8 @@ public class HomeFragment extends Fragment{
                 }
             }
         },700);
+
+         */
     }
 
     private void interact()
@@ -93,30 +100,21 @@ public class HomeFragment extends Fragment{
                 //chat code
                 //staticUser.user.getChats().stream().findFirst().get().getUserMail();
 
-                if(i<staticUser.getUsers().size()) {
-                    GetUserApi().match(staticUser.getUser().getId(),staticUser.getUsers().get(i).getId()).enqueue(new SlimCallback<User>(user->{  }));
-                    i++;
-                descriptionText.setText(staticUser.getUsers().get(i).getLastName());
-                nameText.setText(staticUser.getUsers().get(i).getFirstName());
-            }
-                else {
-                nameText.setText("Out of matches");
-                descriptionText.setText("try again tomorrow!");
-            }
+                DoggyInterface.DoggyController.match();
+                nameText.setText(DoggyInterface.DoggyView.getName());
+                descriptionText.setText(DoggyInterface.DoggyView.getDescription());
+                profilePicture.setImageResource(DoggyInterface.DoggyView.getImage());
         }
         });
 
         noButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                i++;
-                if(i<staticUser.getUsers().size()) {
-                    descriptionText.setText(staticUser.getUsers().get(i).getLastName());
-                    nameText.setText(staticUser.getUsers().get(i).getFirstName());
-                }
-                else {
-                    nameText.setText("Out of matches");
-                    descriptionText.setText("try again tomorrow!");
+                if(staticUser.getIndex() < staticUser.getUsers().size()) {
+                    staticUser.incrementIndex();
+                    nameText.setText(DoggyInterface.DoggyView.getName());
+                    descriptionText.setText(DoggyInterface.DoggyView.getDescription());
+                    profilePicture.setImageResource(DoggyInterface.DoggyView.getImage());
                 }
             }
         });

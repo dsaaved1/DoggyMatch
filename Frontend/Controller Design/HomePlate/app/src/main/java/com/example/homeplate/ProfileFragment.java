@@ -33,7 +33,7 @@ public class ProfileFragment extends Fragment {
 
         //TextView
         nameText = view.findViewById(R.id.profileName);
-        nameText.setText(staticUser.user.getFirstName());
+        nameText.setText(staticUser.getUser().getFirstName());
 
         //Buttons
         signOutButton = view.findViewById(R.id.signOutButtonProfile);
