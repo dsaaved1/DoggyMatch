@@ -24,16 +24,22 @@ import com.example.homeplate.model.staticUser;
 
 import java.util.List;
 
-/** Matching activity also sets the layout for the home
- * @author Corbin
+/**
+ * Matching Activity
+ * View for Match Profiles
+ * in sequence.
+ * @author Corbin Graham
  */
 public class HomeFragment extends Fragment{
 
-    TextView nameText;
-    TextView descriptionText;
-    Button yesButton;
-    Button noButton;
-    ImageView profilePicture;
+    // Local Fields
+    private TextView nameText;
+    private TextView descriptionText;
+    private Button yesButton;
+    private Button noButton;
+    private ImageView profilePicture;
+
+    // Local Variables
     String email;
     int i = 0;
 
@@ -49,18 +55,27 @@ public class HomeFragment extends Fragment{
 
     private void setValues(View view)
     {
+        // Fields
+        // Text
         nameText = view.findViewById(R.id.name);
         descriptionText = view.findViewById(R.id.description);
 
+        // Buttons
+        yesButton = view.findViewById(R.id.yesButton);
+        noButton = view.findViewById(R.id.noButton);
 
-        //TextView
+        // Images
+        profilePicture = view.findViewById(R.id.profilePicture);
+
+        // Variables
+        // Name and Description
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
 
-                if(staticUser.allusers.size()>i) {
-                    nameText.setText(staticUser.allusers.get(i).getFirstName());
-                    descriptionText.setText(staticUser.allusers.get(i).getLastName());
+                if(staticUser.getUsers().size()>i) {
+                    nameText.setText(staticUser.getUsers().get(i).getFirstName());
+                    descriptionText.setText(staticUser.getUsers().get(i).getLastName());
                 }
                 else{
                     nameText.setText("No matches right now, come back tomorrow!");
@@ -68,24 +83,6 @@ public class HomeFragment extends Fragment{
                 }
             }
         },700);
-
-
-
-
-
-
-
-
-
-
-
-
-        //Buttons
-        yesButton = view.findViewById(R.id.yesButton);
-        noButton = view.findViewById(R.id.noButton);
-
-        //Image
-        profilePicture = view.findViewById(R.id.profilePicture);
     }
 
     private void interact()
@@ -96,11 +93,11 @@ public class HomeFragment extends Fragment{
                 //chat code
                 //staticUser.user.getChats().stream().findFirst().get().getUserMail();
 
-                if(i<staticUser.allusers.size()) {
-                    GetUserApi().match(staticUser.user.getId(),staticUser.allusers.get(i).getId()).enqueue(new SlimCallback<User>(user->{  }));
+                if(i<staticUser.getUsers().size()) {
+                    GetUserApi().match(staticUser.getUser().getId(),staticUser.getUsers().get(i).getId()).enqueue(new SlimCallback<User>(user->{  }));
                     i++;
-                descriptionText.setText(staticUser.allusers.get(i).getLastName());
-                nameText.setText(staticUser.allusers.get(i).getFirstName());
+                descriptionText.setText(staticUser.getUsers().get(i).getLastName());
+                nameText.setText(staticUser.getUsers().get(i).getFirstName());
             }
                 else {
                 nameText.setText("Out of matches");
@@ -113,9 +110,9 @@ public class HomeFragment extends Fragment{
             @Override
             public void onClick(View view) {
                 i++;
-                if(i<staticUser.allusers.size()) {
-                    descriptionText.setText(staticUser.allusers.get(i).getLastName());
-                    nameText.setText(staticUser.allusers.get(i).getFirstName());
+                if(i<staticUser.getUsers().size()) {
+                    descriptionText.setText(staticUser.getUsers().get(i).getLastName());
+                    nameText.setText(staticUser.getUsers().get(i).getFirstName());
                 }
                 else {
                     nameText.setText("Out of matches");

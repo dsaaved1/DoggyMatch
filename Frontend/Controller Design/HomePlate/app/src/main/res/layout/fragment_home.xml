@@ -31,7 +31,8 @@
         android:layout_alignParentBottom="true"
         android:layout_marginStart="20dp"
         android:layout_marginBottom="70dp"
-        android:background="#02FA0C"
+        android:background="@drawable/custombutton"
+        android:backgroundTint="#02FA0C"
         android:text="Yes"
         android:textColor="#000000"
         android:textSize="20sp" />
@@ -46,7 +47,8 @@
         android:layout_marginStart="219dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="70dp"
-        android:background="#F44336"
+        android:background="@drawable/custombutton"
+        android:backgroundTint="#F44336"
         android:text="No"
         android:textColor="#000000" />
 

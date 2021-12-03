@@ -24,6 +24,14 @@ public interface DoggyInterface {
     }
 
     /**
+     * Handle Static Instances of User
+     */
+    interface Doggy
+    {
+
+    }
+
+    /**
      * Controller for Common Internal Functions
      * used throughout the interface.
      * @todo Currently all functions are Static.
@@ -57,7 +65,8 @@ public interface DoggyInterface {
     }
 
     /**
-     * Offload Data Assertion and Collection from Individual Views
+     * Offload Data Assertion and
+     * Collection from Individual Views
      * @todo Currently Unused
      * @author Corbin Graham
      */
