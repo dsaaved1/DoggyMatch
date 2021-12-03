@@ -63,7 +63,8 @@
         android:backgroundTint="#02FA0C"
         android:text="Yes"
         android:textColor="#000000"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        android:textStyle="bold" />
 
     <Button
         android:id="@+id/noButton"

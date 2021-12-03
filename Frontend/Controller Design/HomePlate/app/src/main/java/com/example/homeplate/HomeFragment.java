@@ -51,6 +51,11 @@ public class HomeFragment extends Fragment{
         return view;
     }
 
+    /**
+     * Initialize Fields
+     * and Values
+     * @param view Current View (Fragment)
+     */
     private void setValues(View view)
     {
         // Fields
@@ -92,6 +97,10 @@ public class HomeFragment extends Fragment{
          */
     }
 
+    /**
+     * Wait for Interaction
+     * then Handle interaction
+     */
     private void interact()
     {
         yesButton.setOnClickListener(new View.OnClickListener() {
