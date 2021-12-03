@@ -27,6 +27,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="10dp"
         android:text="Name"
+        android:textAlignment="center"
         android:textColor="#000000"
         android:textSize="34sp" />
 
@@ -44,11 +45,13 @@
 
     <ImageView
         android:id="@+id/profilePicture"
-        android:layout_width="match_parent"
-        android:layout_height="368dp"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
         android:layout_below="@+id/customTitle2"
-        android:layout_marginTop="0dp"
-        android:background="#787878"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/custombutton"
+        android:backgroundTint="#2196F3"
         app:srcCompat="@drawable/icon_profile_24" />
 
     <Button
