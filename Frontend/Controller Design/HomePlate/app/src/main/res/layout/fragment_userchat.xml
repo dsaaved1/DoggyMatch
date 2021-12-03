@@ -4,48 +4,72 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#673AB7">
+    android:background="#FFFFFF">
+
+    <ImageView
+        android:id="@+id/nameBorder"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_below="@+id/doggyTitle"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="0dp"
+        android:background="#F1AC7B"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
-        android:id="@+id/pageTitle"
+        android:id="@+id/chatName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/nameBorder"
         android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="117dp"
-        android:layout_marginTop="264dp"
-        android:layout_marginBottom="448dp"
-        android:text="Chat with Name"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="10dp"
+        android:text="Name"
         android:textColor="#000000"
+        android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="412dp"
-        android:layout_height="76dp"
+        android:id="@+id/textBorder"
+        android:layout_width="411dp"
+        android:layout_height="127dp"
         android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="-3dp"
-        android:layout_marginTop="659dp"
-        android:layout_marginEnd="2dp"
         android:layout_marginBottom="-4dp"
+        android:alpha=".5"
         android:background="#FFFFFF" />
 
+    <ImageView
+        android:id="@+id/doggyTitle"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="-20dp"
+        android:layout_marginEnd="0dp"
+        android:background="#FFB783"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/doggymatchalphatitle" />
+
     <EditText
-        android:id="@+id/editTextTextPersonName"
-        android:layout_width="270dp"
-        android:layout_height="wrap_content"
+        android:id="@+id/inputMessage"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="16dp"
-        android:layout_marginBottom="17dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginBottom="70dp"
         android:background="@drawable/customtext"
         android:backgroundTint="#DFDFDF"
         android:ems="10"
@@ -56,14 +80,14 @@
 
     <Button
         android:id="@+id/sendButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="80dp"
+        android:layout_height="40dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="15dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="70dp"
         android:background="@drawable/custombutton"
-        android:backgroundTint="@color/black"
+        android:backgroundTint="#FFB783"
         android:text="Send" />
 
 </RelativeLayout>
