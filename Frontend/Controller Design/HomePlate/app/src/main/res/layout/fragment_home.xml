@@ -51,7 +51,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
         android:background="@drawable/custombutton"
-        android:backgroundTint="#2196F3"
+        android:backgroundTint="#FFB783"
         app:srcCompat="@drawable/icon_profile_24" />
 
     <Button
