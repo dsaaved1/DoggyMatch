@@ -7,12 +7,17 @@ import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
 
-/** Layout for the chat
+/**
+ * View for List of Chats
  * @author Corbin
  */
 public class ChatsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_chats, container, false);
+        View view = inflater.inflate(R.layout.fragment_chats, container, false);
+
+
+
+        return view;
     }
 }
