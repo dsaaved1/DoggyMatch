@@ -66,7 +66,7 @@ public class Register extends AppCompatActivity {
         pageTitle = findViewById(R.id.pageTitleRegister);
 
         // Buttons
-        continueButton = findViewById(R.id.continueButton);
+        continueButton = findViewById(R.id.continueButtonRegister);
 
         // Text Box
         box1 = findViewById(R.id.registerBox1);
@@ -99,6 +99,30 @@ public class Register extends AppCompatActivity {
      */
     private void interact()
     {
-        
+        continueButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+    }
+
+    private void displayPage(int page)
+    {
+        switch(page)
+        {
+            case 1:
+                pageTitle.setText("Create an Account");
+
+                break;
+            case 2:
+                break;
+            case 3:
+                break;
+            case 4:
+                break;
+            default:
+                break;
+        }
     }
 }
