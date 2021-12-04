@@ -45,6 +45,24 @@ public interface DoggyInterface {
     interface DoggyController
     {
         /**
+         * Checks if there is a User Signed in
+         * <br>
+         * This is a FUNCTION used for FUNCTIONS
+         * <br>
+         *     Returns:
+         *     <br>
+         *     - TRUE if Signed in
+         *     <br>
+         *     - FALSE if NOT Signed in
+         * @return IS_USER_SIGNED_IN
+         */
+        public static boolean isSignedIn()
+        {
+            if(staticUser.getUser() != null) return true;
+            return false;
+        }
+
+        /**
          * Create a login request
          * and return results as
          * MessageReturn type.
@@ -106,6 +124,11 @@ public interface DoggyInterface {
          */
         public static void match()
         {
+            // TODO
+            // This is the previously implemented function
+            /**
+             * @author Mark Gores
+             */
             if(staticUser.getIndex() < staticUser.getUsers().size()) {
                 GetUserApi().match(staticUser.getUser().getId(), staticUser.getUsers().get(staticUser.getIndex()).getId()).enqueue(new SlimCallback<User>(user -> {
                 }));

@@ -48,15 +48,16 @@ public class ChatsFragment extends Fragment {
      */
     private void setValues(View view)
     {
+        // Set Values
         // ListView
         chatList = view.findViewById(R.id.chatList);
-
-        // Initialize List Values
 
         // User Information for Matches
         HashMap<String, String> matchInformation = new HashMap<>();
 
-        /* UNCOMMENT WHEN ENABLED
+        // Initialize List Values
+
+        /* TODO UNCOMMENT WHEN ENABLED
         // for 0 -> Matches.size()
         // Put Name, MOST RECENT MESSAGE
         for(int i : staticUser.getUser().getMatches()) {
@@ -64,7 +65,7 @@ public class ChatsFragment extends Fragment {
         }
          */
 
-        // EXAMPLE - REMOVE ==============================================
+        // TODO EXAMPLE - REMOVE ========================================
         matchInformation.put("Diana", "Hey!");
         matchInformation.put("Tyga", "Rack City is lit!");
         matchInformation.put("Rich Homie Quan", "Everything goin great");

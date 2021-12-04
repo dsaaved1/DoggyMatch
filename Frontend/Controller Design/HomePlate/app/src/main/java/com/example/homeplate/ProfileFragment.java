@@ -84,6 +84,8 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 // Open Register but Since there is a USER OBJECT, it will UPDATE PREFERENCES instead of REGISTER
+                startActivity(new Intent(getActivity(),Register.class));
+                getActivity().finish();
             }
         });
     }

@@ -66,6 +66,8 @@ public class HomeFragment extends Fragment{
         descriptionText.setText(DoggyInterface.DoggyView.getDescription());
         profilePicture.setImageResource(DoggyInterface.DoggyView.getImage());
 
+        // TODO
+        //  Idk what you want to do this; Remove if not necessary
         /* Unnecessary
         new Handler().postDelayed(new Runnable() {
             @Override
