@@ -112,8 +112,7 @@ public interface DoggyInterface {
                 }
             }));
 
-            // TODO
-            // Change Success to Failure
+            // TODO Change SUCCESS to FAILURE
             if(returnMessage.getStatus() == null) return new MessageReturn("Unable to Connect.", DoggyInterface.Status.SUCCESS);
 
             return returnMessage;
@@ -124,7 +123,7 @@ public interface DoggyInterface {
          */
         public static void match()
         {
-            // TODO
+            // TODO Make changes if Necessary
             // This is the previously implemented function
             /**
              * @author Mark Gores
