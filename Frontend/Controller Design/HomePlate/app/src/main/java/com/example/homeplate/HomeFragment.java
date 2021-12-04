@@ -49,7 +49,7 @@ public class HomeFragment extends Fragment{
         // Fields
         // Text
         nameText = view.findViewById(R.id.name);
-        descriptionText = view.findViewById(R.id.recentMessage);
+        descriptionText = view.findViewById(R.id.description);
 
         // Buttons
         yesButton = view.findViewById(R.id.yesButton);

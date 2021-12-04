@@ -39,11 +39,13 @@
         android:id="@+id/textBorder"
         android:layout_width="411dp"
         android:layout_height="127dp"
+        android:layout_alignTop="@+id/inputMessage"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="-3dp"
+        android:layout_marginTop="-10dp"
         android:layout_marginBottom="-4dp"
         android:alpha=".5"
         android:background="#FFFFFF" />

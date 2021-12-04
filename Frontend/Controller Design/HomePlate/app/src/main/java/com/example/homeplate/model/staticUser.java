@@ -30,6 +30,9 @@ public class staticUser {
     // User Index
     private static int index;
 
+    // Chat Index
+    private static int chatIndex;
+
     /**
      * constructor that calls get all
      */
@@ -141,5 +144,22 @@ getall();
     public static void setEmail(String email)
     {
         staticUser.email = email;
+    }
+
+    /**
+     * Set Chat Index
+     */
+    public static void setChatIndex(int index)
+    {
+        staticUser.chatIndex = index;
+    }
+
+    /**
+     * Get Chat Index
+     * @return Chat Index
+     */
+    public static int getChatIndex()
+    {
+        return chatIndex;
     }
 }

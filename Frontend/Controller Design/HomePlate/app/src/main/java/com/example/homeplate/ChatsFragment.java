@@ -9,8 +9,6 @@ import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
 import com.example.homeplate.model.staticUser;
 
@@ -31,7 +29,7 @@ import java.util.Map;
 public class ChatsFragment extends Fragment {
 
     // Local Fields
-    ListView chatList;
+    private ListView chatList;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -80,7 +78,7 @@ public class ChatsFragment extends Fragment {
         List<HashMap<String, String>> listItems = new ArrayList<>();
         SimpleAdapter adapter = new SimpleAdapter(getActivity(), listItems, R.layout.list_item,
                 new String[]{"First Line", "Second Line"},
-                new int[]{R.id.name, R.id.recentMessage});
+                new int[]{R.id.name, R.id.description});
 
         Iterator it = matchInformation.entrySet().iterator();
         while (it.hasNext())
@@ -103,11 +101,7 @@ public class ChatsFragment extends Fragment {
         chatList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                /*
-                    Open UserChat with getMatches(i) -> send with intent
-                 */
-                System.out.println(i);
-
+                staticUser.setChatIndex(i);
                 getFragmentManager().beginTransaction()
                         .setReorderingAllowed(true)
                         .add(R.id.fragment_container_view, UserChatFragment.class, null)

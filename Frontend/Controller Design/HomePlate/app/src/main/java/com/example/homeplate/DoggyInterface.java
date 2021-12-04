@@ -16,7 +16,9 @@ import com.example.homeplate.model.staticUser;
 import java.util.List;
 
 /**
- * Interface for basic application functions
+ * Interface for
+ * All NON-LOCAL
+ * Application Functions
  * @author Corbin Graham
  */
 public interface DoggyInterface {
@@ -24,8 +26,10 @@ public interface DoggyInterface {
     /**
      * Status
      * Type: ENUM
-     * Status SUCCESS
-     * Status FAILURE
+     * <br>Status Values:<br>
+     * - Status SUCCESS
+     * <br>
+     * - Status FAILURE
      * @author Corbin Graham
      */
     public enum Status
@@ -35,17 +39,7 @@ public interface DoggyInterface {
     }
 
     /**
-     * Handle Static Instances of User
-     */
-    interface Doggy
-    {
-
-    }
-
-    /**
      * Controller for Common Internal Functions
-     * used throughout the interface.
-     * @todo Currently all functions are Static.
      * @author Corbin Graham
      */
     interface DoggyController
@@ -118,27 +112,16 @@ public interface DoggyInterface {
                 staticUser.incrementIndex();
             }
         }
-    }
 
-    /**
-     * Custom Button Actions
-     * @todo Currently Unused
-     * @author Corbin Graham
-     */
-    interface DoggyButton extends View.OnClickListener
-    {
-
-    }
-
-    /**
-     * Model for Consistent App View
-     * Allows for Views to be controlled simultaneously
-     * @todo Currently Unused
-     * @author Corbin Graham
-     */
-    interface DoggyModel
-    {
-
+        /**
+         * Send a message to match
+         */
+        public static void sendMessage(int chatIndex, String message)
+        {
+            // Send ^MESSAGE to User(chatIndex)
+            // Check if possible then send
+            // If not possible, maybe return?
+        }
     }
 
     /**
@@ -148,6 +131,37 @@ public interface DoggyInterface {
      */
     interface DoggyView
     {
+        /**
+         * Get User's Name
+         * @return Name
+         */
+        public static String getMyName() {
+            if(staticUser.getUser() != null)
+                return staticUser.getUser().getDog().getFirstNameDog();
+            else return "No Name Available";
+        }
+
+        /**
+         * Get User's Description
+         * @return Name
+         */
+        public static String getMyDescription() {
+            if(staticUser.getUser() != null)
+                return staticUser.getUser().getDog().getDescriptionDog();
+            else return "No Description Available";
+        }
+
+        /**
+         * Get User's Profile Image
+         * @todo Implement Image from User
+         * @return Image
+         */
+        public static int getMyImage() {
+            if(staticUser.getUser() != null)
+                return R.drawable.icon_match_24;    // TODO
+            else return R.drawable.icon_profile_24;
+        }
+
         /**
          * Get Next User's Dog Name
          * @return Name
@@ -170,12 +184,32 @@ public interface DoggyInterface {
 
         /**
          * Get Next User's Profile Image
+         * @todo Implement Image from UserS
          * @return Image
          */
         public static int getImage() {
             if(staticUser.getUser() != null && staticUser.getIndex() < staticUser.getUsers().size())
-                return R.drawable.icon_match_24;
+                return R.drawable.icon_match_24;    // TODO
             else return R.drawable.icon_profile_24;
+        }
+
+        /**
+         * Get Name of User for Chat
+         * @return Name
+         */
+        public static MessageReturn getChatName(int index) {
+            if(index < staticUser.getUsers().size() && staticUser.getUsers().get(index) != null)
+                return new MessageReturn(staticUser.getUsers().get(index).getFirstName(), Status.SUCCESS);
+            else return new MessageReturn("No Name Available", Status.FAILURE);
+        }
+
+        /**
+         * Get Chat Message
+         * @// TODO: 12/3/21 Implement Method
+         * @return Name
+         */
+        public static String getChat() {
+            return "";
         }
     }
 

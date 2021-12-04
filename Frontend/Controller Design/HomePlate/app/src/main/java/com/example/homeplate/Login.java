@@ -9,6 +9,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.homeplate.model.staticUser;
+
 /** Login Page
  * Retrieves User Email and Password
  * and sends it for check before moving

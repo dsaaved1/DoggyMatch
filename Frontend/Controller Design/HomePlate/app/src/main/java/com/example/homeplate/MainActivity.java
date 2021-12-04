@@ -9,6 +9,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.homeplate.model.staticUser;
+
 /**
  * Launch Page - Opens the Login or Goes to Home
  * if the User is signed in already.
@@ -25,8 +27,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        setValues();
         onLaunch(savedInstanceState);
+        // These are skipped if there is already a user signed in.
+        setValues();
         interact();
     }
 
