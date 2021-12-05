@@ -53,15 +53,32 @@ public class UserController {
   /**
    * Gets a user by the provided email
    * @param email the email of the user to get
-   * @return he User object if the email provided matches with an existing User
+   * @return the User object if the email provided matches with an existing User
    */
   @GetMapping("/user/email/{email}")
   public User userByEmail(@PathVariable String email) {
     return service.getUsersByEmail(email);
   }
 
+  /**
+   * Receives an string as input, and will redirect the user to the page
+   * of the userType they want to signUp with.
+   * @param userType
+   * @return message of intended work on the front end
+   */
+  @PostMapping("/register/{userType}")
+  public String userTypePage(@PathVariable String userType){
+    if (userType.equals("Moderator")){
+      return "goes to moderator sign-up page";
+    }
+    if (userType.equals("Viewer")){
+      return "goes to viewer sign-up page";
+    }
 
-  
+    return "goes to user sign-up page";
+  }
+
+
   /**
    * Adds a new user to the database if user isn't already in database
    * @param user the User object that will be added
@@ -71,20 +88,6 @@ public class UserController {
   @PostMapping("/user")
   public User addUser(@RequestBody User user) {
     return service.saveUser(user);
-  }
-
-
-
-  @PostMapping("/user/register/{userType}")
-  public String signUp(@RequestBody User user, @PathVariable String userType){
-    if (userType.equals("Moderator")){
-      return "goes to moderator sign-up page";
-    }
-    if (userType.equals("Viewer")){
-      return "goes to viewer sign-up page";
-    }
-
-    return "goes to user sign-up page";
   }
 
 
