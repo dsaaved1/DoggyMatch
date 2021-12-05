@@ -25,11 +25,7 @@ import java.util.HashMap;
  * @author Corbin Graham
  */
 public class Register extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
-    Button regs;
-    EditText email;
-    EditText password;
-    User newUser = new User();
-
+    
     // Local Fields
     private TextView pageTitle;
     private Button continueButton;
