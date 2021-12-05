@@ -2,6 +2,7 @@ package com.example.homeplate.model;
 
 import static com.example.homeplate.api.ApiClientFacotry.GetUserApi;
 
+import com.example.homeplate.DoggyInterface;
 import com.example.homeplate.api.SlimCallback;
 
 import java.util.ArrayList;
@@ -32,6 +33,9 @@ public class staticUser {
 
     // Chat Index
     private static int chatIndex;
+
+    // User Type
+    private static DoggyInterface.UserType userType;
 
     /**
      * constructor that calls get all
@@ -161,5 +165,21 @@ getall();
     public static int getChatIndex()
     {
         return chatIndex;
+    }
+
+    /**
+     * Set Type of User
+     * @param userType User Type
+     */
+    public static void setUserType(DoggyInterface.UserType userType) {
+        staticUser.userType = userType;
+    }
+
+    /**
+     * Get Type of User
+     * @return User Type
+     */
+    public static DoggyInterface.UserType getUserType() {
+        return userType;
     }
 }

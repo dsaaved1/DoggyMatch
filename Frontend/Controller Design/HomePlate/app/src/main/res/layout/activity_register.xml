@@ -143,9 +143,9 @@
         android:backgroundTint="#E1E1E1"
         android:ems="10"
         android:hint="Password"
-        android:textColorHint="@color/white"
         android:inputType="textPassword"
         android:textColor="#000000"
+        android:textColorHint="@color/white"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="@+id/activityView2"
         app:layout_constraintTop_toBottomOf="@+id/registerBox2" />

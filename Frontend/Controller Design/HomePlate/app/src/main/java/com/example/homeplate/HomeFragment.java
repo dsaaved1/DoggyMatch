@@ -27,9 +27,6 @@ public class HomeFragment extends Fragment{
     private Button noButton;
     private ImageView profilePicture;
 
-    // Local Variables
-    int i = 0;
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
@@ -55,16 +52,20 @@ public class HomeFragment extends Fragment{
         yesButton = view.findViewById(R.id.yesButton);
         noButton = view.findViewById(R.id.noButton);
 
+        // Change Button Text for User Type
+        if(staticUser.getUserType() != DoggyInterface.UserType.OWNER) {
+            yesButton.setText("GOOD");
+            noButton.setText("REPORT");
+        }
+
         // Images
         profilePicture = view.findViewById(R.id.profilePicture);
 
         // Variables
         staticUser.setIndex();
 
-        // Set Initial Values
-        nameText.setText(DoggyInterface.DoggyView.getName());
-        descriptionText.setText(DoggyInterface.DoggyView.getDescription());
-        profilePicture.setImageResource(DoggyInterface.DoggyView.getImage());
+        // Set Initial Display
+        displayProfile();
 
         // TODO
         //  Idk what you want to do this; Remove if not necessary
@@ -96,26 +97,43 @@ public class HomeFragment extends Fragment{
         yesButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                /* I don't know what this does
                 //chat code
                 //staticUser.user.getChats().stream().findFirst().get().getUserMail();
+                 */
 
-                DoggyInterface.DoggyController.match();
-                nameText.setText(DoggyInterface.DoggyView.getName());
-                descriptionText.setText(DoggyInterface.DoggyView.getDescription());
-                profilePicture.setImageResource(DoggyInterface.DoggyView.getImage());
+                if(staticUser.getUserType() == DoggyInterface.UserType.OWNER) DoggyInterface.DoggyController.match();
+                else staticUser.incrementIndex();
+                displayProfile();
         }
         });
 
         noButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // If the Current Index is within bounds
                 if(staticUser.getIndex() < staticUser.getUsers().size()) {
+                    if(staticUser.getUserType() != DoggyInterface.UserType.OWNER) {
+                        // Generate a REPORT
+                        if(staticUser.getUserType() == DoggyInterface.UserType.ADMIN) {
+                            // Remove Account IMMEDIATELY
+                        }
+                    }
                     staticUser.incrementIndex();
-                    nameText.setText(DoggyInterface.DoggyView.getName());
-                    descriptionText.setText(DoggyInterface.DoggyView.getDescription());
-                    profilePicture.setImageResource(DoggyInterface.DoggyView.getImage());
+                    displayProfile();
                 }
             }
         });
+    }
+
+    /**
+     * Display Match Profile
+     * and Set Values
+     */
+    private void displayProfile()
+    {
+        nameText.setText(DoggyInterface.DoggyView.getName());
+        descriptionText.setText(DoggyInterface.DoggyView.getDescription());
+        profilePicture.setImageResource(DoggyInterface.DoggyView.getImage());
     }
 }

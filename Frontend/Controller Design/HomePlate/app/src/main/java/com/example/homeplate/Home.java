@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.homeplate.model.staticUser;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 /**
@@ -53,6 +54,7 @@ public class Home extends AppCompatActivity {
                             selectedFragment = new ProfileFragment();
                             break;
                         case R.id.nav_chat:
+                            if(staticUser.getUserType() != DoggyInterface.UserType.OWNER) return true;
                             selectedFragment = new ChatsFragment();
                             break;
                     }

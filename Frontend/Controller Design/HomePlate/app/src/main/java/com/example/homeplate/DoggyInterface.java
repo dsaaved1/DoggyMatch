@@ -2,18 +2,16 @@ package com.example.homeplate;
 
 import static com.example.homeplate.api.ApiClientFacotry.GetUserApi;
 
-import android.graphics.drawable.Icon;
 import android.os.Handler;
 import android.text.TextUtils;
-import android.view.View;
-
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.homeplate.api.SlimCallback;
 import com.example.homeplate.model.User;
 import com.example.homeplate.model.staticUser;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Interface for
@@ -36,6 +34,46 @@ public interface DoggyInterface {
     {
         SUCCESS,
         FAILURE
+    }
+
+    /**
+     * User Type
+     * <br>
+     *     Type: ENUM
+     * <br>Types of User:<br>
+     *     - Dog Owner<br>
+     *     - Moderator<br>
+     *     - Admin<br>
+     * @author Corbin Graham
+     */
+    public enum UserType
+    {
+        // Types of User
+        OWNER(0, "Dog Owner"),
+        MODERATOR(1, "Moderator"),
+        ADMIN(2, "Admin");
+
+        private final int index;
+        private final String description;
+
+        private static Map map = new HashMap<>();
+
+        UserType(int index, String description) {
+            this.index = index;
+            this.description = description;
+        }
+
+        static {
+            for(UserType userType : UserType.values()) {
+                map.put(userType.index, userType);
+            }
+        }
+
+        public static UserType valueOf(int key) { return (UserType) map.get(key); }
+
+        public int getIndex() { return index; }
+
+        public String getDescription() { return description; }
     }
 
     /**
