@@ -50,11 +50,29 @@
 
 # **DoggyMatch**
 
-![DoggyMatch Title](https://git.linux.iastate.edu/cs309/fall2021/3_rk_1/-/raw/45-git-redesign/Design/Doggy%20Match%20Official%20Title) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ![DoggyMatch Icon](https://git.linux.iastate.edu/cs309/fall2021/3_rk_1/-/raw/45-git-redesign/Design/DoggyMatch_Icon_128.png?inline=false) ©DoggyMatch
+![DoggyMatch Title](https:/cs309/fall2021/3_rk_1/-/raw/45-git-redesign/Design/Doggy%20Match%20Official%20Title) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ![DoggyMatch Icon](https:/cs309/fall2021/3_rk_1/-/raw/45-git-redesign/Design/DoggyMatch_Icon_128.png?inline=false) ©DoggyMatch
+
+### _**DoggyMatch** Playdates for dogs!_
+
+### _Download [here.](https:/cs309/fall2021/3_rk_1/-/raw/)_
 
 ## About
 
 **DoggyMatch** is a way to connect with other owners on our safe and friendly platform to find the perfect playdate for your dog. Using our DoggyMatch algorithm, you'll find the perfect dog.  Sign up and sign in to match with other users and send them a chat to plan a play date.
+
+Describe how it works.
+
+Describe why it is different than what is available.
+
+Describe audience.
+
+
+
+### Installation
+
+`TODO Install instructions`
+
+How to install `TODO`
 
 # Features
 
