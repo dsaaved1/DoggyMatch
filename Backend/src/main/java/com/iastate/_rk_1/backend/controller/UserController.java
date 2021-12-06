@@ -1,12 +1,12 @@
 package com.iastate._rk_1.backend.controller;
 
-import com.iastate._rk_1.backend.entity.DogInfo;
-import com.iastate._rk_1.backend.entity.Preferences;
-import com.iastate._rk_1.backend.entity.User;
+import com.iastate._rk_1.backend.entity.*;
+import com.iastate._rk_1.backend.service.ModeratorService;
 import com.iastate._rk_1.backend.service.UserService;
 
 import java.util.List;
 
+import com.iastate._rk_1.backend.service.ViewerService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,32 +33,10 @@ public class UserController {
    * @return a list of User objects
    */
   @GetMapping("/user")
-  public List<User> index() {
+  public List<User> getUsers() {
     return service.getUsers();
   }
 
-  
-  /**
-   * Updates a user with the given user object
-   * @param user the user that will be updated
-   * @param id the id of the user that will be updated
-   * @return User the user that will be updated with the information already updated
-   */
-  @PutMapping("/user")
-  public User updateUser(@RequestBody User user, @PathVariable int id) {
-    return service.updateUser(user, id);
-  }
-
-  
-  /**
-   * Deletes a user with the provided id
-   * @param id the id of the user to be deleted
-   * @return a string "success" that tells us that the user has been deleted
-   */
-  @DeleteMapping("/user/{id}")
-  public String deleteUser(@PathVariable int id) {
-    return service.deleteUser(id);
-  }
 
   
   /**
@@ -75,15 +53,32 @@ public class UserController {
   /**
    * Gets a user by the provided email
    * @param email the email of the user to get
-   * @return he User object if the email provided matches with an existing User
+   * @return the User object if the email provided matches with an existing User
    */
   @GetMapping("/user/email/{email}")
   public User userByEmail(@PathVariable String email) {
     return service.getUsersByEmail(email);
   }
 
+  /**
+   * Receives an string as input, and will redirect the user to the page
+   * of the userType they want to signUp with.
+   * @param userType
+   * @return message of intended work on the front end
+   */
+  @PostMapping("/register/{userType}")
+  public String userTypePage(@PathVariable String userType){
+    if (userType.equals("Moderator")){
+      return "goes to moderator sign-up page";
+    }
+    if (userType.equals("Viewer")){
+      return "goes to viewer sign-up page";
+    }
 
-  
+    return "goes to user sign-up page";
+  }
+
+
   /**
    * Adds a new user to the database if user isn't already in database
    * @param user the User object that will be added
@@ -95,14 +90,15 @@ public class UserController {
     return service.saveUser(user);
   }
 
-  
+
   /**
    * Checks if the user exists and signs them in
    * @param possibleUser the user that will be signed in
    * @return a String "Success: Enters home page" if the possibleUser exists in the database.
    * A String "Email not found" if email not found.
    */
-  @ApiOperation(value = "Take user to home page if user is in database.", tags = "signIn")
+  @ApiOperation(value = "Take user to home page if user is in database. The requestBody should be given " +
+          "an email and a password", tags = "signIn")
   @PostMapping("/user/sign-in")
   public String signIn(@RequestBody User possibleUser){
     //verifies if there is given email in repository
@@ -111,6 +107,8 @@ public class UserController {
       //verifies if existing email matches with given password
       if (existingUser.getPassword().equals(possibleUser.getPassword())){
         return "Success: Enters home page";
+      } else {
+        return "Incorrect Password";
       }
     }
     return "Email not found";
@@ -192,5 +190,16 @@ public class UserController {
   public User match(@PathVariable(name = "id") int userId, @PathVariable(name = "id2") int possibleMatchId){
     return service.match(userId, possibleMatchId);
   }
+
+  /**
+   * Deletes a user with the provided id and add the user to a list of the current moderator
+   * @param id the id of the user to be deleted
+   * @return a string "success" that tells us that the user has been deleted
+   */
+  @PutMapping("/moderator/home/delete/{email},{id}")
+  public String deleteUserByModerator(@PathVariable(name = "email") String email, @PathVariable(name = "id") int id) {
+    return service.deleteUserByModerator(email, id);
+  }
+
 
 }

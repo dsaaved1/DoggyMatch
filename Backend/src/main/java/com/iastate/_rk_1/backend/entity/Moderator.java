@@ -1,59 +1,60 @@
 package com.iastate._rk_1.backend.entity;
 
-import java.sql.Date;
+import io.swagger.annotations.ApiModelProperty;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "moderator")
-public class Moderator {
+public class Moderator{
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private int id;
 
+  @ApiModelProperty(notes = "email of user",name="email",required=true,value="test email")
   @Column(name = "email", unique = true)
   private String email;
-
-  @Column(name = "hashedPassword")
-  private String hashedPassword;
 
   @Column(name = "codeModerator")
   private String codeModerator;
 
+  @Column(name = "password")
+  private String password;
+
+  @Column(name = "active")
+  private boolean active;
+
   @Column(name = "lastLoginTime")
   private Date lastLoginTime;
 
-  @Column(name = "privacySettings")
-  private String privacySettings;
+  @OneToMany(cascade = {CascadeType.ALL})
+  private Set<User> deletedUsers = new HashSet<>();
+
+
+  public Moderator(String email, String password, String codeModerator) {
+    this.email = email;
+    this.password = password;
+    this.codeModerator = codeModerator;
+    this.active = true;
+    this.lastLoginTime = new Date();
+  }
 
   public Moderator() {
 
   }
 
-  public Moderator(String email, String hashedPassword, String codeModerator, Date lastLoginTime,
-      String privacySettings) {
-    this.email = email;
-    this.hashedPassword = hashedPassword;
-    this.codeModerator = codeModerator;
-    this.lastLoginTime = lastLoginTime;
-    this.privacySettings = privacySettings;
-  }
-
   /**
-   *
-   * @return
+   * @return int
    */
   public int getId() {
     return id;
   }
 
+
   /**
-   *
    * @param id
    */
   public void setId(int id) {
@@ -61,15 +62,14 @@ public class Moderator {
   }
 
   /**
-   *
-   * @return
+   * @return String
    */
   public String getEmail() {
     return email;
   }
 
+
   /**
-   *
    * @param email
    */
   public void setEmail(String email) {
@@ -77,19 +77,19 @@ public class Moderator {
   }
 
   /**
-   *
-   * @return
+   * @return String
    */
-  public String getHashedPassword() {
-    return hashedPassword;
+  public String getPassword(){
+    return password;
   }
 
+
   /**
-   *
-   * @param hashedPassword
+   * Changes the password with the generated encrypted password
+   * @param encryptedPassword
    */
-  public void setHashedPassword(String hashedPassword) {
-    this.hashedPassword = hashedPassword;
+  public void setEncryptedPassword(String encryptedPassword){
+    this.password = encryptedPassword;
   }
 
   /**
@@ -108,35 +108,45 @@ public class Moderator {
     this.codeModerator = codeModerator;
   }
 
+
   /**
-   *
-   * @return
+   * @return boolean
    */
-  public Date getLastLoginTime() {
+  public boolean getActive() {
+    return active;
+  }
+
+
+  /**
+   * @param active
+   */
+  public void setActive(boolean active) {
+    this.active = active;
+  }
+
+
+  /**
+   * @return Date
+   */
+  public java.util.Date getLastLoginTime() {
     return lastLoginTime;
   }
 
+
   /**
-   *
    * @param lastLoginTime
    */
   public void setLastLoginTime(Date lastLoginTime) {
     this.lastLoginTime = lastLoginTime;
   }
 
-  /**
-   *
-   * @return
-   */
-  public String getPrivacySettings() {
-    return privacySettings;
+
+  public Set<User> getDeletedUsers() {
+    return deletedUsers;
   }
 
-  /**
-   *
-   * @param privacySettings
-   */
-  public void setPrivacySettings(String privacySettings) {
-    this.privacySettings = privacySettings;
+  public void setDeletedUsers(Set<User> deletedUsers) {
+    this.deletedUsers = deletedUsers;
   }
+
 }

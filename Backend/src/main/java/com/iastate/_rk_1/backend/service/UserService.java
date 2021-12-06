@@ -1,16 +1,14 @@
 package com.iastate._rk_1.backend.service;
 
 import antlr.BaseAST;
-import com.iastate._rk_1.backend.entity.Chat;
-import com.iastate._rk_1.backend.entity.DogInfo;
-import com.iastate._rk_1.backend.entity.Preferences;
+import com.iastate._rk_1.backend.entity.*;
+import com.iastate._rk_1.backend.repository.ModeratorRepository;
 import com.iastate._rk_1.backend.repository.UserRepository;
 
 import java.util.Iterator;
 import java.util.List;
 
-import com.iastate._rk_1.backend.entity.User;
-
+import com.iastate._rk_1.backend.repository.ViewerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -19,6 +17,10 @@ import org.springframework.stereotype.Service;
 public class UserService {
   @Autowired
   private UserRepository repository;
+  @Autowired
+  private ModeratorRepository moderatorRepository;
+  @Autowired
+  private ViewerRepository viewerRepository;
 
 
   private final BCryptPasswordEncoder bCryptPasswordEncoder;
@@ -33,7 +35,7 @@ public class UserService {
      * @return the User that has been added to the database
      */
   public User saveUser(User user) {
-    return repository.save(user);
+      return repository.save(user);
   }
 
     /**
@@ -136,8 +138,8 @@ public class UserService {
       throw new IllegalStateException("email already taken");
     }
 
-    //encrypting the user's password using bcrypt, which uses the method "salting"
 
+    //encrypting the user's password using bcrypt, which uses the method "salting"
     String encodedPassword = bCryptPasswordEncoder.encode(user.getPassword());
 
     user.setEncryptedPassword(encodedPassword);
@@ -146,7 +148,7 @@ public class UserService {
   }
 
     /**
-     * Gets every user except the User from provided email
+     * Gets every user except the User from provided email. Used for Viewer and Moderator types.
      * @param email the email of the user to exclude
      * @return all Users on the database except the User from provided email
      */
@@ -155,7 +157,7 @@ public class UserService {
 
     for (Iterator<User> iterator = users.iterator(); iterator.hasNext(); ) {
       User user = iterator.next();
-      if (user.getEmail().equals(email)){
+      if (user.getEmail().equals(email) || user.getUserTypeId() == 1 || user.getUserTypeId() == 2){
         iterator.remove();
       }
     }
@@ -256,5 +258,22 @@ public class UserService {
          return repository.save(currentUser);
   }
 
+    /**
+     * Deletes a user with the provided id
+     * @param id the id of the user to be deleted
+     * @return a string "success" that tells us that the user has been deleted
+     */
+    public String deleteUserByModerator(String email, int id) {
+        User currentModerator = getUsersByEmail(email);
+        if (currentModerator.getUserTypeId() == 1){
+            User userToDelete = getUserById(id);
+            currentModerator.getDeletedUsers().add(userToDelete.getEmail());
+            deleteUser(userToDelete.getId());
+            return "success";
+        } else {
+            return "notAllowed to delete users";
+        }
+
+    }
 
 }
