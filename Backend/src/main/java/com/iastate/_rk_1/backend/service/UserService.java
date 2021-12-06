@@ -177,7 +177,7 @@ public class UserService {
 
       for (Iterator<User> iterator = allUsers.iterator(); iterator.hasNext(); ) {
         User user = iterator.next();
-        if (user.getEmail().equals(email)){
+        if (user.getEmail().equals(email)|| user.getUserTypeId() == 1 || user.getUserTypeId() == 2){
           iterator.remove();
         }
       }
