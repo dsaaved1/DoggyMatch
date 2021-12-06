@@ -56,7 +56,7 @@
 
 ### _Download [here.](https:/cs309/fall2021/3_rk_1/-/raw/)_
 
-## About
+## About Features
 
 **DoggyMatch** is a way to connect with other owners on our safe and friendly platform to find the perfect playdate for your dog. Using our DoggyMatch algorithm, you'll find the perfect dog.  Sign up and sign in to match with other users and send them a chat to plan a play date.
 
@@ -68,13 +68,17 @@ DoggyMatch has 3 specific features which make it stand out!  The first and most 
 
 ### Installation
 
-`TODO Install instructions`
+```
+    git clone https://git.linux.iastate.edu/cs309/fall2021/3_rk_1/
+    sudo apt android_studio
+```
 
-How to install `TODO`
-
-# Features
-
-Feature outline and description.
+**How to install**
+* Clone the repository
+* Download Android Studio
+* Download Android Emulator
+    * Set your emulator to Nexus 5
+* Build and run project
 
 ## Frontend
 
@@ -108,9 +112,11 @@ Match about `TODO`
 
 ![Match Feature](https://git.linux.iastate.edu/cs309/fall2021/3_rk_1/-/raw/45-git-redesign/Design/?)
 
-Match about `TODO`
+The Match feature allows for owners to find dogs compatible with theirs.  They can view other profiles and if both users decide that dog will be a match, they will be able to chat.
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Specific Features:** _, _
+Matching is the most essential function of the app and is what makes a DoggyMatch a DoggyMatch!
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Specific Features:** _WebSocket, Importing Messages from Server_
 
 ### Profile
 
