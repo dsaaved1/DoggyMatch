@@ -8,8 +8,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 import com.iastate._rk_1.backend.entity.User;
+import org.springframework.web.socket.config.annotation.EnableWebSocket;
 
 @SpringBootApplication
+@EnableWebSocket
 public class Main {
 
 	
