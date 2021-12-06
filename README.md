@@ -52,7 +52,7 @@
 
 ![DoggyMatch Title](https:/cs309/fall2021/3_rk_1/-/raw/45-git-redesign/Design/Doggy%20Match%20Official%20Title) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ![DoggyMatch Icon](https:/cs309/fall2021/3_rk_1/-/raw/45-git-redesign/Design/DoggyMatch_Icon_128.png?inline=false) ©DoggyMatch
 
-### _**DoggyMatch** Playdates for dogs!_
+### _**DoggyMatch:** Playdates for dogs!_
 
 ### _Download [here.](https:/cs309/fall2021/3_rk_1/-/raw/)_
 
