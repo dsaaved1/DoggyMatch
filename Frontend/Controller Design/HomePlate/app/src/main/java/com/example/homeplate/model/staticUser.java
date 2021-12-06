@@ -2,25 +2,40 @@ package com.example.homeplate.model;
 
 import static com.example.homeplate.api.ApiClientFacotry.GetUserApi;
 
-import com.example.homeplate.api.ApiClientFacotry;
+import com.example.homeplate.DoggyInterface;
 import com.example.homeplate.api.SlimCallback;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * The current user loged in and list of all the users on the data base
+ * Store the Current User as a Static Object.
+ * Able to be set one time and retrieved throughout the App.
+ * Store all Matches from the Database.
  * @author Mark Gores
+ * @author Corbin Graham
  */
 public class staticUser {
-    /**
-     * the current user logged in
-     */
-    public static User user;
-    /**
-     * list of all possible users to match with, does not include current user
-     */
-    public static List<User> allusers = new ArrayList<User>();
+
+    // Variables
+    // Start Static User as NULL
+    // NULL if No User is Signed in.
+    private static User user = null;
+
+    // List of all possible users to match with, does not include current user
+    private static List<User> getUsers = new ArrayList<User>();
+
+    // User Email
+    private static String email;
+
+    // User Index
+    private static int index;
+
+    // Chat Index
+    private static int chatIndex;
+
+    // User Type
+    private static DoggyInterface.UserType userType;
 
     /**
      * constructor that calls get all
@@ -35,10 +50,10 @@ getall();
     public static void getall(){
     GetUserApi().getEverbody(user.getEmail()).enqueue(new SlimCallback<List<User>>(user->{
         for(User u: user){
-            allusers.add(u);
+            getUsers.add(u);
         }
     }));
-}
+    }
 
     /**
      * sets the list of all possible users
@@ -47,17 +62,17 @@ getall();
     public static void setlist(List<User> list){
 
     for(User u: list){
-        allusers.add(u);
+        getUsers.add(u);
     }
 
 }
 
     /**
      * Gets the user from the data base by the email
-     * @param email
+     * @param email Email
      * @return User
      */
-    public static User getUser(String email) {
+    public static User getUserByEmail(String email) {
     GetUserApi().getUserByEmail(email).enqueue(new SlimCallback<User>(user1 ->{
         user = user1;
     }));
@@ -65,10 +80,106 @@ getall();
     }
 
     /**
-     * sets the current user
-     * @param user
+     * Get Current User
+     * @return User
+     */
+    public static User getUser()
+    {
+        return user;
+    }
+
+    /**
+     * Get Possible Matches
+     * @return List of Users (User)
+     */
+    public static List<User> getUsers()
+    {
+        return getUsers;
+    }
+
+    /**
+     * Set Current User
+     * @param user User
      */
     public static void setUser(User user) {
         staticUser.user = user;
+    }
+
+    /**
+     * Initialize or Reset Index
+     */
+    public static void setIndex()
+    {
+        staticUser.index = 0;
+    }
+
+    /**
+     * Increment Index
+     */
+    public static void incrementIndex()
+    {
+        staticUser.index += 1;
+    }
+
+    /**
+     * Get Current Index
+     * @return Index
+     */
+    public static int getIndex()
+    {
+        return index;
+    }
+
+    // Email
+
+    /**
+     * Get the current User Email
+     * @return Email
+     */
+    public static String getEmail()
+    {
+        return email;
+    }
+
+    /**
+     * Set the current User Email
+     * @param email Email
+     */
+    public static void setEmail(String email)
+    {
+        staticUser.email = email;
+    }
+
+    /**
+     * Set Chat Index
+     */
+    public static void setChatIndex(int index)
+    {
+        staticUser.chatIndex = index;
+    }
+
+    /**
+     * Get Chat Index
+     * @return Chat Index
+     */
+    public static int getChatIndex()
+    {
+        return chatIndex;
+    }
+
+    /**
+     * Set Type of User
+     * @param userType User Type
+     */
+    public static void setUserType(DoggyInterface.UserType userType) {
+        staticUser.userType = userType;
+    }
+
+    /**
+     * Get Type of User
+     * @return User Type
+     */
+    public static DoggyInterface.UserType getUserType() {
+        return userType;
     }
 }

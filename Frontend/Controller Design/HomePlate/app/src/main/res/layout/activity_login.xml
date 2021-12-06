@@ -7,69 +7,152 @@
     android:background="#FF9800"
     tools:context=".Login">
 
+    <Button
+        android:id="@+id/cbg"
+        android:layout_width="375dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="35dp"
+        android:background="@drawable/custombutton"
+        android:backgroundTint="#7E7E7E"
+        android:elevation="20dp"
+        android:fontFamily="sans-serif-medium"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="446dp"
+        android:layout_height="766dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.514"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.514"
+        app:srcCompat="@drawable/blankbgdogs" />
+
+    <View
+        android:id="@+id/avbg"
+        android:layout_width="375dp"
+        android:layout_height="465dp"
+        android:layout_marginBottom="10dp"
+        android:alpha="0.7"
+        android:background="@drawable/custombutton"
+        android:backgroundTint="#7E7E7E"
+        app:layout_constraintBottom_toTopOf="@+id/cbg"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <View
+        android:id="@+id/ActivityView"
+        android:layout_width="367dp"
+        android:layout_height="450dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/custombutton"
+        android:backgroundTint="#FFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/cbg"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/continueButton"
+        android:layout_width="375dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="40dp"
+        android:background="@drawable/custombutton"
+        android:backgroundTint="#FFFFFF"
+        android:elevation="20dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="Continue"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <TextView
         android:id="@+id/registerTextButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="40dp"
-        android:text="Register"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/continueButton"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/continueButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="288dp"
-        android:layout_marginBottom="2dp"
-        android:background="#FFFFFF"
-        android:shadowColor="#000000"
-        android:text="Continue"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="16dp"
+        android:text="Sign Up"
         android:textColor="#000000"
-        app:layout_constraintBottom_toTopOf="@+id/registerTextButton"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="@+id/ActivityView"
+        app:layout_constraintTop_toBottomOf="@+id/passwordBox" />
 
     <EditText
-        android:id="@+id/email"
-        android:layout_width="382dp"
-        android:layout_height="48dp"
+        android:id="@+id/usernameBox"
+        android:layout_width="335dp"
+        android:layout_height="50dp"
         android:layout_marginStart="16dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/customtext"
+        android:backgroundTint="#E1E1E1"
         android:ems="10"
         android:hint="Username"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/passwordBox"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/ActivityView"
+        app:layout_constraintTop_toBottomOf="@+id/pageTitleLogin" />
 
     <EditText
         android:id="@+id/passwordBox"
-        android:layout_width="382dp"
-        android:layout_height="52dp"
+        android:layout_width="335dp"
+        android:layout_height="50dp"
         android:layout_marginStart="16dp"
-        android:layout_marginBottom="2dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/customtext"
+        android:backgroundTint="#E1E1E1"
         android:ems="10"
         android:hint="Password"
         android:inputType="textPassword"
-        app:layout_constraintBottom_toTopOf="@+id/continueButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:textColor="#000000"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@+id/ActivityView"
+        app:layout_constraintTop_toBottomOf="@+id/usernameBox" />
 
     <TextView
         android:id="@+id/pageTitleLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginBottom="20dp"
-        android:text="DoggyMatch"
-        app:layout_constraintBottom_toTopOf="@+id/email"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:layout_marginTop="20dp"
+        android:text="Sign In"
+        android:textColor="#000000"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/ActivityView"
+        app:layout_constraintTop_toTopOf="@+id/avbg" />
 
     <TextView
-        android:id="@+id/failed"
+        android:id="@+id/statusBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="@+id/passwordBox"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="5dp"
+        android:text="Login"
+        android:textColor="#000000"
+        app:layout_constraintStart_toStartOf="@+id/ActivityView"
         app:layout_constraintTop_toBottomOf="@+id/passwordBox" />
+
+    <ImageView
+        android:id="@+id/customTitle"
+        android:layout_width="442dp"
+        android:layout_height="107dp"
+        android:layout_marginBottom="10dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toTopOf="@+id/avbg"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/doggymatchalphatitle" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

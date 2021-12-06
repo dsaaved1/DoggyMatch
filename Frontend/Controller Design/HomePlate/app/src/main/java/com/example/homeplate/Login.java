@@ -1,39 +1,31 @@
 package com.example.homeplate;
 
-import static com.example.homeplate.api.ApiClientFacotry.GetUserApi;
-import com.example.homeplate.model.staticUser;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.homeplate.api.SlimCallback;
-import com.example.homeplate.model.User;
+import com.example.homeplate.model.staticUser;
 
-import java.util.List;
-
-/** Activity for logging into applications
- * @author Corbin
+/** Login Page
+ * Retrieves User Email and Password
+ * and sends it for check before moving
+ * to next page.
+ * @author Corbin Graham
  */
 public class Login extends AppCompatActivity {
 
-    private Button continueButton;
-    private TextView registerButton;
-    private TextView pageTitle;
-    private TextView usernameBox;
-    private TextView passwordBox;
-    private TextView failed;
-private String email;
-private String password;
-    private boolean fail= false;
-
-    //private MyDoggy doggy;
+    // Local Fields
+    private Button continueButton;      // Continue Button
+    private TextView registerButton;    // Register Button (Textbox)
+    private TextView pageTitle;         // "Sign In" Title
+    private TextView usernameBox;       // Textbox for Username
+    private TextView passwordBox;       // Textbox for Password
+    private TextView statusBox;         // Textbox for Login Status
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,83 +36,55 @@ private String password;
         interact();
     }
 
-    //Set Interaction Values
+    /**
+     * Initialize Fields
+     * and Values
+     */
     private void setValues()
     {
-        //Buttons
+        // Buttons
         continueButton = findViewById(R.id.continueButton);
         registerButton = findViewById(R.id.registerTextButton);
+
         //TextView
         pageTitle = findViewById(R.id.pageTitleLogin);
 
         //TextBox
-        usernameBox = findViewById(R.id.email);
+        usernameBox = findViewById(R.id.usernameBox);
         passwordBox = findViewById(R.id.passwordBox);
-        failed = findViewById(R.id.failed);
+        statusBox = findViewById(R.id.statusBox);
     }
 
-    //Handle Interaction
+    /**
+     * Wait for Interaction
+     * then Handle interaction
+     */
     private void interact()
     {
-
+        // Continue Button
         continueButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //TODO
-                // Verify username and password match
-                // then set account and information
-                //doggy = new MyDoggy("Steve", "Steve is kinda cool.", true);
-                if(TextUtils.isEmpty(usernameBox.getText().toString())||TextUtils.isEmpty(passwordBox.getText().toString()) )
+                MessageReturn message = DoggyInterface.DoggyController.login(usernameBox.getText().toString(), passwordBox.getText().toString());
+                if(message.getStatus() != DoggyInterface.Status.SUCCESS)
                 {
-                    failed.setText("email/password is empty");
+                    statusBox.setText("Status: " + message.getMessage());
                 }
-                else{ login();
+                else if (message.getStatus() == DoggyInterface.Status.SUCCESS)
+                {
+                    startActivity(new Intent(Login.this, Home.class));
+                    finish();
                 }
             }
         });
 
+        // Register Button
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 startActivity(new Intent(Login.this,Register.class));
-
-                /*GetUserApi().getAllUser().enqueue(new SlimCallback<List<User>>(user->{ staticUser.setlist(user); }));
-                new Handler().postDelayed(new Runnable() {
-                    @Override public void run() { failed.setText(staticUser.allusers.get(0).getFirstName()); }},700);*/
-            }});
-    }
-
-    /**
-     * trys to login user if successful will login user in if not will give error message
-     */
-    public void login(){
-       User puser = new User();
-
-        puser.setEmail(usernameBox.getText().toString());
-        puser.setPassword(passwordBox.getText().toString());
-        GetUserApi().getUserByEmail(usernameBox.getText().toString()).enqueue(new SlimCallback<User>(user -> {
-
-            if(TextUtils.equals(puser.getEmail(),user.getEmail())&&TextUtils.equals(puser.getPassword(),user.getPassword())){
-                Toast.makeText(Login.this, "login successful", Toast.LENGTH_LONG).show();
-
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        //sets current user
-                        staticUser.setUser(user);
-                        //generates the list of all users besides current
-                        GetUserApi().getEverbody(user.getEmail()).enqueue(new SlimCallback<List<User>>(user->{ staticUser.setlist(user); }));
-                        startActivity(new Intent(Login.this,Home.class));
-                    }
-                },1000);
+                finish();
             }
-            else{
-                puser.setEmail(user.getEmail());
-                Toast.makeText(Login.this, "login failed", Toast.LENGTH_LONG).show();
-            }
-        }));
-
-
+        });
     }
 }

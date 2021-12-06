@@ -10,20 +10,16 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.homeplate.model.staticUser;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-/** Frame for views
- * @author Corbin
- *
+/**
+ * Home Module
+ * - Contains Views for
+ * Chats, Matching, Profile
+ * @author Corbin Graham
  */
 public class Home extends AppCompatActivity {
-
-    private Button homeButton;
-    private Button chatButton;
-    private Button profileButton;
-    private TextView pageHome;
-
-    private TextView nameText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,14 +37,9 @@ public class Home extends AppCompatActivity {
         bottomNav.setOnNavigationItemSelectedListener(navListener);
 
         bottomNav.setSelectedItemId(R.id.nav_home);
-
-        /* getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                new HomeFragment()).commit();
-
-         */
-        setValues();
     }
 
+    // Bottom Navigation Listener
     private BottomNavigationView.OnNavigationItemSelectedListener navListener =
             new BottomNavigationView.OnNavigationItemSelectedListener() {
                 @Override
@@ -63,6 +54,7 @@ public class Home extends AppCompatActivity {
                             selectedFragment = new ProfileFragment();
                             break;
                         case R.id.nav_chat:
+                            if(staticUser.getUserType() != DoggyInterface.UserType.OWNER) return true;
                             selectedFragment = new ChatsFragment();
                             break;
                     }
@@ -74,33 +66,4 @@ public class Home extends AppCompatActivity {
                 }
             };
 
-    private void setValues()
-    {
-        //Buttons
-
-        /*
-        Possibly:
-            DoggyButtons handles all, each is a DoggyButton
-
-        Class DoggyButton setValues(List names, List assignments)
-            Pass a list of button names
-            Pass a list of assignments
-            Convert them to buttons and then use the another class for actions
-           Example:
-                nameList: homeButton, chatButton, profileButton
-                assignmentList: R.id.homeButton, ...
-         */
-
-        /*
-            DoggyButton interact(Button, Action)
-         */
-
-        nameText = findViewById(R.id.name);
-
-    }
-
-    private void interact()
-    {
-
-    }
 }
