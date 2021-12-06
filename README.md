@@ -49,9 +49,7 @@
 ```java
     TODO This is ...
 ```
-### Welcome to
-
-![DoggyMatch Icon](https://git.linux.iastate.edu/cs309/fall2021/3_rk_1/-/blob/771a9ce1b3fb2bf747a6f6fcb95c8b5695b56e36/Design/DoggyMatchIcon)
+### Welcome to ![App Icon](https://git.linux.iastate.edu/cs309/fall2021/3_rk_1/-/raw/771a9ce1b3fb2bf747a6f6fcb95c8b5695b56e36/Design/DoggyMatchIcon)
 
 ### DoggyMatch
 
