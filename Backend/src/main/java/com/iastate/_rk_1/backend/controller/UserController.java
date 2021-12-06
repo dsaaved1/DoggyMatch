@@ -191,5 +191,15 @@ public class UserController {
     return service.match(userId, possibleMatchId);
   }
 
+  /**
+   * Deletes a user with the provided id and add the user to a list of the current moderator
+   * @param id the id of the user to be deleted
+   * @return a string "success" that tells us that the user has been deleted
+   */
+  @PutMapping("/moderator/home/delete/{email},{id}")
+  public String deleteUserByModerator(@PathVariable(name = "email") String email, @PathVariable(name = "id") int id) {
+    return service.deleteUserByModerator(email, id);
+  }
+
 
 }

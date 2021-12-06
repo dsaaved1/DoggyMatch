@@ -22,6 +22,9 @@ public class User{
   @Column(name = "password")
   private String password;
 
+  @Column(name = "userType")
+  private int userTypeId;
+
   @Column(name = "active")
   private boolean active;
 
@@ -70,6 +73,10 @@ public class User{
   @OneToMany(cascade = {CascadeType.ALL})
   private Set<Chat> chats = new HashSet<>();
 
+  @ElementCollection
+  @Column(name = "deletedUsers")
+  private Set<String> deletedUsers = new HashSet<>();
+
   public User() {
   }
 
@@ -81,8 +88,7 @@ public class User{
   }
 
 
-  
-  /** 
+  /**
    * @return int
    */
   public int getId() {
@@ -130,7 +136,22 @@ public class User{
     this.password = encryptedPassword;
   }
 
-  
+  /**
+   *
+   * @return
+   */
+  public int getUserTypeId() {
+    return userTypeId;
+  }
+
+  /**
+   *
+   * @param userTypeId
+   */
+  public void setUserTypeId(int userTypeId) {
+    this.userTypeId = userTypeId;
+  }
+
   /** 
    * @return boolean
    */
@@ -373,6 +394,22 @@ public class User{
    */
   public void setChats(Set<Chat> chats) {
     this.chats = chats;
+  }
+
+  /**
+   *
+   * @return
+   */
+  public Set<String> getDeletedUsers() {
+    return deletedUsers;
+  }
+
+  /**
+   *
+   * @param deletedUsers
+   */
+  public void setDeletedUsers(Set<String> deletedUsers) {
+    this.deletedUsers = deletedUsers;
   }
 
 }
