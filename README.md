@@ -170,4 +170,9 @@ About feature `TODO`
 
 `TODO LINK TO DOCUMENTATION`
 
-#### MD by Corbin Graham
+###### BE Documentation by Diego Saavedra Villarroel
+
+###### FE Documentation by Mark Gores
+
+###### MD by Corbin Graham
+--------------------------
