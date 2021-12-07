@@ -50,10 +50,10 @@ public class WebSocketServer {
         Msg msg = gson.fromJson(message, Msg.class);
         logger.info("Got message: " + msg.msg + " from " + msg.sender + " to " + msg.receiver);
         String username = sessionUsernameMap.get(session);
-        session.getBasicRemote().sendText(username + ": " + message);
+        session.getBasicRemote().sendText(username + ": " + msg.msg);
 
         if (msg.receiver.equals("all")) {
-            broadcast(message);
+            broadcast(msg.msg);
         } else {
             Session receivingSession = usernameSessionMap.get(msg.receiver);
             if (receivingSession == null) {
