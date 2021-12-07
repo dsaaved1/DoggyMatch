@@ -59,8 +59,8 @@ public class WebSocketServer {
             if (receivingSession == null) {
                 logger.error("There is no such user");
             } else {
-                String msgToSend = username + ": " + message;
-                receivingSession.getBasicRemote().sendText(msg.msg);
+                String msgToSend = username + ": " + msg.msg;
+                receivingSession.getBasicRemote().sendText(msgToSend);
             }
         }
     }
