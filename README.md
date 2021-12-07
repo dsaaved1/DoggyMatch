@@ -168,11 +168,18 @@ About feature `TODO`
 
 ## Documentation
 
-`TODO LINK TO DOCUMENTATION`
+```
+    <documentation_link>
+```
 
+### JavaDoc
+
+[**Link to Javadocs**]()
+
+-----------------------------------------------------
 ###### BE Documentation by Diego Saavedra Villarroel
 
 ###### FE Documentation by Mark Gores
 
 ###### MD by Corbin Graham
---------------------------
+-----------------------------------------------------
