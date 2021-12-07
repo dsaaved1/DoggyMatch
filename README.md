@@ -172,9 +172,7 @@ About feature `TODO`
     <documentation_link>
 ```
 
-### JavaDoc
-
-[**Link to Javadocs**]()
+### JavaDoc [**Link to Javadocs**]()
 
 -----------------------------------------------------
 ###### BE Documentation by Diego Saavedra Villarroel
