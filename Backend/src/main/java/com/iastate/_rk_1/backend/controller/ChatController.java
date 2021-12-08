@@ -30,6 +30,10 @@ public class ChatController {
         public void addMessage(Message message) {
             messages.add(message);
         }
+
+        public ArrayList<Message> getMessages() {
+            return messages;
+        }
     }
 
     private HashMap<Set<Integer>, Chat> chats = new HashMap<>();
@@ -40,7 +44,7 @@ public class ChatController {
         Set<Integer> ids = new HashSet<>();
         ids.add(id1);
         ids.add(id2);
-        return gson.toJson(chats.get(ids));
+        return gson.toJson(chats.get(ids).getMessages());
     }
 
     @PutMapping("/chat/{id1},{id2}")
