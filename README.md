@@ -2,9 +2,9 @@
 
 **DoggyMatch** Playdates for dogs!  Connect with other owners on our safe and friendly platform to find the perfect playdate for your dog.
 
-**COM S 309 Group 3_RK_1:** `TODO COURSE ABOUT`
+**COM S 309 Group 3_RK_1:** Software Development Practices: an introduction to Git, Springboot, Android Studio, Mockito Testing.
 
-**Project Outcomes:** `TODO`
+**Project Outcomes:** Learning to use tools useful to software development experience.
 
 ## Team
 
