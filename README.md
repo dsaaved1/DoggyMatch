@@ -2,9 +2,13 @@
 
 **DoggyMatch** Playdates for dogs!  Connect with other owners on our safe and friendly platform to find the perfect playdate for your dog.
 
-**COM S 309 Group 3_RK_1:** `TODO COURSE ABOUT`
+**COM S 309 Group 3_RK_1:** Software Development Practices: an introduction to Git, Springboot, Android Studio, Mockito Testing.
 
-**Project Outcomes:** `TODO`
+**Project Outcomes:** Learning to use tools useful to software development experience.
+
+**DoggyMatch**
+
+![Welcome to DoggyMatch!](https://git.linux.iastate.edu/cs309/fall2021/3_rk_1/-/raw/main/Design/DoggyMatchWelcome.png)
 
 ## Team
 
@@ -16,21 +20,21 @@
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Classification:** Sophomore
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Outcomes:** Git, Android Studio, API Libraries, Design Patterns
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Outcomes:** Git, JSON, Mockito, Android Studio, API Libraries, Design Patterns
 
 ### **Mark Gores**
 
 ##### Frontend Developer, Connection with Data Base
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Experience:** COM S 227, COM S 228, COM S 311 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Experience:** COM S 227, COM S 228, COM S 311
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Classification:** Junior
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Outcomes:** Git, Android Studio, API Libraries, Design Patterns
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Outcomes:** Git, JSON, Android Studio, API Libraries, Mockito
 
 ### **Diego Saavedra**
 
-##### Backend Developer, `TODO SPECIALITY`
+##### Backend Developer, Algorithms
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Experience:** COM S 227, COM S 228
 
@@ -40,13 +44,13 @@
 
 ### **Peyton Arbuckle**
 
-##### Backend Developer, `TODO SPECIALITY`
+##### Backend Developer, MySQL and REST
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Experience:** 'TODO'
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Experience:** COM S 227, COM S 228
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Classification:** 'TODO'
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Classification:** Sophomore
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Outcomes:** `TODO`
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Outcomes:** Spring boot, Mockito, WebSockets
 
 # **DoggyMatch**
 
@@ -86,29 +90,28 @@ DoggyMatch has 3 specific features which make it stand out!  The first and most 
 
 ![Launch Feature](https://git.linux.iastate.edu/cs309/fall2021/3_rk_1/-/raw/45-git-redesign/Design/Launch.png)
 
-Launch about `TODO`
+The Launch page is elegently designed to allow users the flexibility of choice between continuing in their matching journey and starting fresh!
 
 ### Sign In
 
 ![Sign In Feature](https://git.linux.iastate.edu/cs309/fall2021/3_rk_1/-/raw/45-git-redesign/Design/Login.png)
 
-The Sign In page allows for 
+Sign in and revisit past memories with matches and make some future ones with more dogs.  Making the choice to sign in is not a final decision!  Use the Sign Up button to start again!
 
 ### Sign Up
 
 ![Sign Up Feature](https://git.linux.iastate.edu/cs309/fall2021/3_rk_1/-/raw/45-git-redesign/Design/?)
 
-Sign Up about `TODO`
+**Signing Up as a Dog Owner**
+_Dog Owners are given a few pages of selections and entries.  You'll be asked to provide basic user information to generate a profile like all user types.  If you signify yourself as an owner, we'll ask for some more information about you for safety purposes when meeting with other owners.  These can be retrieved by contacting [_DoggyMatch Customer Service_]().  Then we will ask for information about your dog.  Fill out as much as you can or want, these will influence the preferences of others and allow you to be prioritized on their Doggy-MatchFinder.  Finally, set your preferences so you can find the right dogs for your lonely pup._
+
+**Signing Up as a Viewer**
+_Dog lover or dog hater, who doesn't love seeing cute pups!  Why scroll on social media when you can see cute dogs and all of their information!  Provide basic account information (this will be used to Sign In again if you use another device or Sign Out) and select Viewer as your account type.  When you do this, you won't be asked to provide any other information, yours is only used for account privacy and security.  You can see all of the dogs on DoggyMatch and since all viewers can see all owners and their information, they can report accounts for innapropriate content with our quick `REPORT` button._
+
+**Signing Up as an Admin**
+_Contact DoggyMatch to be added to our Administrative Service.  These users are given a small financial incentive to remove accounts for inappropriate content.  Once a moderator has reported it, the Admin can remove the account completely.  It will be on a temporary ban after being reported until it is either taken down or misreported._
 
 ### Match
-
-![Match Feature](https://git.linux.iastate.edu/cs309/fall2021/3_rk_1/-/raw/45-git-redesign/Design/?)
-
-Match about `TODO`
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Specific Features:** _DoggyMatch Algorithm, Importing Image from Server, Downloading Profile_
-
-### Chat
 
 ![Match Feature](https://git.linux.iastate.edu/cs309/fall2021/3_rk_1/-/raw/45-git-redesign/Design/?)
 
@@ -116,13 +119,23 @@ The Match feature allows for owners to find dogs compatible with theirs.  They c
 
 Matching is the most essential function of the app and is what makes a DoggyMatch a DoggyMatch!
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Specific Features:** _WebSocket, Importing Messages from Server_
+_Match with other owners and set up playdates for your dog through our chat._
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Specific Features:** _DoggyMatch Algorithm, Importing Image from Server, Downloading Profile_
+
+### Chat
+
+![Match Feature](https://git.linux.iastate.edu/cs309/fall2021/3_rk_1/-/raw/45-git-redesign/Design/?)
+
+Chat with your matches!  If you and the other owner liked each others dogs, then a chat will automatically be generated.  When the chat is generated, you can set up a playdate and add it to your calendar!
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Specific Features:** _WebSocket, Mapping Messages to Users_
 
 ### Profile
 
 ![Profile Feature](https://git.linux.iastate.edu/cs309/fall2021/3_rk_1/-/raw/45-git-redesign/Design/?)
 
-Profile about `TODO`
+View your profile or modify it.
 
 ## Backend
 
@@ -175,7 +188,7 @@ About feature `TODO`
 ### JavaDoc [_**link to javadocs**_]()
 
 -----------------------------------------------------
-###### BE Documentation by Diego Saavedra Villarroel
+###### BE Documentation by Diego Saavedra
 
 ###### FE Documentation by Mark Gores
 
