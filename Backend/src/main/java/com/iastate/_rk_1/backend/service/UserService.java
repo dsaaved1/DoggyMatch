@@ -5,8 +5,7 @@ import com.iastate._rk_1.backend.entity.*;
 import com.iastate._rk_1.backend.repository.ModeratorRepository;
 import com.iastate._rk_1.backend.repository.UserRepository;
 
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 
 import com.iastate._rk_1.backend.repository.ViewerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -154,10 +153,17 @@ public class UserService {
      */
   public List<User> findEverybody(String email) {
     List<User> users = repository.findAll();
+    List<String> userMatches = new ArrayList<String>();
+    User currentUser = getUsersByEmail(email);
+
+    for (Chat chat: currentUser.getChats()){
+        userMatches.add(chat.getUserMail());
+    }
 
     for (Iterator<User> iterator = users.iterator(); iterator.hasNext(); ) {
       User user = iterator.next();
-      if (user.getEmail().equals(email) || user.getUserTypeId() == 1 || user.getUserTypeId() == 2){
+      if (user.getEmail().equals(email) || user.getUserTypeId() == 1 || user.getUserTypeId() == 2
+      || currentUser.getPossibleMatches().contains(user.getEmail()) || userMatches.contains(user.getEmail())){
         iterator.remove();
       }
     }
@@ -174,10 +180,17 @@ public class UserService {
   //Diego
   public List<User> findMatches(String email) {
       List<User> allUsers = repository.findAll();
+      List<String> userMatches = new ArrayList<String>();
+      User currentUser = getUsersByEmail(email);
+
+      for (Chat chat: currentUser.getChats()){
+          userMatches.add(chat.getUserMail());
+      }
 
       for (Iterator<User> iterator = allUsers.iterator(); iterator.hasNext(); ) {
         User user = iterator.next();
-        if (user.getEmail().equals(email)|| user.getUserTypeId() == 1 || user.getUserTypeId() == 2){
+        if (user.getEmail().equals(email)|| user.getUserTypeId() == 1 || user.getUserTypeId() == 2 ||
+          currentUser.getPossibleMatches().contains(user.getEmail()) || userMatches.contains(user.getEmail()) ){
           iterator.remove();
         }
       }
