@@ -30,7 +30,7 @@
 
 ### **Diego Saavedra**
 
-##### Backend Developer, `TODO SPECIALITY`
+##### Backend Developer
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Experience:** COM S 227, COM S 228
 
