@@ -34,7 +34,7 @@ public class ChatController {
 
     private HashMap<Set<Integer>, Chat> chats = new HashMap<>();
 
-    @GetMapping("/chat/{id1},{id2}")
+    @GetMapping(value = "/chat/{id1},{id2}", produces = "application/json")
     private String getChat(@PathVariable int id1, @PathVariable int id2) {
         Gson gson = new Gson();
         Set<Integer> ids = new HashSet<>();
