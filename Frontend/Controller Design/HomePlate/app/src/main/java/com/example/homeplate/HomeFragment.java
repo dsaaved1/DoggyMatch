@@ -4,6 +4,7 @@ import static com.example.homeplate.api.ApiClientFacotry.GetUserApi;
 
 import android.os.Bundle;
 import android.os.Handler;
+import android.text.method.ScrollingMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +17,7 @@ import androidx.fragment.app.Fragment;
 import com.example.homeplate.api.SlimCallback;
 import com.example.homeplate.model.User;
 import com.example.homeplate.model.staticUser;
+import com.squareup.picasso.Picasso;
 
 /**
  * Matching Activity
@@ -28,6 +30,8 @@ public class HomeFragment extends Fragment{
     // Local Fields
     private TextView nameText;
     private TextView descriptionText;
+    private TextView ageText;
+    private TextView a;
     private Button yesButton;
     private Button noButton;
     private ImageView profilePicture;
@@ -52,6 +56,8 @@ public class HomeFragment extends Fragment{
         // Text
         nameText = view.findViewById(R.id.name);
         descriptionText = view.findViewById(R.id.description);
+        // ageText = view.findViewById(R.id.age);
+        // a = view.findViewById(R.id.a);
 
         // Buttons
         yesButton = view.findViewById(R.id.yesButton);
@@ -148,7 +154,23 @@ public class HomeFragment extends Fragment{
             public void run() {
                 nameText.setText(DoggyInterface.DoggyView.getName());
                 descriptionText.setText(DoggyInterface.DoggyView.getDescription());
-                profilePicture.setImageResource(DoggyInterface.DoggyView.getImage());
+                // ageText.setText(DoggyInterface.DoggyView.getGender());
+                // a.setText(DoggyInterface.DoggyView.getBreed());
+
+                    //profilePicture.setImageBitmap(DoggyInterface.DoggyView.getImage());
+
+
+                if(staticUser.getUser() != null && staticUser.getIndex() < staticUser.getUsers().size()) {
+                    // TODO
+                    //  Change to Remote URL http://coms-309-058.cs.iastate.edu:8080/dog
+                    String url = "http://10.0.2.2:8080/dog" + (staticUser.getIndex() + 1) + ".jpg";
+                    System.out.println("Getting url at: " + url);
+                    Picasso.with(profilePicture.getContext())
+                            .load(url)
+                            .into(profilePicture);
+                }
+                else profilePicture.setImageResource(R.drawable.icon_match_24);
+
             }
         },70);
     }

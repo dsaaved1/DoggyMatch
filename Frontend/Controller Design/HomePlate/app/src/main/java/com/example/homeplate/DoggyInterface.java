@@ -4,6 +4,8 @@ import static androidx.core.content.ContextCompat.startActivity;
 import static com.example.homeplate.api.ApiClientFacotry.GetUserApi;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Handler;
 import android.text.TextUtils;
 
@@ -12,6 +14,9 @@ import com.example.homeplate.model.Doginfo;
 import com.example.homeplate.model.User;
 import com.example.homeplate.model.staticUser;
 
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -212,8 +217,14 @@ public interface DoggyInterface {
          * @return Name
          */
         public static String getMyDescription() {
-            if(staticUser.getUser() != null)
-                return staticUser.getUser().getDog().getDescriptionDog();
+            if(staticUser.getUser() != null) {
+                return staticUser.getUser().getDog().getDescriptionDog()
+                        + "\n" +
+                        "Gender: " + staticUser.getUser().getDog().getGenderDog()
+                        + "\nBreed: " + staticUser.getUser().getDog().getBreed()
+                        + "\t\tAge: " + staticUser.getUser().getDog().getAgeDog();
+            }
+                // return staticUser.getUser().getDog().getDescriptionDog();
             else return "No Description Available";
         }
 
@@ -247,8 +258,22 @@ public interface DoggyInterface {
          */
         public static String getDescription() {
             if(staticUser.getUser() != null && staticUser.getIndex() < staticUser.getUsers().size())
-                return staticUser.getUsers().get(staticUser.getIndex()).getDog().getDescriptionDog();
+                return staticUser.getUsers().get(staticUser.getIndex()).getDog().getDescriptionDog()
+                        + "\n" +
+                        "Gender: " + getGender()
+                        + "\nBreed: " + getBreed()
+                        + "\t\tAge: " + staticUser.getUsers().get(staticUser.getIndex()).getDog().getAgeDog();
             else return "Try again tomorrow!";
+        }
+        public static String getGender(){
+            if(staticUser.getUser() != null && staticUser.getIndex() < staticUser.getUsers().size())
+                return staticUser.getUsers().get(staticUser.getIndex()).getDog().getGenderDog();
+            else return "";
+        }
+        public static String getBreed(){
+            if(staticUser.getUser() != null && staticUser.getIndex() < staticUser.getUsers().size())
+                return staticUser.getUsers().get(staticUser.getIndex()).getDog().getBreed();
+            else return "";
         }
 
         /**
@@ -256,10 +281,15 @@ public interface DoggyInterface {
          * @todo Implement Image from UserS
          * @return Image
          */
-        public static int getImage() {
-            if(staticUser.getUser() != null && staticUser.getIndex() < staticUser.getUsers().size())
-                return R.drawable.icon_match_24;    // TODO
-            else return R.drawable.icon_profile_24;
+        public static String getImage() throws IOException {
+            if(staticUser.getUser() != null && staticUser.getIndex() < staticUser.getUsers().size()) {
+                //http://10.0.2.2:8080/dog1.jpg
+                String imageurl ="http://10.0.2.2:8080/dog1.jpg";
+                System.out.println(imageurl);
+                return imageurl;
+            }
+                // return R.drawable.icon_match_24;    // TODO
+            else return null; // new Bitmap(R.drawable)return R.drawable.icon_profile_24;
         }
 
         /**

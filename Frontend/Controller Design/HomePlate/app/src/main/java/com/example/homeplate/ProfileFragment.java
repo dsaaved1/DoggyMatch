@@ -14,6 +14,11 @@ import androidx.fragment.app.Fragment;
 
 import com.example.homeplate.model.User;
 import com.example.homeplate.model.staticUser;
+import com.squareup.picasso.Picasso;
+
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.util.Random;
 
 /**
  * Profile Activity
@@ -55,11 +60,21 @@ public class ProfileFragment extends Fragment {
 
         // Images
         profilePicture = view.findViewById(R.id.myProfilePicture);
+        // TODO http://coms-309-058.cs.iastate.edu:8080/dog
+        String url = "http://10.0.2.2:8080/dog" + (new Random().nextInt(9) + 1) + ".jpg";
+        System.out.println("Getting url at: " + url);
+        Picasso.with(profilePicture.getContext())
+                .load(url)
+                .into(profilePicture);
 
         // Set Initial Values
         nameText.setText(DoggyInterface.DoggyView.getMyName());
         descriptionText.setText(DoggyInterface.DoggyView.getMyDescription());
-        profilePicture.setImageResource(DoggyInterface.DoggyView.getImage());
+        /*try {
+            profilePicture.setImageBitmap(DoggyInterface.DoggyView.getImage());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }*/
     }
 
     /**

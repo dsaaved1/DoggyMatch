@@ -126,7 +126,7 @@ public class Register extends AppCompatActivity implements DatePickerDialog.OnDa
         box3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showDatePickerDialog();
+                // showDatePickerDialog();
             }
         });
     }

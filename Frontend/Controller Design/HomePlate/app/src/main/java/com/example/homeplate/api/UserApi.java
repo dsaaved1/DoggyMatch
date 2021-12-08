@@ -91,6 +91,8 @@ public interface UserApi {
     Call<User> delete(@Path("email") String email, @Path("id") int id);
     @PUT("user/register/{id}")
     Call<User> update(@Body User user, @Path("id") int id);
+    @GET("/dog{num}.jpg")
+    Call<User> photo(@Path("num") int num);
 
 
 }
