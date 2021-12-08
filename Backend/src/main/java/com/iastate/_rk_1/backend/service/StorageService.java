@@ -18,6 +18,7 @@ import java.util.Objects;
 @Service
 public class StorageService {
 
+    /*
     public void store(MultipartFile file) {
         try {
             String fileLocation = new File("src/main/resources/static").getAbsolutePath() + "/" + file.getOriginalFilename();
@@ -28,6 +29,8 @@ public class StorageService {
             e.printStackTrace();
         }
     }
+
+     */
 
 
 }

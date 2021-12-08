@@ -37,6 +37,7 @@ public class FileUploadController {
     }
 
 
+    /*
     @PostMapping("/upload")
     public String handleFileUpload(@RequestParam("file") MultipartFile file) {
 
@@ -44,5 +45,7 @@ public class FileUploadController {
 
         return "Image uploaded successfully";
     }
+    
+     */
 
 }
