@@ -86,13 +86,13 @@ public class UserService {
   //Diego
   public User updateUser(User user, int id) {
     User existingUser = repository.findById(id);
+    existingUser.setPhoto(user.getPhoto());
     existingUser.setFirstName(user.getFirstName());
     existingUser.setLastName(user.getLastName());
     existingUser.setAge(user.getAge());
     existingUser.setAddress(user.getAddress());
     existingUser.setUniversity(user.getUniversity());
     existingUser.setGender(user.getGender());
-    existingUser.setPhoto(user.getPhoto());
     return repository.save(existingUser);
   }
 
