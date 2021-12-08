@@ -15,6 +15,9 @@ public class User {
   @Column(name = "id")
   private int id;
 
+  @Column(name = "photo", length = 1000)
+  private String photo;
+
   @ApiModelProperty(notes = "email of user",name="email",required=true,value="test email")
   @Column(name = "email", unique = true)
   private String email;
@@ -48,9 +51,6 @@ public class User {
 
   @Column(name = "gender")
   private String gender;
-
-  @Column(name = "photo")
-  private String photo;
 
   @OneToOne(cascade = {CascadeType.ALL})
   @JoinColumn(name = "dogInfo_id")
@@ -290,7 +290,6 @@ public class User {
     this.photo = photo;
   }
 
-  
   /** 
    * @return DogInfo
    */
