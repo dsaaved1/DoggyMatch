@@ -28,15 +28,15 @@
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Outcomes:** `TODO`
 
-### **Diego Saavedra Villarroel**
+### **Diego Saavedra**
 
 ##### Backend Developer, `TODO SPECIALITY`
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Experience:** 'TODO'
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Experience:** COM S 227, COM S 228
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Classification:** 'TODO'
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Classification:** Sophomore
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Outcomes:** `TODO`
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Outcomes:** Git, Spring boot, Mockito
 
 ### **Peyton Arbuckle**
 
