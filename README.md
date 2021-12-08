@@ -20,13 +20,13 @@
 
 ### **Mark Gores**
 
-##### Frontend Developer, `TODO SPECIALITY`
+##### Frontend Developer, Connection with Data Base
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Experience:** 'TODO'
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Experience:** COM S 227, COM S 228, COM S 311
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Classification:** 'TODO'
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Classification:** Junior
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Outcomes:** `TODO`
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Outcomes:** Git, Android Studio, API Libraries, Design Patterns
 
 ### **Diego Saavedra**
 
