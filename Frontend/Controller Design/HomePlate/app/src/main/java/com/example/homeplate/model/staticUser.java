@@ -3,6 +3,7 @@ package com.example.homeplate.model;
 import static com.example.homeplate.api.ApiClientFacotry.GetUserApi;
 
 import com.example.homeplate.DoggyInterface;
+import com.example.homeplate.MessageReturn;
 import com.example.homeplate.api.SlimCallback;
 
 import java.util.ArrayList;
@@ -31,11 +32,14 @@ public class staticUser {
     // User Index
     private static int index;
 
-    // Chat Index
-    private static int chatIndex;
+    // Current Chat
+    private static Chat currentChat;
 
     // User Type
     private static DoggyInterface.UserType userType;
+
+    // Return message
+    public static MessageReturn messageReturn;
 
     /**
      * constructor that calls get all
@@ -60,9 +64,10 @@ getall();
      * @param list
      */
     public static void setlist(List<User> list){
-
+        getUsers.clear();
     for(User u: list){
         getUsers.add(u);
+        System.out.printf("Name: %s\tIndex: %d%n", u.getDog().getFirstNameDog(), u.getId());
     }
 
 }
@@ -153,18 +158,18 @@ getall();
     /**
      * Set Chat Index
      */
-    public static void setChatIndex(int index)
+    public static void setCurrentChat(Chat chat)
     {
-        staticUser.chatIndex = index;
+        staticUser.currentChat = chat;
     }
 
     /**
      * Get Chat Index
      * @return Chat Index
      */
-    public static int getChatIndex()
+    public static Chat getCurrentChat()
     {
-        return chatIndex;
+        return currentChat;
     }
 
     /**
@@ -180,6 +185,7 @@ getall();
      * @return User Type
      */
     public static DoggyInterface.UserType getUserType() {
-        return userType;
+
+        return staticUser.userType.valueOf(staticUser.user.getUserTypeId());
     }
 }

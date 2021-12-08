@@ -3,6 +3,7 @@ import static com.example.homeplate.api.ApiClientFacotry.GetUserApi;
 
 import android.util.ArraySet;
 
+import com.example.homeplate.DoggyInterface;
 import com.example.homeplate.api.SlimCallback;
 import com.google.gson.annotations.SerializedName;
 
@@ -29,16 +30,34 @@ public class User {
     private String university;
     private String gender;
     private String photo;
-    private Doginfo dog;
+    private Doginfo dogInfo;
     private Preferences preferences;
-    private Set<User> possibleMatches;
-    private Set<Chat> chats = new HashSet<Chat>();
+    private Set<String> possibleMatches;
+    private Set<Chat> chats = new HashSet<>();
+    private int userTypeId;
+
+    /**
+     * Gets type of user viewer, moderator, or admin
+     * @return 0, 1, 2
+     */
+    public int getUserTypeId() {
+        return userTypeId;
+    }
+
+    /**
+     * sets type of user
+     * @param userTypeId
+     */
+    public void setUserTypeId(int userTypeId) {
+        //staticUser.setUserType((DoggyInterface.UserType) userTypeId);
+        this.userTypeId = userTypeId;
+    }
 
     /**
      * gets possible matches for user
      * @return list of users
      */
-    public Set<User> getPossibleMatches() {
+    public Set<String> getPossibleMatches() {
         return possibleMatches;
     }
 
@@ -46,7 +65,7 @@ public class User {
      * sets the list of possible matches for a user
      * @param possibleMatches
      */
-    public void setPossibleMatches(Set<User> possibleMatches) {
+    public void setPossibleMatches(Set<String> possibleMatches) {
         this.possibleMatches = possibleMatches;
     }
 
@@ -78,7 +97,7 @@ public class User {
      * @return current dog info
      */
     public Doginfo getDog() {
-        return dog;
+        return dogInfo;
     }
 
     /**
@@ -86,7 +105,7 @@ public class User {
      * @param dog info
      */
     public void setDog(Doginfo dog) {
-        this.dog = dog;
+        this.dogInfo = dog;
     }
 
     /**

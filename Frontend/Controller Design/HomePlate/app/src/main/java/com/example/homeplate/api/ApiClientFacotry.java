@@ -22,8 +22,8 @@ public class ApiClientFacotry {
         if (apiClientSeed == null) {
             apiClientSeed = new Retrofit.Builder()
                     //for local host testing
-                    //.baseUrl("http://10.0.2.2:8080/")
-                    .baseUrl("http://coms-309-058.cs.iastate.edu:8080/")
+                    .baseUrl("http://10.0.2.2:8080/")
+                    //.baseUrl("http://coms-309-058.cs.iastate.edu:8080/")
                     .addConverterFactory(GsonConverterFactory.create())
                     .client(okHttpClient)
                     .build();

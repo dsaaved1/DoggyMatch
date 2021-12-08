@@ -1,5 +1,7 @@
 package com.example.homeplate;
 
+import static com.example.homeplate.DoggyInterface.DoggyController.sendMessage;
+
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,8 +9,18 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.sql.Array;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Set;
+
 import androidx.fragment.app.Fragment;
 
+import com.example.homeplate.model.Chat;
 import com.example.homeplate.model.staticUser;
 
 /**
@@ -22,10 +34,13 @@ public class UserChatFragment extends Fragment {
     private TextView inputMessage;
     private Button sendButton;
 
+
+    private Set<Chat> chats = staticUser.getUser().getChats();
+    private List<Chat> lchat = new ArrayList<Chat>();
+    private Chat chat= new Chat();
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_userchat, container, false);
-
         setValues(view, savedInstanceState);
         interact();
 
@@ -51,6 +66,9 @@ public class UserChatFragment extends Fragment {
 
         // Initialize Values
         // Generate Name and Name Status
+
+        chatName.setText(staticUser.getCurrentChat().getUserMail());
+        /*
         MessageReturn message = DoggyInterface.DoggyView.getChatName(staticUser.getChatIndex());
         if(message.getStatus() == DoggyInterface.Status.SUCCESS) {  // Display Previous Messages
             // TODO
@@ -61,6 +79,8 @@ public class UserChatFragment extends Fragment {
             // Maybe a new method
         } else { sendButton.setEnabled(false); }                    // Disable Sending Messages and Don't Display
         chatName.setText(message.getMessage());
+
+         */
     }
 
     /**
@@ -73,16 +93,19 @@ public class UserChatFragment extends Fragment {
         sendButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 // TODO
                 // Send Message
                 // inputMessage -> Chat
+
                 /**
                  * If unable to send message, create an error and display.
                  * Unable to Connect / Send
                  *
                  * If able to connect, update view
                  */
-                DoggyInterface.DoggyController.sendMessage(staticUser.getChatIndex(), inputMessage.getText().toString());
+
+                // sendMessage(staticUser.getChatIndex(), inputMessage.getText().toString());
             }
         });
     }

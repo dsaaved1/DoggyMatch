@@ -109,7 +109,7 @@
         android:background="@drawable/customtext"
         android:backgroundTint="#E1E1E1"
         android:ems="10"
-        android:hint="Username"
+        android:hint="FirstName"
         android:textColorHint="@color/white"
         android:textColor="#000000"
         android:textSize="20sp"

@@ -76,7 +76,8 @@ public interface UserApi {
      */
     @POST("user")
     Call<User> postuser(@Body User user );
-
+   // @POST("user")
+   // Call<User> updateUser(@Body User user, @Path int id);
     /**
      * used for when a current user "likes" another user, liked user is moved to potential match
      * and if liked user also likes current user a match is created
@@ -86,6 +87,10 @@ public interface UserApi {
      */
     @PUT("user/home/match/{id},{id2}")
     Call<User> match(@Path("id") int userId, @Path("id2")int userId1);
+    @PUT("moderator/home/delete/{email},{id}")
+    Call<User> delete(@Path("email") String email, @Path("id") int id);
+    @PUT("user/register/{id}")
+    Call<User> update(@Body User user, @Path("id") int id);
 
 
 }

@@ -1,6 +1,9 @@
 package com.example.homeplate;
 
+import static com.example.homeplate.api.ApiClientFacotry.GetUserApi;
+
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +13,8 @@ import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
+import com.example.homeplate.api.SlimCallback;
+import com.example.homeplate.model.User;
 import com.example.homeplate.model.staticUser;
 
 /**
@@ -53,7 +58,7 @@ public class HomeFragment extends Fragment{
         noButton = view.findViewById(R.id.noButton);
 
         // Change Button Text for User Type
-        if(staticUser.getUserType() != DoggyInterface.UserType.OWNER) {
+        if(staticUser.getUserType() == DoggyInterface.UserType.MODERATOR) {
             yesButton.setText("GOOD");
             noButton.setText("REPORT");
         }
@@ -115,9 +120,15 @@ public class HomeFragment extends Fragment{
                 if(staticUser.getIndex() < staticUser.getUsers().size()) {
                     if(staticUser.getUserType() != DoggyInterface.UserType.OWNER) {
                         // Generate a REPORT
-                        if(staticUser.getUserType() == DoggyInterface.UserType.ADMIN) {
+                        GetUserApi().delete(staticUser.getUser().getEmail(),staticUser.getUsers().get(staticUser.getIndex()).getId()).enqueue(new SlimCallback<User>(user -> {
+                        }));
+
+                        if(staticUser.getUserType() == DoggyInterface.UserType.VIEWER) {
                             // Remove Account IMMEDIATELY
+
+
                         }
+
                     }
                     staticUser.incrementIndex();
                     displayProfile();
@@ -132,8 +143,13 @@ public class HomeFragment extends Fragment{
      */
     private void displayProfile()
     {
-        nameText.setText(DoggyInterface.DoggyView.getName());
-        descriptionText.setText(DoggyInterface.DoggyView.getDescription());
-        profilePicture.setImageResource(DoggyInterface.DoggyView.getImage());
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                nameText.setText(DoggyInterface.DoggyView.getName());
+                descriptionText.setText(DoggyInterface.DoggyView.getDescription());
+                profilePicture.setImageResource(DoggyInterface.DoggyView.getImage());
+            }
+        },70);
     }
 }

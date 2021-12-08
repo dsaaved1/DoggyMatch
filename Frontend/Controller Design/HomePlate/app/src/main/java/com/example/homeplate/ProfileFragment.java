@@ -72,9 +72,9 @@ public class ProfileFragment extends Fragment {
         signOutButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                staticUser.setUser(null);
                 startActivity(new Intent(getActivity(), Login.class));
                 // Set User to NULL before Login
-                staticUser.setUser(null);
                 getActivity().finish();
             }
         });

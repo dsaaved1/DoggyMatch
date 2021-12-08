@@ -1,11 +1,14 @@
 package com.example.homeplate;
 
+import static androidx.core.content.ContextCompat.startActivity;
 import static com.example.homeplate.api.ApiClientFacotry.GetUserApi;
 
+import android.content.Intent;
 import android.os.Handler;
 import android.text.TextUtils;
 
 import com.example.homeplate.api.SlimCallback;
+import com.example.homeplate.model.Doginfo;
 import com.example.homeplate.model.User;
 import com.example.homeplate.model.staticUser;
 
@@ -51,7 +54,7 @@ public interface DoggyInterface {
         // Types of User
         OWNER(0, "Dog Owner"),
         MODERATOR(1, "Moderator"),
-        ADMIN(2, "Admin");
+        VIEWER(2, "Viewer");
 
         private final int index;
         private final String description;
@@ -137,8 +140,9 @@ public interface DoggyInterface {
                             staticUser.setUser(user);
                             //generates the list of all users besides current
                             GetUserApi().getEverbody(user.getEmail()).enqueue(new SlimCallback<List<User>>(user->{ staticUser.setlist(user); }));
-                            returnMessage.setStatus(DoggyInterface.Status.SUCCESS);
-                            returnMessage.setMessage("Login Successful");
+
+                            staticUser.messageReturn = new MessageReturn("Worjked", Status.SUCCESS);
+
                         }
                     },1000);
                 }
@@ -151,9 +155,10 @@ public interface DoggyInterface {
             }));
 
             // TODO Change SUCCESS to FAILURE
-            if(returnMessage.getStatus() == null) return new MessageReturn("Unable to Connect.", DoggyInterface.Status.SUCCESS);
+            // if(returnMessage.getStatus() == null) return new MessageReturn("Unable to Connect.", Status.FAILURE);
 
-            return returnMessage;
+            return staticUser.messageReturn;
+            // return returnMessage;
         }
 
         /**
@@ -178,6 +183,7 @@ public interface DoggyInterface {
          */
         public static void sendMessage(int chatIndex, String message)
         {
+
             // Send ^MESSAGE to User(chatIndex)
             // Check if possible then send
             // If not possible, maybe return?
@@ -227,9 +233,12 @@ public interface DoggyInterface {
          * @return Name
          */
         public static String getName() {
+            System.out.println("Index: " + staticUser.getIndex());
+            System.out.println("Size: " + staticUser.getUsers().size());
+
             if(staticUser.getUser() != null && staticUser.getIndex() < staticUser.getUsers().size())
                 return staticUser.getUsers().get(staticUser.getIndex()).getDog().getFirstNameDog();
-            else return "No Dog Available";
+            else return "No more matches";
         }
 
         /**
@@ -239,7 +248,7 @@ public interface DoggyInterface {
         public static String getDescription() {
             if(staticUser.getUser() != null && staticUser.getIndex() < staticUser.getUsers().size())
                 return staticUser.getUsers().get(staticUser.getIndex()).getDog().getDescriptionDog();
-            else return "No Description Available";
+            else return "Try again tomorrow!";
         }
 
         /**
@@ -256,6 +265,7 @@ public interface DoggyInterface {
         /**
          * Get Name of User for Chat
          * @return Name
+         * @todo Change to returning the object of chat
          */
         public static MessageReturn getChatName(int index) {
             if(index < staticUser.getUsers().size() && staticUser.getUsers().get(index) != null)

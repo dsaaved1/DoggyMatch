@@ -9,6 +9,9 @@ public class Chat {
 
     private String userMail;
 
+    public Chat() {
+    }
+
     /**
      * Gets the id of current chat
      * @return ID

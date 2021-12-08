@@ -1,7 +1,11 @@
 package com.example.homeplate;
 
+import static com.example.homeplate.api.ApiClientFacotry.GetUserApi;
+
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.InputType;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -13,10 +17,14 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.homeplate.api.SlimCallback;
+import com.example.homeplate.model.Doginfo;
 import com.example.homeplate.model.User;
+import com.example.homeplate.model.staticUser;
 
 import java.util.Calendar;
 import java.util.HashMap;
+import java.util.List;
 
 /**
  * Registration Activity
@@ -41,6 +49,8 @@ public class Register extends AppCompatActivity implements DatePickerDialog.OnDa
     private int page;
     private final int LAST_PAGE = 4;    // This is the last page - TODO Change as needed.
     private HashMap<Integer, String> optionMap;
+    private User newUser = new User();
+    private Doginfo newDog = new Doginfo();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,7 +84,8 @@ public class Register extends AppCompatActivity implements DatePickerDialog.OnDa
 
         // Initialize Values
         optionMap = new HashMap<>();
-        page = 1;
+        if(DoggyInterface.DoggyController.isSignedIn()) page = 3;
+        else page = 1;
         displayPage(page);
 
         /**
@@ -102,12 +113,13 @@ public class Register extends AppCompatActivity implements DatePickerDialog.OnDa
         continueButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                decide();
                 // TODO Remove this when necessary (Proof of Concept)
-                for(int i : optionMap.keySet()) {
+               /* for(int i : optionMap.keySet()) {
                     if(optionMap.get(i).equals(menu.getSelectedItem().toString()))
                         System.out.println("i: " + i + " Value: " + menu.getSelectedItem().toString());
-                }
-                decide();
+                }*/
+
             }
         });
 
@@ -121,23 +133,85 @@ public class Register extends AppCompatActivity implements DatePickerDialog.OnDa
 
     private void decide()
     {
-        // TODO Create Check for Values in Boxes
-        //  Example: if DATE_BOX contains 'WRONG_FORMAT' -> setTextColor(RED) -> DON'T CONTINUE
 
+        if(page == 1){
+            System.out.println(box1.getText().toString());
+            newUser.setFirstName(box1.getText().toString());
+            System.out.println(box2.getText().toString());
+            newUser.setEmail(box2.getText().toString());
+            newUser.setPassword(box4.getText().toString());
+            newUser.setUserTypeId(0);
+        }
+        if(page == 2){
+            newUser.setLastName(box2.getText().toString());
+            newUser.setAge(Integer.parseInt(box3.getText().toString()));
+            newUser.setAddress(box4.getText().toString());
+            newUser.setUniversity(menu.getSelectedItem().toString());
+        }
+        if(page == 3){
+            newDog.setFirstNameDog(box1.getText().toString());
+            newDog.setBreed(box2.getText().toString());
+            newDog.setAgeDog(Integer.parseInt(box3.getText().toString()));
+            newDog.setDescriptionDog(box4.getText().toString());
+            newDog.setEnergyDog(menu.getSelectedItem().toString());
+            newUser.setDog(newDog);
+        }
         // If they register as an Admin or Moderator, their profile should be generated immediately.
         if(page == 1 && !menu.getSelectedItem().toString().equals(DoggyInterface.UserType.OWNER.getDescription())) {
-            System.out.println("This is not a dog owner!"); // TODO Remove
+            System.out.println("This is not a dog owner!");
+
+            // TODO Remove
             // TODO Generate User and set user type to Moderator or Admin
+            newUser.setFirstName(box1.getText().toString());
+            newUser.setEmail(box2.getText().toString());
+            newUser.setPassword(box4.getText().toString());
+
+            newUser.setDog(newDog);
+            if(menu.getSelectedItem().toString() == "Moderator") {
+                newUser.setUserTypeId(1);
+                newDog.setFirstNameDog("Moderator");
+                newDog.setDescriptionDog("Moderate people");
+            }
+            else{
+                newUser.setUserTypeId(2);
+                newDog.setFirstNameDog("Viewer");
+                newDog.setDescriptionDog("just seeing");
+            }
+            GetUserApi().postuser(newUser).enqueue(new SlimCallback<User>(user->{  }));
+            staticUser.setUser(newUser);
+            GetUserApi().getEverbody(newUser.getEmail()).enqueue(new SlimCallback<List<User>>(user->{ staticUser.setlist(user); }));
+            startActivity(new Intent(Register.this, Home.class));
+            finish();
+
         } else {
+
             if(++page < LAST_PAGE) displayPage(page);
             else {
+                if(DoggyInterface.DoggyController.isSignedIn()) {
+
+                    staticUser.getUser().getDog().setFirstNameDog(box1.getText().toString());
+                    staticUser.getUser().getDog().setBreed(box2.getText().toString());
+                    staticUser.getUser().getDog().setAgeDog(Integer.parseInt(box3.getText().toString()));
+                    staticUser.getUser().getDog().setDescriptionDog(box4.getText().toString());
+                    staticUser.getUser().getDog().setEnergyDog(menu.getSelectedItem().toString());
+                    newUser = staticUser.getUser();
+                }
+                    GetUserApi().postuser(newUser).enqueue(new SlimCallback<User>(user -> {
+                    }));
+                    staticUser.setUser(newUser);
+                    GetUserApi().getEverbody(newUser.getEmail()).enqueue(new SlimCallback<List<User>>(user -> {
+                        staticUser.setlist(user);
+                    }));
+                    startActivity(new Intent(Register.this, Home.class));
+                    finish();
+                }
                 // TODO Generate a NEW User Request
                 //  OR Check if the User is signed in,
                 //  then instead of generating a new User Object, Update Current
                 //      FUNCTION: DoggyInterface.DoggyController.isSignedIn();
             }
         }
-    }
+
 
     /**
      * Display the Next Page
@@ -165,10 +239,13 @@ public class Register extends AppCompatActivity implements DatePickerDialog.OnDa
                 pageTitle.setText("Owner's Information");
                 // Set TextBox values
                 box1.setHint("First Name");
+                    box1.setInputType(InputType.TYPE_CLASS_TEXT);
                 box2.setHint("Last Name");
-                box3.setHint("Birthday");
-                    box3.setInputType(InputType.TYPE_CLASS_TEXT);
+                    box2.setInputType(InputType.TYPE_CLASS_TEXT);
+                box3.setHint("Age");
+                    box3.setInputType(InputType.TYPE_CLASS_NUMBER);
                 box4.setHint("Street Address");
+                    box4.setInputType(InputType.TYPE_CLASS_TEXT);
                 // Set Menu Items
                 // Universities - TODO can be automated
                     optionMap.put(optionMap.size(), "Iowa State University");
@@ -177,12 +254,16 @@ public class Register extends AppCompatActivity implements DatePickerDialog.OnDa
                 break;
             case 3:
                 // Set Page Title - Page 3 Dog Information
-                pageTitle.setText("Dog's Information");
+                if(DoggyInterface.DoggyController.isSignedIn()) pageTitle.setText("Update Dog");
+                else pageTitle.setText("Dog's Information");
                 box1.setHint("Name");
+                    box1.setInputType(InputType.TYPE_CLASS_TEXT);
                 box2.setHint("Breed");
+                    box2.setInputType(InputType.TYPE_CLASS_TEXT);
                 box3.setHint("Age");
                     box3.setInputType(InputType.TYPE_CLASS_NUMBER);
-                box4.setHint("Gender");
+                box4.setHint("Description");
+                    box4.setInputType(InputType.TYPE_CLASS_TEXT);
                 // Set Menu Items
                 // Energy: High, Moderate, Low - TODO can be automated
                     optionMap.put(optionMap.size(), "High");
