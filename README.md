@@ -175,7 +175,7 @@ About feature `TODO`
 ### JavaDoc [_**link to javadocs**_]()
 
 -----------------------------------------------------
-###### BE Documentation by Diego Saavedra Villarroel
+###### BE Documentation by Diego Saavedra
 
 ###### FE Documentation by Mark Gores
 
