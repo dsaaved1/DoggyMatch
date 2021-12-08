@@ -1,8 +1,5 @@
 package com.iastate._rk_1.backend.service;
 
-import jdk.internal.loader.Resource;
-import org.springframework.core.io.ClassPathResource;
-import org.springframework.core.io.FileSystemResource;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -18,7 +15,7 @@ import java.util.Objects;
 @Service
 public class StorageService {
 
-    /*
+
     public void store(MultipartFile file) {
         try {
             String fileLocation = new File("src/main/resources/static").getAbsolutePath() + "/" + file.getOriginalFilename();
@@ -30,7 +27,7 @@ public class StorageService {
         }
     }
 
-     */
+
 
 
 }
