@@ -1,5 +1,7 @@
 package com.example.homeplate.model;
 
+import java.util.ArrayList;
+
 /**
  * Users ability to send and receive chats
  * @author Mark Gores
@@ -43,4 +45,7 @@ public class Chat {
     public void setUserMail(String userMail) {
         this.userMail = userMail;
     }
+
+
 }
+

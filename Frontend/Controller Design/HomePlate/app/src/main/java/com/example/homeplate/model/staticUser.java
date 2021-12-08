@@ -25,7 +25,8 @@ public class staticUser {
 
     // List of all possible users to match with, does not include current user
     private static List<User> getUsers = new ArrayList<User>();
-
+    //list of messages
+    private static List<Message> messages = new ArrayList<Message>();
     // User Email
     private static String email;
 
@@ -58,7 +59,19 @@ getall();
         }
     }));
     }
+    public static void setMsg(){
+        GetUserApi().getChat(staticUser.getUser().getId(),staticUser.getUsers().get(staticUser.getIndex()).getId()-1).enqueue(new SlimCallback<List<Message>>(list ->{
+            System.out.println("List size: " + list.size());
+            for(Message x:list){
+                messages.add(x);
+                System.out.println("Message when set: " + x.getMessage());
+            }
+        }));
+    }
 
+public static List<Message> getMsg(){
+        return messages;
+}
     /**
      * sets the list of all possible users
      * @param list

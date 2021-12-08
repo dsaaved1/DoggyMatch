@@ -92,7 +92,13 @@ public interface UserApi {
     @PUT("user/register/{id}")
     Call<User> update(@Body User user, @Path("id") int id);
     @GET("/dog{num}.jpg")
-    Call<User> photo(@Path("num") int num);
+    Call<Chat> photo(@Path("num") int num);
+    @POST("chat/{id1},{id2}")
+    Call<String> postChat(@Path("id1") int id1, @Path("id2") int id2);
+    @PUT("chat/{id1},{id2}")
+    Call<Message> sendmsg(@Body Message name, @Path("id1") int id1, @Path("id2") int id2 );
+    @GET("chat/{id1},{id2}")
+    Call<List<Message>> getChat(@Path("id1") int id1, @Path("id2") int id2);
 
 
 }

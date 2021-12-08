@@ -11,12 +11,15 @@ import android.text.TextUtils;
 
 import com.example.homeplate.api.SlimCallback;
 import com.example.homeplate.model.Doginfo;
+import com.example.homeplate.model.Message;
 import com.example.homeplate.model.User;
+import com.example.homeplate.model.lmsg;
 import com.example.homeplate.model.staticUser;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -179,6 +182,7 @@ public interface DoggyInterface {
             if(staticUser.getIndex() < staticUser.getUsers().size()) {
                 GetUserApi().match(staticUser.getUser().getId(), staticUser.getUsers().get(staticUser.getIndex()).getId()).enqueue(new SlimCallback<User>(user -> {
                 }));
+                GetUserApi().postChat(staticUser.getUser().getId(),staticUser.getUsers().get(staticUser.getIndex()).getId()).enqueue(new SlimCallback<String>(str ->{ }));
                 staticUser.incrementIndex();
             }
         }
@@ -186,14 +190,33 @@ public interface DoggyInterface {
         /**
          * Send a message to match
          */
-        public static void sendMessage(int chatIndex, String message)
+        public static void sendMessage(String message)
         {
+            // my index: staticUser.getUser().getId()
+            // chat index: staticUser.getChatIndex()
 
+            Message msg = new Message(staticUser.getUser().getFirstName(),message);
+
+            GetUserApi().sendmsg(msg,staticUser.getUser().getId(),staticUser.getUsers().get(staticUser.getIndex()).getId()-1).enqueue(new SlimCallback<Message>(ms ->{}));
+            System.out.println("My ID: " + staticUser.getUser().getId() + "" + (staticUser.getUsers().get(staticUser.getIndex()).getId()-1) );
             // Send ^MESSAGE to User(chatIndex)
             // Check if possible then send
             // If not possible, maybe return?
         }
+
+        public static ArrayList<Message> getMessage(){
+            ArrayList<Message> msg = new ArrayList<Message>();
+            GetUserApi().getChat(staticUser.getUser().getId(),staticUser.getUsers().get(staticUser.getIndex()).getId()-1).enqueue(new SlimCallback<List<Message>>(list ->{
+                System.out.println("List size: " + list.size());
+                for(Message x:list){
+                    msg.add(x);
+                    System.out.println("Message when set: " + x.getMessage());
+                }
+            }));
+            return msg;
+        }
     }
+
 
     /**
      * Offload Data Assertion and
