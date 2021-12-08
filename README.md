@@ -16,7 +16,7 @@
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Classification:** Sophomore
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Outcomes:** Git, Android Studio, API Libraries, Design Patterns
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Outcomes:** Git, Mockito, Android Studio, API Libraries, Design Patterns, Dynamic Design
 
 ### **Mark Gores**
 
@@ -26,11 +26,11 @@
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Classification:** Junior
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Outcomes:** Git, Android Studio, API Libraries, Design Patterns
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Outcomes:** Git, Android Studio, API Libraries, Mockito
 
 ### **Diego Saavedra**
 
-##### Backend Developer
+##### Backend Developer, Algorithms
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Experience:** COM S 227, COM S 228
 
@@ -46,7 +46,7 @@
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Classification:** Sophomore
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Outcomes:** Spring boot, mockito, websockets
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Outcomes:** Spring boot, Mockito, WebSockets
 
 # **DoggyMatch**
 
