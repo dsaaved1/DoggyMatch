@@ -1,5 +1,7 @@
 package com.example.homeplate.model;
 
+import java.util.ArrayList;
+
 /**
  * Users ability to send and receive chats
  * @author Mark Gores
@@ -8,6 +10,9 @@ public class Chat {
     private int id;
 
     private String userMail;
+
+    public Chat() {
+    }
 
     /**
      * Gets the id of current chat
@@ -40,4 +45,7 @@ public class Chat {
     public void setUserMail(String userMail) {
         this.userMail = userMail;
     }
+
+
 }
+

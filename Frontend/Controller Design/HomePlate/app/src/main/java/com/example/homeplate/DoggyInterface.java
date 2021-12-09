@@ -1,14 +1,25 @@
 package com.example.homeplate;
 
+import static androidx.core.content.ContextCompat.startActivity;
 import static com.example.homeplate.api.ApiClientFacotry.GetUserApi;
 
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Handler;
 import android.text.TextUtils;
 
 import com.example.homeplate.api.SlimCallback;
+import com.example.homeplate.model.Doginfo;
+import com.example.homeplate.model.Message;
 import com.example.homeplate.model.User;
+import com.example.homeplate.model.lmsg;
 import com.example.homeplate.model.staticUser;
 
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -51,7 +62,7 @@ public interface DoggyInterface {
         // Types of User
         OWNER(0, "Dog Owner"),
         MODERATOR(1, "Moderator"),
-        ADMIN(2, "Admin");
+        VIEWER(2, "Viewer");
 
         private final int index;
         private final String description;
@@ -137,8 +148,9 @@ public interface DoggyInterface {
                             staticUser.setUser(user);
                             //generates the list of all users besides current
                             GetUserApi().getEverbody(user.getEmail()).enqueue(new SlimCallback<List<User>>(user->{ staticUser.setlist(user); }));
-                            returnMessage.setStatus(DoggyInterface.Status.SUCCESS);
-                            returnMessage.setMessage("Login Successful");
+
+                            staticUser.messageReturn = new MessageReturn("Worjked", Status.SUCCESS);
+
                         }
                     },1000);
                 }
@@ -151,9 +163,10 @@ public interface DoggyInterface {
             }));
 
             // TODO Change SUCCESS to FAILURE
-            if(returnMessage.getStatus() == null) return new MessageReturn("Unable to Connect.", DoggyInterface.Status.SUCCESS);
+            // if(returnMessage.getStatus() == null) return new MessageReturn("Unable to Connect.", Status.FAILURE);
 
-            return returnMessage;
+            return staticUser.messageReturn;
+            // return returnMessage;
         }
 
         /**
@@ -169,6 +182,7 @@ public interface DoggyInterface {
             if(staticUser.getIndex() < staticUser.getUsers().size()) {
                 GetUserApi().match(staticUser.getUser().getId(), staticUser.getUsers().get(staticUser.getIndex()).getId()).enqueue(new SlimCallback<User>(user -> {
                 }));
+                GetUserApi().postChat(staticUser.getUser().getId(),staticUser.getUsers().get(staticUser.getIndex()).getId()).enqueue(new SlimCallback<String>(str ->{ }));
                 staticUser.incrementIndex();
             }
         }
@@ -176,13 +190,33 @@ public interface DoggyInterface {
         /**
          * Send a message to match
          */
-        public static void sendMessage(int chatIndex, String message)
+        public static void sendMessage(String message)
         {
+            // my index: staticUser.getUser().getId()
+            // chat index: staticUser.getChatIndex()
+
+            Message msg = new Message(staticUser.getUser().getFirstName(),message);
+
+            GetUserApi().sendmsg(msg,staticUser.getUser().getId(),staticUser.getChatIndex()).enqueue(new SlimCallback<Message>(ms ->{}));
+            System.out.println("My ID: " + staticUser.getUser().getId() + "" + (staticUser.getChatIndex()) );
             // Send ^MESSAGE to User(chatIndex)
             // Check if possible then send
             // If not possible, maybe return?
         }
+
+        public static ArrayList<Message> getMessage(){
+            ArrayList<Message> msg = new ArrayList<Message>();
+            GetUserApi().getChat(staticUser.getUser().getId(),staticUser.getChatIndex()).enqueue(new SlimCallback<List<Message>>(list ->{
+                System.out.println("List size: " + list.size());
+                for(Message x:list){
+                    msg.add(x);
+                    System.out.println("Message when set: " + x.getMessage());
+                }
+            }));
+            return msg;
+        }
     }
+
 
     /**
      * Offload Data Assertion and
@@ -206,8 +240,14 @@ public interface DoggyInterface {
          * @return Name
          */
         public static String getMyDescription() {
-            if(staticUser.getUser() != null)
-                return staticUser.getUser().getDog().getDescriptionDog();
+            if(staticUser.getUser() != null) {
+                return staticUser.getUser().getDog().getDescriptionDog()
+                        + "\n" +
+                        "Gender: " + staticUser.getUser().getDog().getGenderDog()
+                        + "\nBreed: " + staticUser.getUser().getDog().getBreed()
+                        + "\t\tAge: " + staticUser.getUser().getDog().getAgeDog();
+            }
+                // return staticUser.getUser().getDog().getDescriptionDog();
             else return "No Description Available";
         }
 
@@ -227,9 +267,12 @@ public interface DoggyInterface {
          * @return Name
          */
         public static String getName() {
+            System.out.println("Index: " + staticUser.getIndex());
+            System.out.println("Size: " + staticUser.getUsers().size());
+
             if(staticUser.getUser() != null && staticUser.getIndex() < staticUser.getUsers().size())
                 return staticUser.getUsers().get(staticUser.getIndex()).getDog().getFirstNameDog();
-            else return "No Dog Available";
+            else return "No more matches";
         }
 
         /**
@@ -238,8 +281,22 @@ public interface DoggyInterface {
          */
         public static String getDescription() {
             if(staticUser.getUser() != null && staticUser.getIndex() < staticUser.getUsers().size())
-                return staticUser.getUsers().get(staticUser.getIndex()).getDog().getDescriptionDog();
-            else return "No Description Available";
+                return staticUser.getUsers().get(staticUser.getIndex()).getDog().getDescriptionDog()
+                        + "\n" +
+                        "Gender: " + getGender()
+                        + "\nBreed: " + getBreed()
+                        + "\t\tAge: " + staticUser.getUsers().get(staticUser.getIndex()).getDog().getAgeDog();
+            else return "Try again tomorrow!";
+        }
+        public static String getGender(){
+            if(staticUser.getUser() != null && staticUser.getIndex() < staticUser.getUsers().size())
+                return staticUser.getUsers().get(staticUser.getIndex()).getDog().getGenderDog();
+            else return "";
+        }
+        public static String getBreed(){
+            if(staticUser.getUser() != null && staticUser.getIndex() < staticUser.getUsers().size())
+                return staticUser.getUsers().get(staticUser.getIndex()).getDog().getBreed();
+            else return "";
         }
 
         /**
@@ -247,15 +304,21 @@ public interface DoggyInterface {
          * @todo Implement Image from UserS
          * @return Image
          */
-        public static int getImage() {
-            if(staticUser.getUser() != null && staticUser.getIndex() < staticUser.getUsers().size())
-                return R.drawable.icon_match_24;    // TODO
-            else return R.drawable.icon_profile_24;
+        public static String getImage() throws IOException {
+            if(staticUser.getUser() != null && staticUser.getIndex() < staticUser.getUsers().size()) {
+                //http://10.0.2.2:8080/dog1.jpg
+                String imageurl ="http://coms-309-058.cs.iastate.edu:8080/dog1.jpg";
+                System.out.println(imageurl);
+                return imageurl;
+            }
+                // return R.drawable.icon_match_24;    // TODO
+            else return null; // new Bitmap(R.drawable)return R.drawable.icon_profile_24;
         }
 
         /**
          * Get Name of User for Chat
          * @return Name
+         * @todo Change to returning the object of chat
          */
         public static MessageReturn getChatName(int index) {
             if(index < staticUser.getUsers().size() && staticUser.getUsers().get(index) != null)

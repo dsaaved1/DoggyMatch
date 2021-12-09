@@ -3,6 +3,7 @@ package com.example.homeplate.model;
 import static com.example.homeplate.api.ApiClientFacotry.GetUserApi;
 
 import com.example.homeplate.DoggyInterface;
+import com.example.homeplate.MessageReturn;
 import com.example.homeplate.api.SlimCallback;
 
 import java.util.ArrayList;
@@ -24,18 +25,33 @@ public class staticUser {
 
     // List of all possible users to match with, does not include current user
     private static List<User> getUsers = new ArrayList<User>();
-
+    //list of messages
+    private static List<Message> messages = new ArrayList<Message>();
     // User Email
     private static String email;
 
     // User Index
     private static int index;
 
-    // Chat Index
-    private static int chatIndex;
+    // Current Chat
+    private static Chat currentChat;
 
     // User Type
     private static DoggyInterface.UserType userType;
+
+    // Return message
+    public static MessageReturn messageReturn;
+
+    public static int getChatIndex() {
+        return chatIndex;
+    }
+
+    public static void setChatIndex(int chatIndex) {
+        staticUser.chatIndex = chatIndex;
+    }
+
+    // Chat index
+    private static int chatIndex;
 
     /**
      * constructor that calls get all
@@ -54,15 +70,28 @@ getall();
         }
     }));
     }
+    public static void setMsg(){
+        GetUserApi().getChat(staticUser.getUser().getId(),staticUser.getUsers().get(staticUser.getIndex()).getId()-1).enqueue(new SlimCallback<List<Message>>(list ->{
+            System.out.println("List size: " + list.size());
+            for(Message x:list){
+                messages.add(x);
+                System.out.println("Message when set: " + x.getMessage());
+            }
+        }));
+    }
 
+public static List<Message> getMsg(){
+        return messages;
+}
     /**
      * sets the list of all possible users
      * @param list
      */
     public static void setlist(List<User> list){
-
+        getUsers.clear();
     for(User u: list){
         getUsers.add(u);
+        System.out.printf("Name: %s\tIndex: %d%n", u.getDog().getFirstNameDog(), u.getId());
     }
 
 }
@@ -153,18 +182,18 @@ getall();
     /**
      * Set Chat Index
      */
-    public static void setChatIndex(int index)
+    public static void setCurrentChat(Chat chat)
     {
-        staticUser.chatIndex = index;
+        staticUser.currentChat = chat;
     }
 
     /**
      * Get Chat Index
      * @return Chat Index
      */
-    public static int getChatIndex()
+    public static Chat getCurrentChat()
     {
-        return chatIndex;
+        return currentChat;
     }
 
     /**
@@ -180,6 +209,7 @@ getall();
      * @return User Type
      */
     public static DoggyInterface.UserType getUserType() {
-        return userType;
+
+        return staticUser.userType.valueOf(staticUser.user.getUserTypeId());
     }
 }

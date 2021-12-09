@@ -1,6 +1,10 @@
 package com.example.homeplate;
 
+import static com.example.homeplate.api.ApiClientFacotry.GetUserApi;
+
 import android.os.Bundle;
+import android.os.Handler;
+import android.text.method.ScrollingMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,7 +14,10 @@ import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
+import com.example.homeplate.api.SlimCallback;
+import com.example.homeplate.model.User;
 import com.example.homeplate.model.staticUser;
+import com.squareup.picasso.Picasso;
 
 /**
  * Matching Activity
@@ -23,6 +30,8 @@ public class HomeFragment extends Fragment{
     // Local Fields
     private TextView nameText;
     private TextView descriptionText;
+    private TextView ageText;
+    private TextView a;
     private Button yesButton;
     private Button noButton;
     private ImageView profilePicture;
@@ -47,13 +56,15 @@ public class HomeFragment extends Fragment{
         // Text
         nameText = view.findViewById(R.id.name);
         descriptionText = view.findViewById(R.id.description);
+        // ageText = view.findViewById(R.id.age);
+        // a = view.findViewById(R.id.a);
 
         // Buttons
         yesButton = view.findViewById(R.id.yesButton);
         noButton = view.findViewById(R.id.noButton);
 
         // Change Button Text for User Type
-        if(staticUser.getUserType() != DoggyInterface.UserType.OWNER) {
+        if(staticUser.getUserType() == DoggyInterface.UserType.MODERATOR) {
             yesButton.setText("GOOD");
             noButton.setText("REPORT");
         }
@@ -115,9 +126,15 @@ public class HomeFragment extends Fragment{
                 if(staticUser.getIndex() < staticUser.getUsers().size()) {
                     if(staticUser.getUserType() != DoggyInterface.UserType.OWNER) {
                         // Generate a REPORT
-                        if(staticUser.getUserType() == DoggyInterface.UserType.ADMIN) {
+                        GetUserApi().delete(staticUser.getUser().getEmail(),staticUser.getUsers().get(staticUser.getIndex()).getId()).enqueue(new SlimCallback<User>(user -> {
+                        }));
+
+                        if(staticUser.getUserType() == DoggyInterface.UserType.VIEWER) {
                             // Remove Account IMMEDIATELY
+
+
                         }
+
                     }
                     staticUser.incrementIndex();
                     displayProfile();
@@ -132,8 +149,29 @@ public class HomeFragment extends Fragment{
      */
     private void displayProfile()
     {
-        nameText.setText(DoggyInterface.DoggyView.getName());
-        descriptionText.setText(DoggyInterface.DoggyView.getDescription());
-        profilePicture.setImageResource(DoggyInterface.DoggyView.getImage());
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                nameText.setText(DoggyInterface.DoggyView.getName());
+                descriptionText.setText(DoggyInterface.DoggyView.getDescription());
+                // ageText.setText(DoggyInterface.DoggyView.getGender());
+                // a.setText(DoggyInterface.DoggyView.getBreed());
+
+                    //profilePicture.setImageBitmap(DoggyInterface.DoggyView.getImage());
+
+
+                if(staticUser.getUser() != null && staticUser.getIndex() < staticUser.getUsers().size()) {
+                    // TODO
+                    //  Change to Remote URL http://10.0.2.2:8080/dog
+                    String url = "http://coms-309-058.cs.iastate.edu:8080/dog" + (staticUser.getIndex() + 1) + ".jpg";
+                    System.out.println("Getting url at: " + url);
+                    Picasso.with(profilePicture.getContext())
+                            .load(url)
+                            .into(profilePicture);
+                }
+                else profilePicture.setImageResource(R.drawable.icon_match_24);
+
+            }
+        },70);
     }
 }
