@@ -42,6 +42,17 @@ public class staticUser {
     // Return message
     public static MessageReturn messageReturn;
 
+    public static int getChatIndex() {
+        return chatIndex;
+    }
+
+    public static void setChatIndex(int chatIndex) {
+        staticUser.chatIndex = chatIndex;
+    }
+
+    // Chat index
+    private static int chatIndex;
+
     /**
      * constructor that calls get all
      */

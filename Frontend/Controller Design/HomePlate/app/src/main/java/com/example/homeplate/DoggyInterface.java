@@ -197,8 +197,8 @@ public interface DoggyInterface {
 
             Message msg = new Message(staticUser.getUser().getFirstName(),message);
 
-            GetUserApi().sendmsg(msg,staticUser.getUser().getId(),staticUser.getUsers().get(staticUser.getIndex()).getId()-1).enqueue(new SlimCallback<Message>(ms ->{}));
-            System.out.println("My ID: " + staticUser.getUser().getId() + "" + (staticUser.getUsers().get(staticUser.getIndex()).getId()-1) );
+            GetUserApi().sendmsg(msg,staticUser.getUser().getId(),staticUser.getChatIndex()).enqueue(new SlimCallback<Message>(ms ->{}));
+            System.out.println("My ID: " + staticUser.getUser().getId() + "" + (staticUser.getChatIndex()) );
             // Send ^MESSAGE to User(chatIndex)
             // Check if possible then send
             // If not possible, maybe return?
@@ -206,7 +206,7 @@ public interface DoggyInterface {
 
         public static ArrayList<Message> getMessage(){
             ArrayList<Message> msg = new ArrayList<Message>();
-            GetUserApi().getChat(staticUser.getUser().getId(),staticUser.getUsers().get(staticUser.getIndex()).getId()-1).enqueue(new SlimCallback<List<Message>>(list ->{
+            GetUserApi().getChat(staticUser.getUser().getId(),staticUser.getChatIndex()).enqueue(new SlimCallback<List<Message>>(list ->{
                 System.out.println("List size: " + list.size());
                 for(Message x:list){
                     msg.add(x);

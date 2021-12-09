@@ -1,6 +1,8 @@
 package com.example.homeplate;
 
 
+import static com.example.homeplate.api.ApiClientFacotry.GetUserApi;
+
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,7 +13,9 @@ import android.widget.SimpleAdapter;
 
 import androidx.fragment.app.Fragment;
 
+import com.example.homeplate.api.SlimCallback;
 import com.example.homeplate.model.Chat;
+import com.example.homeplate.model.User;
 import com.example.homeplate.model.staticUser;
 
 import java.util.ArrayList;
@@ -122,7 +126,25 @@ public class ChatsFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
+                // Server request
                 staticUser.setCurrentChat(lchat.get(i));
+                GetUserApi().getUserByEmail(staticUser.getCurrentChat().getUserMail()).enqueue(new SlimCallback<User>(user -> {
+                    staticUser.setChatIndex(user.getId());
+                }));
+
+                        /*
+                staticUser.setCurrentChat(lchat.get(i));
+                for(Chat user : staticUser.getUser().getChats())
+                {
+                    if(user.getUserMail() == staticUser.getCurrentChat().getUserMail())
+                        staticUser.setChatIndex(user.getId());
+                    System.out.println("Index User Email: " + user.getUserMail());
+                    System.out.println("Current Chat Email: " + staticUser.getCurrentChat().getUserMail());
+
+                }
+
+                         */
+                System.out.println("Chat Index: " + staticUser.getChatIndex());
                 getFragmentManager().beginTransaction()
                         .setReorderingAllowed(true)
                         .add(R.id.fragment_container_view, UserChatFragment.class, null)
