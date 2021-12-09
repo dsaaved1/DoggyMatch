@@ -140,7 +140,7 @@ View your profile or modify it.
 ## Backend
 
 ### Sign In
-
+The sign in feature allows the frontend to post email and password to the server and start using the app.
 **Feature Title**
 
 ```java
@@ -150,9 +150,7 @@ View your profile or modify it.
 About feature `TODO`
 
 ### Sign Up
-
-**Feature Title**
-
+The sign up feature allows the frontend to post user information such as owner info, dog info, and photo that will be saved to the MySQL database.
 ```java
     // Source Code for features
 ```
@@ -172,6 +170,7 @@ About feature `TODO`
 ### Chat
 
 **Feature Title**
+The websocket server on the backend allows the android app to communicate with the server and send messages between users.
 
 ```java
     // Source Code for features
