@@ -162,8 +162,8 @@ public class HomeFragment extends Fragment{
 
                 if(staticUser.getUser() != null && staticUser.getIndex() < staticUser.getUsers().size()) {
                     // TODO
-                    //  Change to Remote URL http://coms-309-058.cs.iastate.edu:8080/dog
-                    String url = "http://10.0.2.2:8080/dog" + (staticUser.getIndex() + 1) + ".jpg";
+                    //  Change to Remote URL http://10.0.2.2:8080/dog
+                    String url = "http://coms-309-058.cs.iastate.edu:8080/dog" + (staticUser.getIndex() + 1) + ".jpg";
                     System.out.println("Getting url at: " + url);
                     Picasso.with(profilePicture.getContext())
                             .load(url)

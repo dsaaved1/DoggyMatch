@@ -60,8 +60,8 @@ public class ProfileFragment extends Fragment {
 
         // Images
         profilePicture = view.findViewById(R.id.myProfilePicture);
-        // TODO http://coms-309-058.cs.iastate.edu:8080/dog
-        String url = "http://10.0.2.2:8080/dog" + (new Random().nextInt(9) + 1) + ".jpg";
+        // TODO http://coms-309-058.cs.iastate.edu:8080/dog http://10.0.2.2:8080/dog
+        String url = "http://coms-309-058.cs.iastate.edu:8080/dog" + (new Random().nextInt(9) + 1) + ".jpg";
         System.out.println("Getting url at: " + url);
         Picasso.with(profilePicture.getContext())
                 .load(url)

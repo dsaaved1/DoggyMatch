@@ -307,7 +307,7 @@ public interface DoggyInterface {
         public static String getImage() throws IOException {
             if(staticUser.getUser() != null && staticUser.getIndex() < staticUser.getUsers().size()) {
                 //http://10.0.2.2:8080/dog1.jpg
-                String imageurl ="http://10.0.2.2:8080/dog1.jpg";
+                String imageurl ="http://coms-309-058.cs.iastate.edu:8080/dog1.jpg";
                 System.out.println(imageurl);
                 return imageurl;
             }
