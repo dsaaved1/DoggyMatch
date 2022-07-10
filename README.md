@@ -1,4 +1,4 @@
-# 3_RK_1
+# DOGGY MATCH
 
 **DoggyMatch** Playdates for dogs!  Connect with other owners on our safe and friendly platform to find the perfect playdate for your dog.
 
